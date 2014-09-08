@@ -1,6 +1,7 @@
 # Спецкурс "Инструменты разработки"
 
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice.svg?branch=master)](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice)
+[![Documentation](https://readthedocs.org/projects/devtools-course-practice/badge/?version=latest)](http://devtools-course-practice.readthedocs.org)
 
 Нижегородский Государственный Университет им. Н.И. Лобачевского
 Факультет ВМК, каф. МО ЭВМ
