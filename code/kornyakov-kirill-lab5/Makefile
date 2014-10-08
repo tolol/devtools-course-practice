@@ -1,6 +1,6 @@
 all:
-    mkdir -p ./build
-    $(CXX) -o ./build/calc ./library/src/simplecalc.cxx ./library/src/calc_application.cxx ./sample/calc.cpp -I./
+	mkdir -p ./build
+	$(CXX) -o ./build/calc ./sample/calc.cpp ./library/src/simplecalc.cxx ./library/src/calc_application.cxx -I./
 
 test: all
-    ./build/calc
+	./build/calc
