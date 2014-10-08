@@ -33,7 +33,7 @@ function CheckGoogleStyleInDir {
     # fi
 
     echo "Checking $dir"
-    sources=`find . -name "*.hpp" -or -name "*.h" -or -name "*.cpp" -or -name "*.cc"`
+    sources=`find . -name "*.hpp" -or -name "*.h" -or -name "*.cpp" -or -name "*.cxx"`
     for file in $sources;
     do
         python ../cpplint.py $file
