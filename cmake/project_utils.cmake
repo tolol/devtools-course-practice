@@ -108,7 +108,7 @@ macro(get_all_files_for_build)
   set(target_global_list_moc_code)
 
   foreach(arg ${ARGV})
-    file(GLOB srcs_cpp "${arg}/*.cpp")
+    file(GLOB srcs_cpp "${arg}/*.cpp" "${arg}/*.cxx")
     file(GLOB srcs_cc "${arg}/*.cc")
     file(GLOB hdrs_hpp "${arg}/*.hpp")
     file(GLOB hdrs_h "${arg}/*.h")

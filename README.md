@@ -2,12 +2,11 @@
 
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice.svg?branch=master)](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice)
 [![Documentation](https://readthedocs.org/projects/devtools-course-practice/badge/?version=latest)](http://devtools-course-practice.readthedocs.org)
+[![Coverage Status](https://img.shields.io/coveralls/UNN-VMK-Software/devtools-course-practice.svg)](https://coveralls.io/r/UNN-VMK-Software/devtools-course-practice)
 
-Нижегородский Государственный Университет им. Н.И. Лобачевского
-
-Факультет ВМК, каф. МО ЭВМ
-
-**License:** Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
+ - Нижегородский Государственный Университет им. Н.И. Лобачевского
+ - Факультет ВМК, каф. МО ЭВМ
+ - **License:** Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
 
 ## Ресурсы
 
