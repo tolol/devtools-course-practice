@@ -114,9 +114,9 @@ function Clean {
 function Main {
     Clean
     CheckGoogleStyle
-    MakeTest
+    # MakeTest
     BuildCMakeProject
-    CTest
+    # CTest
     GoogleTest
 }
 
