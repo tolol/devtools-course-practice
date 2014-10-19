@@ -1,5 +1,6 @@
 build/
 build_cmake/
+code-build/
 
 *.user
 

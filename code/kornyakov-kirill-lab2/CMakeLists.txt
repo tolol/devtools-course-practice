@@ -19,9 +19,9 @@ message("")
 add_dir_inc("./")
 
 # Declare static library
-add_lib_static(${libname} "src" "./src")
+add_lib_static(${libname} "include" "src")
 
-# Declare unit tests
+# Declare module with unit tests
 add_local_dependency(${libname})
 add_app(${testname} "test")
 target_link_libraries(${testname})
