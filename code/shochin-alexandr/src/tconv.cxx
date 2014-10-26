@@ -30,7 +30,7 @@ void TemperatureConverter::Check() {
 }
 
 double TemperatureConverter::Convert(int unit) {
-    Check(unit);
+    Check();
     switch (unit) {
     case 1: return GetKelvin();
     case 2: return GetFahrenheit();
