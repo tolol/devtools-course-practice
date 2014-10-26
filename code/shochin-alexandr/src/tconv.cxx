@@ -1,16 +1,18 @@
 ﻿// Copyright 2014 Shochin Alexandr
 
+
 #include "include/tconv.h"
 
 #include <limits>
 #include <string>
-#include <iostream>
 
 TemperatureConverter::TemperatureConverter(double Celsius) {
      this->Celsius_ = Celsius;
 }
 
-TemperatureConverter::~TemperatureConverter() {};
+TemperatureConverter::~TemperatureConverter() {
+
+};
 
 double TemperatureConverter::GetKelvin() {
     return this->Celsius_ + 273.15;
@@ -38,16 +40,14 @@ double TemperatureConverter::Convert(int unit) {
 
     if (RetCode == 1) {
         if (unit >= 1 && unit <= 3) {
-            switch(unit) {
+            switch (unit) {
             case 1: return GetKelvin();
             case 2: return GetFahrenheit();
             case 3: return GetNewton();
             }
-        }
-        else
-            throw std::string("unit should only take on integer values 1, 2 or 3");
-    }
-    else
-        throw std::string("the temperature in Celsius can not be below -273.15");
+        } else
+            throw std::string("take on integer values 1, 2 or 3");
+    } else
+        throw std::string(" can not be below -273.15");
     return NULL;
 }

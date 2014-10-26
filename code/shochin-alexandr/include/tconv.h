@@ -7,7 +7,7 @@ class TemperatureConverter {
  private:
      double Celsius_;
  public:
-     TemperatureConverter(double Celsius);
+     explicit TemperatureConverter(double Celsius);
      ~TemperatureConverter();
      double Convert(int unit);
  protected:
