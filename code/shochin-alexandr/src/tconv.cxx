@@ -43,7 +43,11 @@ double TemperatureConverter::Convert(int unit) {
             case 2: return GetFahrenheit();
             case 3: return GetNewton();
             }
-        } else throw std::string("take on integer values 1, 2 or 3");
-    } else throw std::string(" can not be below -273.15");
+        } else {
+            throw std::string("take on integer values 1, 2 or 3");
+        }
+    } else {
+        throw std::string(" can not be below -273.15");
+    }
     return NULL;
 }
