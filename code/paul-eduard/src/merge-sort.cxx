@@ -6,7 +6,7 @@
 
 const int INFINITY = INT_MAX;
 
-void Merge(int mas[], int left, int m, int right) {
+static void Merge(int mas[], int left, int m, int right) {
     int n1 = m-left+1;
     int n2 = right-m;
     int *L = new int[n1+1];
