@@ -10,7 +10,7 @@ TemperatureConverter::TemperatureConverter(double Celsius) {
 }
 
 TemperatureConverter::~TemperatureConverter() {
-};
+}
 
 double TemperatureConverter::GetKelvin() {
     return this->Celsius_ + 273.15;
@@ -49,5 +49,5 @@ double TemperatureConverter::Convert(int unit) {
     } else {
         throw std::string(" can not be below -273.15");
     }
-    return NULL;
+    return 0.0;
 }
