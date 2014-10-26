@@ -23,7 +23,7 @@ double TemperatureConverter::GetNewton() {
     return (33.0 / 100.0) * this->Celsius_;
 }
 
-void TemperatureConverter::Check(int unit) {
+void TemperatureConverter::Check() {
     if (Celsius_ < -273.15) {
         throw std::string(" can not be below -273.15");
     }

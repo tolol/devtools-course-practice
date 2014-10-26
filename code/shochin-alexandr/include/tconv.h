@@ -11,7 +11,7 @@ class TemperatureConverter {
      ~TemperatureConverter();
      double Convert(int unit);
  protected:
-     void Check(int unit);
+     void Check();
      double GetKelvin();
      double GetFahrenheit();
      double GetNewton();
