@@ -38,7 +38,5 @@ double TemperatureConverter::Convert(int unit) {
     case 1: return GetKelvin();
     case 2: return GetFahrenheit();
     case 3: return GetNewton();
-    default: return 0.0;
     }
 }
-
