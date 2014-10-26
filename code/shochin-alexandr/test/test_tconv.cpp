@@ -7,9 +7,9 @@
 
 #include "include/tconv.h"
 
-class TemperatureConverterTest : public ::testing::Test {
+class TConvTest : public ::testing::Test {
  protected:
-    TemperatureConverter tc(-300);
+    TemperatureConverter tc = (-300);
     TemperatureConverter tc2(100);
     TemperatureConverter tc3(200);
 };
