@@ -6,12 +6,11 @@
 
 const int INFINITY = INT_MAX;
 
-template < typename Type>
-void Merge(Type mas[], int left, int m, int right) {
+void Merge(int mas[], int left, int m, int right) {
     int n1 = m-left+1;
     int n2 = right-m;
-    Type *L = new Type[n1+1];
-    Type *R = new Type[n2+1];
+    int *L = new int[n1+1];
+    int *R = new int[n2+1];
     for (int i = 0; i < n1; ++i) {
         L[i] = mas[left+i];
     }
@@ -35,9 +34,8 @@ void Merge(Type mas[], int left, int m, int right) {
     delete []R;
 }
 
-template < typename Type>
-int Merge_Sort(Type mas[], int l, int r) {
-    return -1;
+int Merge_Sort(int mas[], int l, int r) {
+    if (mas == 0) return -1;
     if (l >= r) return 0;
     int middle = (l+r)/2;
     Merge_Sort(mas, l, middle);
