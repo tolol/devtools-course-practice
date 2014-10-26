@@ -1,4 +1,5 @@
-﻿// Copyright 2014 Shochin Alexandr
+﻿//  Copyright 2014 Shochin Alexandr
+
 
 #include "include/tconv.h"
 
