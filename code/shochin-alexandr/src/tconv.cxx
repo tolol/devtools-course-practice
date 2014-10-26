@@ -48,5 +48,4 @@ double TemperatureConverter::Convert(int unit) {
     } else {
         throw std::string(" can not be below -273.15");
     }
-    return 0.0;
 }
