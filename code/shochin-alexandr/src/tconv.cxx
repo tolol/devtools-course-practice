@@ -23,29 +23,22 @@ double TemperatureConverter::GetNewton() {
     return (33.0 / 100.0) * this->Celsius_;
 }
 
-int TemperatureConverter::Check() {
-    int RetCode = 0;
-
-    if (Celsius_ >= -273.15) {
-        RetCode = 1;
+void TemperatureConverter::Check(int unit) {
+    if (Celsius_ < -273.15) {
+        throw std::string(" can not be below -273.15"); 
+    }       
+    if (unit > 3 || unit < 1) {
+        throw std::string("take on integer values 1, 2 or 3");
     }
-    return RetCode;
 }
 
 double TemperatureConverter::Convert(int unit) {
-    int RetCode = Check();
-
-    if (RetCode == 1) {
-        if (unit >= 1 && unit <= 3) {
-            switch (unit) {
-            case 1: return GetKelvin();
-            case 2: return GetFahrenheit();
-            case 3: return GetNewton();
-            }
-        } else {
-            throw std::string("take on integer values 1, 2 or 3");
-        }
-    } else {
-        throw std::string(" can not be below -273.15");
+    Check(unit);
+    switch (unit) {
+    case 1: return GetKelvin();
+    case 2: return GetFahrenheit();
+    case 3: return GetNewton();
+    default: return 0.0;
     }
 }
+
