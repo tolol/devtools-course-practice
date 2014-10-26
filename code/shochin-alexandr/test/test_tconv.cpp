@@ -5,7 +5,7 @@
 #include <limits.h>
 #include <string>
 
-#include "include/tcalc.h"
+#include "include/tconv.h"
 
 class TemperatureConverterTest : public ::testing::Test {
  protected:
