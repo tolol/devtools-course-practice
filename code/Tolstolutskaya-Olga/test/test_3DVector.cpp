@@ -7,9 +7,9 @@
 
 TEST(Vector3dTest, Can_Create) {
     Vector3d *a= new Vector3d(1, 2, 3);
-    EXPECT_EQ(3, a->GetA());
-    EXPECT_EQ(4, a->GetB());
-    EXPECT_EQ(5, a->GetC());
+    EXPECT_EQ(1, a->GetA());
+    EXPECT_EQ(2, a->GetB());
+    EXPECT_EQ(3, a->GetC());
 }
 
 TEST(Vector3dTest, Can_Create_Default) {
