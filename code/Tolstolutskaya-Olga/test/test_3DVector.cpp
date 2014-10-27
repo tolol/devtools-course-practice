@@ -13,7 +13,7 @@ TEST(Vector3dTest, Can_Create) {
 }
 
 TEST(Vector3dTest, Can_Create_Default) {
-    Vector3d a();
+    Vector3d a;
     EXPECT_EQ(0, a.GetA());
     EXPECT_EQ(0, a.GetB());
     EXPECT_EQ(0, a.GetC());
@@ -35,14 +35,14 @@ TEST(Vector3dTest, Correct_Computation_Normalize) {
 TEST(Vector3dTest, Correct_Computation_ScalarProduct) {
     Vector3d a(1, 2, 3);
     Vector3d b(2, 1, -2);
-    EXPECT_EQ(-2, a->ScalarProduct(b));
+    EXPECT_EQ(-2, a.ScalarProduct(b));
 }
 
 TEST(Vector3dTest, Correct_Computation_VectorProduct) {
     Vector3d a(1, 2, 3);
     Vector3d b(2, 1, -2);
     Vector3d c(2, 1, -2);
-    c = a->VectorProduct(b);
+    c = a.VectorProduct(b);
     EXPECT_EQ(-7, c.GetA());
     EXPECT_EQ(8, c.GetB());
     EXPECT_EQ(-3, c.GetC());
