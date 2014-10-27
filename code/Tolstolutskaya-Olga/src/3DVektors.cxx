@@ -41,8 +41,9 @@ void Vector3d::Normalize() {
         a = a*inversion;
         b = b*inversion;
         c = c*inversion;
-    } else
+    } else {
         printf("error Vector 0");
+    }
 }
 
 double Vector3d::ScalarProduct(Vector3d *Vector) {
