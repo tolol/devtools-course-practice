@@ -3,17 +3,9 @@
 #include <math.h>
 #include "include/3DVektor.h"
 
-Vector3d::Vector3d() {
-    a = 0;
-    b = 0;
-    c = 0;
-}
+Vector3d::Vector3d(): a(0), b(0), c(0) {}
 
-Vector3d::Vector3d(double _a, double _b, double _c) {
-    a = _a;
-    b = _b;
-    c = _c;
-}
+Vector3d::Vector3d(double _a, double _b, double _c): a(_a), b(_b),c(_c) {}
 
 double Vector3d::GetA() {
     return(a);
