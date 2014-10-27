@@ -35,7 +35,7 @@ double Vector3d::Norma() {
 }
 
 void Vector3d::Normalize() {
-    if ((a-0<0.001)||(b-0<0.001)||(c-0<0.001)) {
+    if ((a-0 < 0.001)||(b-0 < 0.001)||(c-0 < 0.001)) {
         double LocalNorm = Norma();
         double inversion = 1/LocalNorm;
         a = a*inversion;
