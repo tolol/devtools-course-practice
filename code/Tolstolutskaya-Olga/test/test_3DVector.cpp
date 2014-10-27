@@ -20,7 +20,7 @@ TEST(Vector3dTest, Can_Create_Default) {
 }
 
 TEST(Vector3dTest, Correct_Computation_Norm) {
-    Vector3d a(1, 2, 3);
+    Vector3d *a= new Vector3d(1, 2, 3);
     EXPECT_EQ(3.741657, a->Norma());
 }
 
