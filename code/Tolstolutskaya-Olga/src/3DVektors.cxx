@@ -41,8 +41,7 @@ void Vector3d::Normalize() {
         a = a*inversion;
         b = b*inversion;
         c = c*inversion;
-    }
-    else
+    } else
         printf("error Vector 0");
 }
 
