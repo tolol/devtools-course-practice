@@ -1,7 +1,6 @@
-// Copyright 2014 Tolstolutskaya Olga
-#ifndef CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR
-#define CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR
-
+// Copyright 2014 Paul Eduard
+#ifndef CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
+#define CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
 #include <stdio.h>
 #include <math.h>
 
@@ -9,10 +8,8 @@ class Vector3d {
  private:
     double a;
     double b;
-    double c;  
-
+    double c;
  public:
-
     Vector3d();
 
     Vector3d(double _a, double _b, double _c);
@@ -33,4 +30,4 @@ class Vector3d {
 
     void Print();
 };
-#endif // CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR
+#endif  // CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
