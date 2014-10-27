@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "include/Vector3d.h"
+#include "include/3DVektor.h"
 
 
 TEST(Vector3dTest, Can_Create) {
