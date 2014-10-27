@@ -1,4 +1,4 @@
-// Copyright 2014 Paul Eduard
+// Copyright 2014 Tolstolutskaya Olga
 #ifndef CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
 #define CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
 #include <stdio.h>
@@ -9,6 +9,7 @@ class Vector3d {
     double a;
     double b;
     double c;
+
  public:
     Vector3d();
 
