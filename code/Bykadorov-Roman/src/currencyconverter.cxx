@@ -8,6 +8,9 @@
 CurrencyConverter::CurrencyConverter() {}
 CurrencyConverter::~CurrencyConverter() {}
 
+const double _euroForRub = 53.5948527;
+const double _usdForRub = 42.2600685;
+
 void CurrencyConverter::checkRange(double value) {
     if (value < 0)
         throw std::string("The value is negative");
@@ -33,7 +36,7 @@ double CurrencyConverter::eurToUsd(double eur) {
     return mainConverter(eur, 5);
 }
 double CurrencyConverter::mainConverter(double value, int mode) {
-    double _value;
+    double _value = 0;
     switch (mode) {
         // rubToEur(double)
         case 0:
