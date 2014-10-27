@@ -1,19 +1,18 @@
 // Copyright 2014 Tolstolutskaya Olga
-//Операции над 3D векторами: норма, нормализация, скалярное и векторное произведение
 #include <stdio.h>
 #include <math.h>
 #include "include/3DVektor.h"
 
 Vector3d::Vector3d() {
-    a=0;
-    b=0;
-    c=0;
+    a = 0;
+    b = 0;
+    c = 0;
 }
 
 Vector3d::Vector3d(double _a, double _b, double _c) {
-    a=_a;
-    b=_b;
-    c=_c;
+    a = _a;
+    b = _b;
+    c = _c;
 }
 
 double Vector3d::GetA() {
@@ -28,7 +27,7 @@ double Vector3d::GetC() {
     return(c);
 }
 
-double Vector3d::Norma() { 
+double Vector3d::Norma() {
     double LocalNorm;
     double ForSqrt = a*a+b*b+c*c;
     LocalNorm = sqrt(ForSqrt);
@@ -36,14 +35,15 @@ double Vector3d::Norma() {
 }
 
 void Vector3d::Normalize() {
-    if((a!=0)||(b!=0)||(c!=0)){
+    if ((a != 0)||(b != 0)||(c != 0)) {
         double LocalNorm = Norma();
-        double inversion=1/LocalNorm;
+        double inversion = 1/LocalNorm;
         a = a*inversion;
         b = b*inversion;
         c = c*inversion;
     }
-    else printf("error Vector 0");
+    else
+        printf("error Vector 0");
 }
 
 double Vector3d::ScalarProduct(Vector3d *Vector) {
