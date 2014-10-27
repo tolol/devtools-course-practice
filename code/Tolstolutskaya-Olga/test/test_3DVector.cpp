@@ -32,6 +32,14 @@ TEST(Vector3dTest, Correct_Computation_Normalize) {
     EXPECT_LT(0.801784 - a->GetC(), a->GetC());
 }
 
+TEST(Vector3dTest, Correct_Computation_Normalize_Null) {
+    Vector3d *a = new Vector3d();
+    a->Normalize();
+    EXPECT_LT(0, a->GetA());
+    EXPECT_LT(0, a->GetB());
+    EXPECT_LT(0, a->GetC());
+}
+
 TEST(Vector3dTest, Correct_Computation_ScalarProduct) {
     Vector3d *a = new Vector3d(1, 2, 3);
     Vector3d *b = new Vector3d(2, 1, -2);
