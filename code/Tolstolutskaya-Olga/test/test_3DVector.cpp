@@ -20,7 +20,7 @@ TEST_F(3DVektorTest, Can_Create_Default) {
 }
 
 TEST_F(3DVektorTest, Correct_Computation_Norm) {
-    3DVektor a(1, 2, 3);  
+    3DVektor a(1, 2, 3);
     EXPECT_EQ(3.741657, a.Norma());
 }
 
