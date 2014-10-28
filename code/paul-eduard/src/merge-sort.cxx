@@ -4,8 +4,6 @@
 #include <vector>
 #include <climits>
 
-const int INFINITY = INT_MAX;
-
 static void Merge(int mas[], int left, int m, int right) {
     int n1 = m-left+1;
     int n2 = right-m;
