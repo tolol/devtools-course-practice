@@ -85,6 +85,12 @@ TEST_F(SearchTest, Can_Search_When_Key_More_Mas_Max) {
     EXPECT_EQ(-1, t);
 }
 TEST_F(SearchTest, Do_Throw_Exception_When_Mas_Is_Null) {
+    n = 5;
+    mas = 0;
+    int k = 50;
+    EXPECT_THROW(search.run(mas, n, k), std::string);
+}
+TEST_F(SearchTest, Do_Throw_Exception_When_n_Is_Null) {
     n = 0;
     mas = 0;
     int k = 50;
