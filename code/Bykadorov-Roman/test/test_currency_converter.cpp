@@ -13,27 +13,27 @@ class ConverterTest : public ::testing::Test {
 };
 
 TEST_F(ConverterTest, can_Rub_To_Eur) {
-    EXPECT_EQ(conv.rubToEur(53.5948527), 1);
+    EXPECT_NEAR(conv.rubToEur(53.5948527), 1.0, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Rub_To_Usd) {
-    EXPECT_EQ(conv.rubToUsd(42.2600685), 1);
+    EXPECT_NEAR(conv.rubToUsd(42.2600685), 1.0, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Usd_To_Eur) {
-    EXPECT_EQ(conv.usdToEur(1), 42.2600685/53.5948527);
+    EXPECT_NEAR(conv.usdToEur(1.0), 42.2600685/53.5948527, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Usd_To_Rub) {
-    EXPECT_EQ(conv.usdToRub(1), 42.2600685);
+    EXPECT_NEAR(conv.usdToRub(1.0), 42.2600685, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Eur_To_Rub) {
-    EXPECT_EQ(conv.eurToRub(1), 53.5948527);
+    EXPECT_NEAR(conv.eurToRub(1.0), 53.5948527, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Eur_To_Usd) {
-    EXPECT_EQ(conv.eurToUsd(1), 53.5948527/42.2600685);
+    EXPECT_NEAR(conv.eurToUsd(1.0), 53.5948527/42.2600685, 1e-5);
 }
 
 TEST_F(ConverterTest, Do_Throw_Exception_When_Value_Is_Negative) {
