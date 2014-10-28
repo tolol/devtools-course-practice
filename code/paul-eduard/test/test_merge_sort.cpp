@@ -74,3 +74,23 @@ TEST(MergeSortTest, Full_Sort) {
     for (int i = 0; i < N; i++) EXPECT_EQ(i+1, a[i]);
     delete []a;
 }
+TEST(MergeSortTest, GreetingsFromSergei) {
+    // Arrange
+    int *a = new int[5];
+
+    a[0] = INT_MAX;
+    a[1] = INT_MAX;
+    a[2] = INT_MAX;
+    a[3] = INT_MAX;
+    a[4] = INT_MAX;
+
+    // Act
+    Merge_Sort(a, 0, 4);
+    // Assert
+    EXPECT_EQ(INT_MAX, a[0]);
+    EXPECT_EQ(INT_MAX, a[1]);
+    EXPECT_EQ(INT_MAX, a[2]);
+    EXPECT_EQ(INT_MAX, a[3]);
+    EXPECT_EQ(INT_MAX, a[4]);
+    delete []a;
+}
