@@ -16,7 +16,7 @@ void CheckRange(double result) {
         throw std::string("The result is larger than DBL_MAX");
     else if (result < -DBL_MAX)
         throw std::string("The result is less than -DBL_MAX");
-    if (result == 0)
+    if (result == 0.)
       throw std::string("There are zero variables");
 }
 
