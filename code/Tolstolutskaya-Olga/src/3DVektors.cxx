@@ -22,7 +22,7 @@ double Vector3d::GetC() {
 double Vector3d::Norma() {
     double LocalNorm;
     double ForSqrt = a*a+b*b+c*c;
-    LocalNorm = sqrt(ForSqrt);
+    LocalNorm = sqrt(abs(ForSqrt));
     return(LocalNorm);
 }
 
