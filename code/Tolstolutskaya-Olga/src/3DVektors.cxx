@@ -27,7 +27,7 @@ double Vector3d::Norma() {
 }
 
 void Vector3d::Normalize() {
-    if ((fbs(a) > 0.00001)||(fabs(b) > 0.00001)||(fabs(c) > 0.00001)) {
+    if ((fabs(a) > 0.00001)||(fabs(b) > 0.00001)||(fabs(c) > 0.00001)) {
         double LocalNorm = Norma();
         double inversion = 1/LocalNorm;
         a = a*inversion;
