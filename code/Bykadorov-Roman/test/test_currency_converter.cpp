@@ -40,7 +40,3 @@ TEST_F(ConverterTest, Do_Throw_Exception_When_Value_Is_Negative) {
     EXPECT_THROW(conv.rubToEur(-100), std::string);
 }
 
-TEST_F(ConverterTest, Do_Throw_Exception_When_Value_Is_Larger_Than_DBL_MAX) {
-    EXPECT_THROW(conv.eurToRub(DBL_MAX), std::string);
-}
-

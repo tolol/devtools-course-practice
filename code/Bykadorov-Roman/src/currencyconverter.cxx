@@ -14,8 +14,6 @@ const double usdForRub = 42.2600685;
 void CurrencyConverter::checkRange(double value) {
     if (value < 0)
         throw std::string("The value is negative");
-    if (value > DBL_MAX)
-        throw std::string("The value is larger than DBL_MAX");
 }
 double CurrencyConverter::rubToEur(double rub) {
     return mainConverter(rub, 0);
