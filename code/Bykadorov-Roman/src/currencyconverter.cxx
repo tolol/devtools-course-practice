@@ -8,8 +8,8 @@
 CurrencyConverter::CurrencyConverter() {}
 CurrencyConverter::~CurrencyConverter() {}
 
-const double _euroForRub = 53.5948527;
-const double _usdForRub = 42.2600685;
+const double euroForRub = 53.5948527;
+const double usdForRub = 42.2600685;
 
 void CurrencyConverter::checkRange(double value) {
     if (value < 0)
@@ -40,27 +40,27 @@ double CurrencyConverter::mainConverter(double value, int mode) {
     switch (mode) {
         // rubToEur(double)
         case 0:
-            _value = value/_euroForRub;
+            _value = value/euroForRub;
         break;
         // rubToUsd(double)
         case 1:
-            _value = value/_usdForRub;
+            _value = value/usdForRub;
         break;
         // usdToEur(double)
         case 2:
-            _value = value*(_usdForRub/_euroForRub);
+            _value = value*(usdForRub/euroForRub);
         break;
         // usdToRub(double)
         case 3:
-            _value = value*_usdForRub;
+            _value = value*usdForRub;
         break;
         // eurToRub(double)
         case 4:
-            _value = value*_euroForRub;
+            _value = value*euroForRub;
         break;
         // eurToUsd(double)
         case 5:
-            _value = value*(_euroForRub/_usdForRub);
+            _value = value*(euroForRub/usdForRub);
         break;
     }
     checkRange(_value);
