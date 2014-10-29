@@ -5,7 +5,7 @@
 #include <limits>
 #include <string>
 
-TemperatureConverter::TemperatureConverter(double сelsius) : celsius_(celsius) {
+TemperatureConverter::TemperatureConverter(double celsius) : celsius_(celsius) {
 }
 
 TemperatureConverter::~TemperatureConverter() {
