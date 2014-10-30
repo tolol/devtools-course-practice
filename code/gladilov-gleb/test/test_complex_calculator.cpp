@@ -101,9 +101,34 @@ TEST_F(ComplexTest, Can_Division_Complex) {
     EXPECT_NEAR(1.9, tested.GetReal(), ComplexTest::epsilon);
     EXPECT_NEAR(0.1, tested.GetImaginary(), ComplexTest::epsilon);
 }
+
+TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Real) {
+    // Arrange
+    Complex test(0, 1);
+    Complex tested(15, 10);
+
+    // Act
+    tested.Division(test);
+
+    // Assert
+    EXPECT_EQ(10, tested.GetReal());
+    EXPECT_EQ(-15, tested.GetImaginary());
+}
+TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Imaginary) {
+    // Arrange
+    Complex test(1, 0);
+    Complex tested(15, 10);
+
+    // Act
+    tested.Division(test);
+
+    // Assert
+    EXPECT_EQ(15, tested.GetReal());
+    EXPECT_EQ(10, tested.GetImaginary());
+}
 TEST_F(ComplexTest, Do_Throw_When_Division_By_Zero) {
     // Arrange
-    Complex test;
+    Complex test(0, 0);
     Complex tested(26, 26);
 
     // Act & Assert
