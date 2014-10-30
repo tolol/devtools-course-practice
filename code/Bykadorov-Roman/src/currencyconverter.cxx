@@ -59,7 +59,7 @@ double CurrencyConverter::mainConverter(double value, int mode) {
             _value = value*euroForRub;
         break;
         // eurToUsd(double)
-		case 5:
+        case 5:
             _value = value*(euroForUsd);
         break;
     }
