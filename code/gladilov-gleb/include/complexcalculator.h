@@ -9,8 +9,8 @@ typedef double ImaginaryType;
 class Complex {
 // members
  private:
-    RealType real_ = 0;
-    ImaginaryType imaginary_ = 0;
+    RealType real_;
+    ImaginaryType imaginary_;
 
  public:
     // constructors
