@@ -6,6 +6,7 @@
 #include <string>
 #include <limits>
 
+bool CompareRealWithZero(const RealType real);
 bool CompareRealWithZero(const RealType real) {
     if (real < std::numeric_limits<RealType>::epsilon() &&
         real > -std::numeric_limits<RealType>::epsilon())
@@ -13,6 +14,7 @@ bool CompareRealWithZero(const RealType real) {
     else
         return false;
 }
+bool CompareImaginaryWithZero(const ImaginaryType imaginary);
 bool CompareImaginaryWithZero(const ImaginaryType imaginary) {
     if (imaginary < std::numeric_limits<ImaginaryType>::epsilon() &&
         imaginary > -std::numeric_limits<ImaginaryType>::epsilon())
