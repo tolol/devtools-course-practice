@@ -2,7 +2,24 @@
 
 #include "include/complexcalculator.h"
 
+#include <stdbool.h>
 #include <string>
+#include <limits>
+
+bool CompareRealWithZero(const RealType real) {
+    if (real < std::numeric_limits<RealType>::epsilon() &&
+        real > -std::numeric_limits<RealType>::epsilon())
+        return true;
+    else
+        return false;
+}
+bool CompareImaginaryWithZero(const ImaginaryType imaginary) {
+    if (imaginary < std::numeric_limits<ImaginaryType>::epsilon() &&
+        imaginary > -std::numeric_limits<ImaginaryType>::epsilon())
+        return true;
+    else
+        return false;
+}
 
 Complex::Complex() : real_(0), imaginary_(0) {}
 Complex::Complex(const RealType real,
@@ -45,7 +62,8 @@ void Complex::Multiplication(const Complex& complex) {
                        myReal * complex.GetImaginary();
 }
 void Complex::Division(const Complex& complex) {
-    if (complex.GetReal() == 0 && complex.GetImaginary() == 0) {
+    if (CompareRealWithZero(complex.GetReal()) &&
+        CompareImaginaryWithZero(complex.GetImaginary())) {
         throw std::string("Can't divide by zero");
     } else {
         RealType myReal = this->real_;
