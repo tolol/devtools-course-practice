@@ -1,7 +1,4 @@
 // Copyright 2014 Roy Viktor
-#include <math.h>
-#include <stdio.h>
-#include <cstring>
 #pragma pack(push, 1)
 class mat_stat {
  private:

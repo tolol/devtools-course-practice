@@ -2,7 +2,6 @@
 #include <../include/mat_stat.hpp>
 mat_stat::mat_stat() : statisticValues_(), probabilityValues_(),
                                            countStatisticValues_(0) {
-    countStatisticValues_ = 0;
     statisticValues_ = new double[countStatisticValues_];
     probabilityValues_ = new double[countStatisticValues_];
 }

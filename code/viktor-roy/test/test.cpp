@@ -3,9 +3,6 @@
 #include <gtest/gtest.h>
 #include <../include/mat_stat.hpp>
 
-TEST(MathTest, TwoPlusTwoEqualsFour) {
-    EXPECT_EQ(2 + 2, 4);
-}
 TEST(ExpextedValueTest, Can_Calculate_Expected_Value) {
     // arrange
     mat_stat mat;
