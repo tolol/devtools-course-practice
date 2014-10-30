@@ -4,16 +4,13 @@
 
 #include <string>
 
-Complex::Complex() {}
-Complex::Complex(const RealType real, const ImaginaryType imaginary) {
-    this->real_ = real;
-    this->imaginary_ = imaginary;
-}
+Complex::Complex() : real_(0), imaginary_(0) {}
+Complex::Complex(const RealType real,
+                 const ImaginaryType imaginary) : real_(real),
+                                                  imaginary_(imaginary) {}
 
-Complex::Complex(const Complex& complex) {
-    this->real_ = complex.GetReal();
-    this->imaginary_ = complex.GetImaginary();
-}
+Complex::Complex(const Complex& complex) : real_(complex.GetReal()),
+                                           imaginary_(complex.GetImaginary()) {}
 
 RealType Complex::GetReal() const {
     return this->real_;
