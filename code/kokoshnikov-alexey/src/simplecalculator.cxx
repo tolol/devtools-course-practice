@@ -159,7 +159,6 @@ int SimpleCalculator::HexToDec(std::string hex) {
             break;
         }
         default: return 0;
-            break;
         }
         dec = dec + tmp*static_cast<int>(pow(16, i));
         i++;
