@@ -11,14 +11,6 @@
 SimpleCalculator::SimpleCalculator() {}
 SimpleCalculator::~SimpleCalculator() {}
 
-void CheckRange(int64_t result);
-void CheckRange(int64_t result) {
-    if (result > INT_MAX)
-        throw std::string("The result is larger than INT_MAX");
-    else if (result < -INT_MAX)
-        throw std::string("The result is less than -INT_MAX");
-}
-
 int SimpleCalculator::BinToDec(int bin) {
     int k = 0;
     if (bin == abs(bin)) {

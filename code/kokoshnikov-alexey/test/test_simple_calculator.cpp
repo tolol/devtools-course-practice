@@ -13,7 +13,7 @@ class CalculatorTest : public ::testing::Test {
     // virtual void SetUp() {}
     // virtual void TearDown() {}
 
-    SimpleCalculator calc;
+    SimpleCalculator calc = SimpleCalculator();
 };
 
 TEST_F(CalculatorTest, BinToHex_0) {
