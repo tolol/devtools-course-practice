@@ -6,16 +6,16 @@
 #include <string>
 #include <limits>
 
-bool CompareRealWithZero(const RealType real);
-bool CompareRealWithZero(const RealType real) {
+bool compareRealWithZero(const RealType real);
+bool compareRealWithZero(const RealType real) {
     if (real < std::numeric_limits<RealType>::epsilon() &&
         real > -std::numeric_limits<RealType>::epsilon())
         return true;
     else
         return false;
 }
-bool CompareImaginaryWithZero(const ImaginaryType imaginary);
-bool CompareImaginaryWithZero(const ImaginaryType imaginary) {
+bool compareImaginaryWithZero(const ImaginaryType imaginary);
+bool compareImaginaryWithZero(const ImaginaryType imaginary) {
     if (imaginary < std::numeric_limits<ImaginaryType>::epsilon() &&
         imaginary > -std::numeric_limits<ImaginaryType>::epsilon())
         return true;
@@ -28,56 +28,56 @@ Complex::Complex(const RealType real,
                  const ImaginaryType imaginary) : real_(real),
                                                   imaginary_(imaginary) {}
 
-Complex::Complex(const Complex& complex) : real_(complex.GetReal()),
-                                           imaginary_(complex.GetImaginary()) {}
+Complex::Complex(const Complex& complex) : real_(complex.getReal()),
+                                           imaginary_(complex.getImaginary()) {}
 
-RealType Complex::GetReal() const {
+RealType Complex::getReal() const {
     return real_;
 }
-ImaginaryType Complex::GetImaginary() const {
+ImaginaryType Complex::getImaginary() const {
     return imaginary_;
 }
 
-void Complex::SetReal(const RealType real) {
+void Complex::setReal(const RealType real) {
     real_ = real;
 }
-void Complex::SetImaginary(const ImaginaryType imaginary) {
+void Complex::setImaginary(const ImaginaryType imaginary) {
     imaginary_ = imaginary;
 }
 
-void Complex::Add(const Complex& complex) {
-    real_ += complex.GetReal();
-    imaginary_ += complex.GetImaginary();
+void Complex::add(const Complex& complex) {
+    real_ += complex.getReal();
+    imaginary_ += complex.getImaginary();
 }
-void Complex::Difference(const Complex& complex) {
-    real_ -= complex.GetReal();
-    imaginary_ -= complex.GetImaginary();
+void Complex::difference(const Complex& complex) {
+    real_ -= complex.getReal();
+    imaginary_ -= complex.getImaginary();
 }
 
-void Complex::Multiplication(const Complex& complex) {
+void Complex::multiplication(const Complex& complex) {
     RealType myReal = real_;
     ImaginaryType myImaginary = imaginary_;
 
-    real_ = myReal * complex.GetReal() -
-                  myImaginary * complex.GetImaginary();
-    imaginary_ = myImaginary * complex.GetReal() +
-                       myReal * complex.GetImaginary();
+    real_ = myReal * complex.getReal() -
+                  myImaginary * complex.getImaginary();
+    imaginary_ = myImaginary * complex.getReal() +
+                       myReal * complex.getImaginary();
 }
-void Complex::Division(const Complex& complex) {
-    if (CompareRealWithZero(complex.GetReal()) &&
-        CompareImaginaryWithZero(complex.GetImaginary())) {
+void Complex::division(const Complex& complex) {
+    if (compareRealWithZero(complex.getReal()) &&
+        compareImaginaryWithZero(complex.getImaginary())) {
         throw std::string("Can't divide by zero");
     } else {
         RealType myReal = real_;
         ImaginaryType myImaginary = imaginary_;
 
-        double dnmntr = 1.0 / (complex.GetReal() * complex.GetReal() +
-                               complex.GetImaginary() * complex.GetImaginary());
+        double dnmntr = 1.0 / (complex.getReal() * complex.getReal() +
+                               complex.getImaginary() * complex.getImaginary());
 
-        real_ = dnmntr * myReal * complex.GetReal() +
-                      dnmntr * myImaginary * complex.GetImaginary();
+        real_ = dnmntr * myReal * complex.getReal() +
+                      dnmntr * myImaginary * complex.getImaginary();
 
-        imaginary_ = dnmntr * complex.GetReal() * myImaginary -
-                           dnmntr * complex.GetImaginary() * myReal;
+        imaginary_ = dnmntr * complex.getReal() * myImaginary -
+                           dnmntr * complex.getImaginary() * myReal;
     }
 }

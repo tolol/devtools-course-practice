@@ -19,20 +19,20 @@ class Complex {
     Complex(const Complex& complex);
 
     // getters for real and imaginary
-    RealType GetReal() const;
-    ImaginaryType GetImaginary() const;
+    RealType getReal() const;
+    ImaginaryType getImaginary() const;
 
     // setters for real and imaginary
-    void SetReal(const RealType real);
-    void SetImaginary(const ImaginaryType imaginary);
+    void setReal(const RealType real);
+    void setImaginary(const ImaginaryType imaginary);
 
     // sum and differenece
-    void Add(const Complex& complex);
-    void Difference(const Complex& complex);
+    void add(const Complex& complex);
+    void difference(const Complex& complex);
 
     // multiplication and division
-    void Multiplication(const Complex& complex);
-    void Division(const Complex& complex);
+    void multiplication(const Complex& complex);
+    void division(const Complex& complex);
 };
 
 #endif  // CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
