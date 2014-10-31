@@ -16,8 +16,8 @@ TEST_F(ComplexTest, Can_Create_With_Real_And_Imaginary) {
     Complex test(26, 20);
 
     // Assert
-    EXPECT_EQ(26, test.getReal());
-    EXPECT_EQ(20, test.getImaginary());
+    EXPECT_NEAR(26, test.getReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(20, test.getImaginary(), ComplexTest::epsilon);
 }
 TEST_F(ComplexTest, Can_Create_Via_Copying) {
     // Arrange
@@ -27,8 +27,8 @@ TEST_F(ComplexTest, Can_Create_Via_Copying) {
     Complex tested = test;
 
     // Assert
-    EXPECT_EQ(26, tested.getReal());
-    EXPECT_EQ(20, tested.getImaginary());
+    EXPECT_NEAR(26, tested.getReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(20, tested.getImaginary(), ComplexTest::epsilon);
 }
 TEST_F(ComplexTest, Can_Set_Real) {
     // Arrange
@@ -38,7 +38,7 @@ TEST_F(ComplexTest, Can_Set_Real) {
     test.setReal(26);
 
     // Assert
-    EXPECT_EQ(26, test.getReal());
+    EXPECT_NEAR(26, test.getReal(), ComplexTest::epsilon);
 }
 
 TEST_F(ComplexTest, Can_Set_Imaginary) {
@@ -49,7 +49,7 @@ TEST_F(ComplexTest, Can_Set_Imaginary) {
     test.setImaginary(26);
 
     // Assert
-    EXPECT_EQ(26, test.getImaginary());
+    EXPECT_NEAR(26, test.getImaginary(), ComplexTest::epsilon);
 }
 TEST_F(ComplexTest, Can_Add_Complex) {
     // Arrange
@@ -60,8 +60,8 @@ TEST_F(ComplexTest, Can_Add_Complex) {
     tested.add(test);
 
     // Assert
-    EXPECT_EQ(27, tested.getReal());
-    EXPECT_EQ(21, tested.getImaginary());
+    EXPECT_NEAR(27, tested.getReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(21, tested.getImaginary(), ComplexTest::epsilon);
 }
 
 TEST_F(ComplexTest, Can_Difference_Complex) {
@@ -73,8 +73,8 @@ TEST_F(ComplexTest, Can_Difference_Complex) {
     tested.difference(test);
 
     // Assert
-    EXPECT_EQ(-25, tested.getReal());
-    EXPECT_EQ(-13, tested.getImaginary());
+    EXPECT_NEAR(-25, tested.getReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(-13, tested.getImaginary(), ComplexTest::epsilon);
 }
 
 TEST_F(ComplexTest, Can_Multiplication_Complex) {
@@ -86,8 +86,8 @@ TEST_F(ComplexTest, Can_Multiplication_Complex) {
     tested.multiplication(test);
 
     // Assert
-    EXPECT_EQ(2, tested.getReal());
-    EXPECT_EQ(42, tested.getImaginary());
+    EXPECT_NEAR(2, tested.getReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(42, tested.getImaginary(), ComplexTest::epsilon);
 }
 TEST_F(ComplexTest, Can_Division_Complex) {
     // Arrange
