@@ -26,6 +26,12 @@ Complex::Complex(const ValueType real,
 Complex::Complex(const Complex& complex) : real_(complex.getReal()),
                                            imaginary_(complex.getImaginary()) {}
 
+Complex& Complex::operator=(const Complex& complex) {
+    real_ = complex.getReal();
+    imaginary_ = complex.getImaginary();
+
+    return *this;
+}
 ValueType Complex::getReal() const {
     return real_;
 }

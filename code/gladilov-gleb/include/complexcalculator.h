@@ -17,6 +17,8 @@ class Complex {
     Complex(const ValueType real, const ValueType imaginary);
     Complex(const Complex& complex);
 
+    Complex& operator=(const Complex& complex);
+
     // getters for real and imaginary
     ValueType getReal() const;
     ValueType getImaginary() const;
