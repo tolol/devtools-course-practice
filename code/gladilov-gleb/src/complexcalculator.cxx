@@ -40,38 +40,48 @@ void Complex::setImaginary(const ValueType imaginary) {
     imaginary_ = imaginary;
 }
 
-void Complex::add(const Complex& complex) {
-    real_ += complex.getReal();
-    imaginary_ += complex.getImaginary();
-}
-void Complex::difference(const Complex& complex) {
-    real_ -= complex.getReal();
-    imaginary_ -= complex.getImaginary();
-}
+Complex operator+(const Complex& a, const Complex& b) {
+    Complex sum;
 
-void Complex::multiplication(const Complex& complex) {
-    ValueType myReal = real_;
-    ValueType myImaginary = imaginary_;
+    sum.setReal(a.getReal() + b.getReal());
+    sum.setImaginary(a.getImaginary() + b.getImaginary());
 
-    real_ = myReal * complex.getReal() -
-                  myImaginary * complex.getImaginary();
-    imaginary_ = myImaginary * complex.getReal() +
-                       myReal * complex.getImaginary();
+    return sum;
 }
-void Complex::division(const Complex& complex) {
-    if (compareComplexWithZero(complex)) {
-        throw std::string("Can't divide by zero");
+Complex operator-(const Complex& a, const Complex& b) {
+    Complex difference;
+
+    difference.setReal(a.getReal() - b.getReal());
+    difference.setImaginary(a.getImaginary() - b.getImaginary());
+
+    return difference;
+}
+Complex operator*(const Complex& a, const Complex& b) {
+    Complex multiplication;
+
+    multiplication.setReal(a.getReal() * b.getReal() -
+                           a.getImaginary() * b.getImaginary());
+    multiplication.setImaginary(a.getReal() * b.getImaginary() +
+                                a.getImaginary() * b.getReal());
+
+    return multiplication;
+}
+Complex operator/(const Complex& a, const Complex& b) {
+    Complex division;
+
+    if (compareComplexWithZero(b)) {
+        throw std::string("Can't division by zero");
     } else {
-        ValueType myReal = real_;
-        ValueType myImaginary = imaginary_;
+        ValueType dnmtr = static_cast<ValueType>(1) /
+                          (b.getReal() * b.getReal() +
+                           b.getImaginary() * b.getImaginary());
 
-        double dnmntr = 1.0 / (complex.getReal() * complex.getReal() +
-                               complex.getImaginary() * complex.getImaginary());
-
-        real_ = dnmntr * myReal * complex.getReal() +
-                      dnmntr * myImaginary * complex.getImaginary();
-
-        imaginary_ = dnmntr * complex.getReal() * myImaginary -
-                           dnmntr * complex.getImaginary() * myReal;
+        division.setReal(dnmtr * a.getReal() * b.getReal() +
+                         dnmtr * a.getImaginary() * b.getImaginary());
+        division.setImaginary(dnmtr * b.getReal() * a.getImaginary() -
+                              dnmtr * b.getImaginary() * a.getReal());
     }
+
+    return division;
 }
+

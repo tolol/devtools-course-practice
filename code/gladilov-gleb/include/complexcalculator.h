@@ -3,7 +3,7 @@
 #ifndef CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
 #define CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
 
-typedef double ValueType;
+typedef float ValueType;
 
 class Complex {
 // members
@@ -24,15 +24,13 @@ class Complex {
     // setters for real and imaginary
     void setReal(const ValueType real);
     void setImaginary(const ValueType imaginary);
-
-    // sum and differenece
-    void add(const Complex& complex);
-    void difference(const Complex& complex);
-
-    // multiplication and division
-    void multiplication(const Complex& complex);
-    void division(const Complex& complex);
 };
+
+Complex operator+(const Complex& a, const Complex& b);
+Complex operator-(const Complex& a, const Complex& b);
+
+Complex operator*(const Complex& a, const Complex& b);
+Complex operator/(const Complex& a, const Complex& b);
 
 #endif  // CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
 
