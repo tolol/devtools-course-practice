@@ -5,9 +5,6 @@
 
 class SimpleCalculator {
  public:
-    SimpleCalculator();
-    ~SimpleCalculator();
-
     std::string BinToHex(int bin);
     int BinToOct(int bin);
     int HexToBin(std::string hex);

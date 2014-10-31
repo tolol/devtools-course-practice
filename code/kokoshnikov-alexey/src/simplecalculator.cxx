@@ -8,9 +8,6 @@
 #include <math.h>
 #include <string>
 #include <cstdlib>
-SimpleCalculator::SimpleCalculator() {}
-SimpleCalculator::~SimpleCalculator() {}
-
 int SimpleCalculator::BinToDec(int bin) {
     int k = 0;
     if (bin == abs(bin)) {
