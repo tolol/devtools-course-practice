@@ -16,6 +16,10 @@ class CalculatorTest : public ::testing::Test {
     SimpleCalculator calc;
 };
 
+TEST_F(CalculatorTest, BinToHex_negativ) {
+    EXPECT_EQ("", calc.BinToHex(12000));
+}
+
 TEST_F(CalculatorTest, BinToHex_0) {
     EXPECT_EQ("10", calc.BinToHex(10000));
 }
