@@ -3,7 +3,7 @@
 #ifndef CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
 #define CODE_GLADILOV_GLEB_INCLUDE_COMPLEXCALCULATOR_H_
 
-typedef float ValueType;
+typedef double ValueType;
 
 class Complex {
 // members
