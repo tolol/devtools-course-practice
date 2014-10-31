@@ -6,18 +6,15 @@
 #include <string>
 #include <limits>
 
-bool compareRealWithZero(const RealType real);
-bool compareRealWithZero(const RealType real) {
-    if (real < std::numeric_limits<RealType>::epsilon() &&
-        real > -std::numeric_limits<RealType>::epsilon())
-        return true;
-    else
-        return false;
-}
-bool compareImaginaryWithZero(const ImaginaryType imaginary);
-bool compareImaginaryWithZero(const ImaginaryType imaginary) {
-    if (imaginary < std::numeric_limits<ImaginaryType>::epsilon() &&
-        imaginary > -std::numeric_limits<ImaginaryType>::epsilon())
+bool compareComplexWithZero(const Complex& complex);
+bool compareComplexWithZero(const Complex& complex) {
+    if (complex.getReal() < std::numeric_limits<RealType>::epsilon() &&
+        complex.getReal() > -std::numeric_limits<RealType>::epsilon() &&
+
+        complex.getImaginary() <
+        std::numeric_limits<ImaginaryType>::epsilon() &&
+        complex.getImaginary() >
+        -std::numeric_limits<ImaginaryType>::epsilon())
         return true;
     else
         return false;
@@ -64,8 +61,7 @@ void Complex::multiplication(const Complex& complex) {
                        myReal * complex.getImaginary();
 }
 void Complex::division(const Complex& complex) {
-    if (compareRealWithZero(complex.getReal()) &&
-        compareImaginaryWithZero(complex.getImaginary())) {
+    if (compareComplexWithZero(complex)) {
         throw std::string("Can't divide by zero");
     } else {
         RealType myReal = real_;
