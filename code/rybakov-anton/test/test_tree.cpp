@@ -67,6 +67,7 @@ TEST_F(TreeTest, Destruct) {
     s.down();
     s.along();
     s.along();
+    EXPECT_EQ(true, s.destruct());
     s.reset();
     s.down();
     EXPECT_EQ(true, s.destruct());
