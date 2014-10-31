@@ -8,37 +8,35 @@
 
 bool compareComplexWithZero(const Complex& complex);
 bool compareComplexWithZero(const Complex& complex) {
-    if (complex.getReal() < std::numeric_limits<RealType>::epsilon() &&
-        complex.getReal() > -std::numeric_limits<RealType>::epsilon() &&
+    if (complex.getReal() < std::numeric_limits<ValueType>::epsilon() &&
+        complex.getReal() > -std::numeric_limits<ValueType>::epsilon() &&
 
-        complex.getImaginary() <
-        std::numeric_limits<ImaginaryType>::epsilon() &&
-        complex.getImaginary() >
-        -std::numeric_limits<ImaginaryType>::epsilon())
+        complex.getImaginary() < std::numeric_limits<ValueType>::epsilon() &&
+        complex.getImaginary() > -std::numeric_limits<ValueType>::epsilon())
         return true;
     else
         return false;
 }
 
 Complex::Complex() : real_(0), imaginary_(0) {}
-Complex::Complex(const RealType real,
-                 const ImaginaryType imaginary) : real_(real),
+Complex::Complex(const ValueType real,
+                 const ValueType imaginary) : real_(real),
                                                   imaginary_(imaginary) {}
 
 Complex::Complex(const Complex& complex) : real_(complex.getReal()),
                                            imaginary_(complex.getImaginary()) {}
 
-RealType Complex::getReal() const {
+ValueType Complex::getReal() const {
     return real_;
 }
-ImaginaryType Complex::getImaginary() const {
+ValueType Complex::getImaginary() const {
     return imaginary_;
 }
 
-void Complex::setReal(const RealType real) {
+void Complex::setReal(const ValueType real) {
     real_ = real;
 }
-void Complex::setImaginary(const ImaginaryType imaginary) {
+void Complex::setImaginary(const ValueType imaginary) {
     imaginary_ = imaginary;
 }
 
@@ -52,8 +50,8 @@ void Complex::difference(const Complex& complex) {
 }
 
 void Complex::multiplication(const Complex& complex) {
-    RealType myReal = real_;
-    ImaginaryType myImaginary = imaginary_;
+    ValueType myReal = real_;
+    ValueType myImaginary = imaginary_;
 
     real_ = myReal * complex.getReal() -
                   myImaginary * complex.getImaginary();
@@ -64,8 +62,8 @@ void Complex::division(const Complex& complex) {
     if (compareComplexWithZero(complex)) {
         throw std::string("Can't divide by zero");
     } else {
-        RealType myReal = real_;
-        ImaginaryType myImaginary = imaginary_;
+        ValueType myReal = real_;
+        ValueType myImaginary = imaginary_;
 
         double dnmntr = 1.0 / (complex.getReal() * complex.getReal() +
                                complex.getImaginary() * complex.getImaginary());
