@@ -21,11 +21,6 @@ TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_unit_Is_Wrong_1) {
     EXPECT_THROW(tc2.Convert(0) , std::string);
 }
 
-TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_unit_Is_Wrong_2) {
-    TemperatureConverter tc2(100.0);
-    EXPECT_NEAR(tc2.Convert(0) , 0.0 , 1e-5);
-}
-
 TEST_F(TConvTest, Check_the_value_of_Kelvin) {
     TemperatureConverter tc3(200.0);
     EXPECT_NEAR(tc3.Convert(1) , 473.14999999999998 , 1e-5);
