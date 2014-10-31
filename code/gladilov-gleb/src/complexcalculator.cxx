@@ -32,35 +32,35 @@ Complex::Complex(const Complex& complex) : real_(complex.GetReal()),
                                            imaginary_(complex.GetImaginary()) {}
 
 RealType Complex::GetReal() const {
-    return this->real_;
+    return real_;
 }
 ImaginaryType Complex::GetImaginary() const {
-    return this->imaginary_;
+    return imaginary_;
 }
 
 void Complex::SetReal(const RealType real) {
-    this->real_ = real;
+    real_ = real;
 }
 void Complex::SetImaginary(const ImaginaryType imaginary) {
-    this->imaginary_ = imaginary;
+    imaginary_ = imaginary;
 }
 
 void Complex::Add(const Complex& complex) {
-    this->real_ += complex.GetReal();
-    this->imaginary_ += complex.GetReal();
+    real_ += complex.GetReal();
+    imaginary_ += complex.GetImaginary();
 }
 void Complex::Difference(const Complex& complex) {
-    this->real_ -= complex.GetReal();
-    this->imaginary_ -= complex.GetImaginary();
+    real_ -= complex.GetReal();
+    imaginary_ -= complex.GetImaginary();
 }
 
 void Complex::Multiplication(const Complex& complex) {
-    RealType myReal = this->real_;
-    ImaginaryType myImaginary = this->imaginary_;
+    RealType myReal = real_;
+    ImaginaryType myImaginary = imaginary_;
 
-    this->real_ = myReal * complex.GetReal() -
+    real_ = myReal * complex.GetReal() -
                   myImaginary * complex.GetImaginary();
-    this->imaginary_ = myImaginary * complex.GetReal() +
+    imaginary_ = myImaginary * complex.GetReal() +
                        myReal * complex.GetImaginary();
 }
 void Complex::Division(const Complex& complex) {
@@ -68,16 +68,16 @@ void Complex::Division(const Complex& complex) {
         CompareImaginaryWithZero(complex.GetImaginary())) {
         throw std::string("Can't divide by zero");
     } else {
-        RealType myReal = this->real_;
-        ImaginaryType myImaginary = this->imaginary_;
+        RealType myReal = real_;
+        ImaginaryType myImaginary = imaginary_;
 
         double dnmntr = 1.0 / (complex.GetReal() * complex.GetReal() +
                                complex.GetImaginary() * complex.GetImaginary());
 
-        this->real_ = dnmntr * myReal * complex.GetReal() +
+        real_ = dnmntr * myReal * complex.GetReal() +
                       dnmntr * myImaginary * complex.GetImaginary();
 
-        this->imaginary_ = dnmntr * complex.GetReal() * myImaginary -
+        imaginary_ = dnmntr * complex.GetReal() * myImaginary -
                            dnmntr * complex.GetImaginary() * myReal;
     }
 }
