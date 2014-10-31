@@ -18,7 +18,7 @@ TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_Celsius_Is_Wrong_1) {
 
 TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_Celsius_Is_Wrong_1) {
     TemperatureConverter tc2(100.0);
-    EXPECT_THROW(tc.Convert(0) , std::string);
+    EXPECT_THROW(tc2.Convert(0) , std::string);
 }
 
 TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_unit_Is_Wrong_1) {
