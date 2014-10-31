@@ -13,22 +13,22 @@ class ComplexTest : public ::testing::Test {
 
 TEST_F(ComplexTest, Can_Create_With_Real_And_Imaginary) {
     // Arrange & Act
-    Complex test(26, 26);
+    Complex test(26, 20);
 
     // Assert
     EXPECT_EQ(26, test.GetReal());
-    EXPECT_EQ(26, test.GetImaginary());
+    EXPECT_EQ(20, test.GetImaginary());
 }
 TEST_F(ComplexTest, Can_Create_Via_Copying) {
     // Arrange
-    Complex test(26, 26);
+    Complex test(26, 20);
 
     // Act
     Complex tested = test;
 
     // Assert
     EXPECT_EQ(26, tested.GetReal());
-    EXPECT_EQ(26, tested.GetImaginary());
+    EXPECT_EQ(20, tested.GetImaginary());
 }
 TEST_F(ComplexTest, Can_Set_Real) {
     // Arrange
@@ -53,20 +53,20 @@ TEST_F(ComplexTest, Can_Set_Imaginary) {
 }
 TEST_F(ComplexTest, Can_Add_Complex) {
     // Arrange
-    Complex test(26, 26);
-    Complex tested(1, 1);
+    Complex test(26, 14);
+    Complex tested(1, 7);
 
     // Act
     tested.Add(test);
 
     // Assert
     EXPECT_EQ(27, tested.GetReal());
-    EXPECT_EQ(27, tested.GetImaginary());
+    EXPECT_EQ(21, tested.GetImaginary());
 }
 
 TEST_F(ComplexTest, Can_Difference_Complex) {
     // Arrange
-    Complex test(26, 26);
+    Complex test(26, 14);
     Complex tested(1, 1);
 
     // Act
@@ -74,7 +74,7 @@ TEST_F(ComplexTest, Can_Difference_Complex) {
 
     // Assert
     EXPECT_EQ(-25, tested.GetReal());
-    EXPECT_EQ(-25, tested.GetImaginary());
+    EXPECT_EQ(-13, tested.GetImaginary());
 }
 
 TEST_F(ComplexTest, Can_Multiplication_Complex) {
@@ -91,15 +91,15 @@ TEST_F(ComplexTest, Can_Multiplication_Complex) {
 }
 TEST_F(ComplexTest, Can_Division_Complex) {
     // Arrange
-    Complex test(15, 15);
+    Complex test(15, 20);
     Complex tested(27, 30);
 
     // Act
     tested.Division(test);
 
     // Assert
-    EXPECT_NEAR(1.9, tested.GetReal(), ComplexTest::epsilon);
-    EXPECT_NEAR(0.1, tested.GetImaginary(), ComplexTest::epsilon);
+    EXPECT_NEAR(1.608, tested.GetReal(), ComplexTest::epsilon);
+    EXPECT_NEAR(-0.144, tested.GetImaginary(), ComplexTest::epsilon);
 }
 
 TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Real) {
@@ -129,7 +129,7 @@ TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Imaginary) {
 TEST_F(ComplexTest, Do_Throw_When_Division_By_Zero) {
     // Arrange
     Complex test(0, 0);
-    Complex tested(26, 26);
+    Complex tested(26, 14);
 
     // Act & Assert
     EXPECT_THROW(tested.Division(test), std::string);
