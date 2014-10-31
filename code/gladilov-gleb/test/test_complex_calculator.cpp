@@ -102,30 +102,6 @@ TEST_F(ComplexTest, Can_Division_Complex) {
     EXPECT_NEAR(-0.144, tested.getImaginary(), ComplexTest::epsilon);
 }
 
-TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Real) {
-    // Arrange
-    Complex test(0, 1);
-    Complex tested(15, 10);
-
-    // Act
-    tested.division(test);
-
-    // Assert
-    EXPECT_EQ(10, tested.getReal());
-    EXPECT_EQ(-15, tested.getImaginary());
-}
-TEST_F(ComplexTest, Can_Division_By_Complex_With_Zero_Imaginary) {
-    // Arrange
-    Complex test(1, 0);
-    Complex tested(15, 10);
-
-    // Act
-    tested.division(test);
-
-    // Assert
-    EXPECT_EQ(15, tested.getReal());
-    EXPECT_EQ(10, tested.getImaginary());
-}
 TEST_F(ComplexTest, Do_Throw_When_Division_By_Zero) {
     // Arrange
     Complex test(0, 0);
