@@ -9,6 +9,7 @@ extern const int TYPE_FOOT;
 extern const int TYPE_INCH;
 class Length {
  public:
+int useless_;
 Length();
 ~Length();
 static Length* create(int type, double length);
@@ -20,7 +21,6 @@ void setLength(double length);
  private:
 double length_;
 int type_;
-int useless_ = 0;
 Length(int type, double length);
 void convert(int type, double* length);
 static double checkLength(double length);
