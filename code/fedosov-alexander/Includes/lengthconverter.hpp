@@ -20,6 +20,7 @@ void setLength(double length);
  private:
 double length_;
 int type_;
+int useless_ = 0;
 Length(int type, double length);
 void convert(int type, double* length);
 static double checkLength(double length);
