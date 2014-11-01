@@ -6,14 +6,13 @@
 #include <cstdlib>
 #include <set>
 #include "Includes/lengthconverter.hpp"
-const int TYPE_METER = 1;
-const int TYPE_INCH = 2000;
-const int TYPE_FOOT = 200;
-const int TYPE_YARD = 20;
-const int TYPE_MILE = 2;
-Length::Length():length_(0.0), type_(TYPE_METER), useless_(0) {}
-Length::Length(int type, double length):length_(length),
-type_(TYPE_METER), useless_(0) {
+const int64_t TYPE_METER = 1;
+const int64_t TYPE_INCH = 2000;
+const int64_t TYPE_FOOT = 200;
+const int64_t TYPE_YARD = 20;
+const int64_t TYPE_MILE = 2;
+Length::Length():type_(TYPE_METER), length_(0.0) {}
+Length::Length(int64_t type, double length):type_(TYPE_METER), length_(length) {
     length_ = checkLength(length);
     switch (type) {
         case TYPE_METER: {type_ = type; break;}
@@ -24,7 +23,7 @@ type_(TYPE_METER), useless_(0) {
     }
 }
 Length::~Length() {}
-Length* Length::create(int type, double length) {
+Length* Length::create(int64_t type, double length) {
     length = checkLength(length);
 switch (type) {
         case TYPE_METER: {return new Length(type, length);}
@@ -35,12 +34,12 @@ switch (type) {
         default: return NULL;
     }
 }
-int Length::getType() {return type_;}
+int64_t Length::getType() {return type_;}
 double Length::getLength() {return length_;}
 void Length::setLength(double length) {
     length_ = Length::checkLength(length);
 }
-void Length::setType(int type) {
+void Length::setType(int64_t type) {
     double length;
     length = this->getLength();
     double *lngth = &length;
@@ -68,7 +67,7 @@ if (length < 0.0000001) {
     }
 return length;
 }
-Length* Length::convert(int type) {
+Length* Length::convert(int64_t type) {
     double length;
     length = this->getLength();
     double *lngth = &length;
@@ -87,8 +86,8 @@ Length* Length::convert(int type) {
         default: {return NULL;}
     }
 }
-void Length::convert(int type, double* length) {
-    int myType;
+void Length::convert(int64_t type, double* length) {
+    int64_t myType;
     double lngth = *length;
     myType = this->getType();
     if (type == TYPE_METER) {
