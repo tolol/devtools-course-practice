@@ -1,6 +1,5 @@
 // Copyright 2014 Fedosov Alexander
 
-#include <set>
 #ifndef CODE_FEDOSOV_ALEXANDER_INCLUDES_LENGTHCONVERTER_HPP_
 #define CODE_FEDOSOV_ALEXANDER_INCLUDES_LENGTHCONVERTER_HPP_
 extern const int TYPE_METER;
