@@ -63,7 +63,7 @@ if (length < 0.0000001) {
     } else {
         if (DBL_MAX - length < 0.0000001) {
         length = DBL_MAX;
-        } else {length = length;}
+        } else {return length;}
     }
 return length;
 }
