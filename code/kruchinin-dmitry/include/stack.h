@@ -33,8 +33,11 @@ class Stack {
             throw std::string("Stack is empty");
         } else {
             Type Element = tail->element;
-            tail = tail->next;
+            Node<Type>* tmp = tail->next;
+            delete tail;
             size--;
+
+            tail = tmp;
             return Element;
         }
     }

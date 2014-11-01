@@ -43,6 +43,16 @@ TEST_F(StackTest, Exception_When_Stack_Is_Empty_int) {
     EXPECT_THROW(stack_int.top(), std::string);
 }
 
+TEST_F(StackTest, Elems_Realy_Removes_From_Stack_int) {
+    stack_int.push(15);
+    stack_int.push(28);
+    stack_int.pop();
+    stack_int.pop();
+
+    EXPECT_THROW(stack_int.pop(), std::string);
+    EXPECT_THROW(stack_int.top(), std::string);
+}
+
 TEST_F(StackTest, Node_Params_int) {
     Node<int> node(5, NULL);
     EXPECT_EQ(5, node.element);
@@ -78,8 +88,32 @@ TEST_F(StackTest, Exception_When_Stack_Is_Empty_float) {
     EXPECT_THROW(stack_float.top(), std::string);
 }
 
+TEST_F(StackTest, Elems_Realy_Removes_From_Stack_float) {
+    stack_float.push(7.0f);
+    stack_float.push(12.0f);
+    stack_float.pop();
+    stack_float.pop();
+
+    EXPECT_THROW(stack_float.pop(), std::string);
+    EXPECT_THROW(stack_float.top(), std::string);
+}
+
 TEST_F(StackTest, Node_Params_float) {
     Node<float> node(5.0f, NULL);
     EXPECT_EQ(5.0f, node.element);
     EXPECT_EQ(NULL, node.next);
+}
+
+struct qq_t {
+    char array[1000000];
+};
+
+TEST(StressTest, PushAndPop) {
+    qq_t hello;
+    Stack<qq_t> stack;
+    for (int i = 0; i < 10000; i++) {
+        stack.push(hello);
+        stack.pop();
+    }
+    EXPECT_TRUE(stack.isEmpty());
 }
