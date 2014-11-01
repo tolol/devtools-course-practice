@@ -19,10 +19,10 @@ int getType();
 double getLength();
 void setLength(double length);
  private:
-    int type_;
-    double length_;
-    Length(int type, double length);
-    void convert(int type, double* length);
-    static double checkLength(double length);
+Length(int type, double length);
+void convert(int type, double* length);
+static double checkLength(double length);
+int type_;
+double length_;
 };
 #endif
