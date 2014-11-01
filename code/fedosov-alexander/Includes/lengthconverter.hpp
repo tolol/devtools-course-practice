@@ -21,7 +21,7 @@ void setLength(double length);
 Length(int type, double length);
 void convert(int type, double* length);
 static double checkLength(double length);
-int type_;
 double length_;
+int type_;
 };
 #endif
