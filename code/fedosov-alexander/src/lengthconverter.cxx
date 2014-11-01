@@ -22,7 +22,6 @@ Length::Length(int64_t type, double length):type_(TYPE_METER), length_(length) {
         case TYPE_INCH: {type_ = type; break;}
     }
 }
-Length::~Length() {}
 Length* Length::create(int64_t type, double length) {
     length = checkLength(length);
 switch (type) {

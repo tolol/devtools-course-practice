@@ -10,7 +10,6 @@ extern const int64_t TYPE_INCH;
 class Length {
  public:
 Length();
-~Length();
 static Length* create(int64_t type, double length);
 Length* convert(int64_t type);
 void setType(int64_t type);
