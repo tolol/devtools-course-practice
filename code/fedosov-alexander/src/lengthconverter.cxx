@@ -11,9 +11,9 @@ const int TYPE_INCH = 2000;
 const int TYPE_FOOT = 200;
 const int TYPE_YARD = 20;
 const int TYPE_MILE = 2;
-Length::Length():useless_(0), length_(0.0), type_(TYPE_METER) {}
-Length::Length(int type, double length):useless_(0), length_(length),
-type_(TYPE_METER) {
+Length::Length():length_(0.0), type_(TYPE_METER), useless_(0) {}
+Length::Length(int type, double length):length_(length),
+type_(TYPE_METER), useless_(0) {
     length_ = checkLength(length);
     switch (type) {
         case TYPE_METER: {type_ = type; break;}
