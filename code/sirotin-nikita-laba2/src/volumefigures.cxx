@@ -10,38 +10,53 @@
 Volume::Volume() {}
 Volume::~Volume() {}
 
+void CheckValue(double value);
 void CheckRange(double result);
+
+void CheckValue(double value) {
+  if (value < 0.)
+    throw std::string("The variable can not be less than zero");
+}
+
 void CheckRange(double result) {
-    if (result > DBL_MAX)
+    if (DBL_MAX - result < 1e-10)
         throw std::string("The result is larger than DBL_MAX");
-    else if (result < -DBL_MAX)
-        throw std::string("The result is less than -DBL_MAX");
-    if (result == 0.)
+    if (result < 1e-10)
       throw std::string("There are zero variables");
 }
 
-double Volume::Cube(double side) {
+double Volume::cube(const double side) {
+  CheckValue(side);
+
   double vol = pow(side, 3);
   CheckRange(vol);
 
   return vol;
 }
 
-double Volume::Sphere(double radius) {
-  double vol = 4 * M_PI * pow(radius, 3) / 3;
+double Volume::sphere(const double radius) {
+  CheckValue(radius);
+
+  double vol = 4. * M_PI * pow(radius, 3) / 3.;
   CheckRange(vol);
 
   return vol;
 }
 
-double Volume::Pyramid(double height, double area) {
-  double vol = area * height / 3;
+double Volume::pyramid(const double height, const double area) {
+  CheckValue(height);
+  CheckValue(area);
+
+  double vol = area * height / 3.;
   CheckRange(vol);
 
   return vol;
 }
 
-double Volume::Cylinder(double height, double radius) {
+double Volume::cylinder(const double height, const double radius) {
+  CheckValue(height);
+  CheckValue(radius);
+
   double area = radius * radius * M_PI;
   CheckRange(area);
   double vol = area * height;
