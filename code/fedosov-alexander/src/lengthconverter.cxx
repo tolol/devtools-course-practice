@@ -12,15 +12,9 @@ const int64_t TYPE_FOOT = 200;
 const int64_t TYPE_YARD = 20;
 const int64_t TYPE_MILE = 2;
 Length::Length():type_(TYPE_METER), length_(0.0) {}
-Length::Length(int64_t type, double length):type_(TYPE_METER), length_(length) {
+Length::Length(int64_t type, double length):type_(type), length_(length) {
+    type_ = type;
     length_ = checkLength(length);
-    switch (type) {
-        case TYPE_METER: {type_ = type; break;}
-        case TYPE_MILE: {type_ = type; break;}
-        case TYPE_YARD: {type_ = type; break;}
-        case TYPE_FOOT: {type_ = type; break;}
-        case TYPE_INCH: {type_ = type; break;}
-    }
 }
 Length* Length::create(int64_t type, double length) {
     length = checkLength(length);
