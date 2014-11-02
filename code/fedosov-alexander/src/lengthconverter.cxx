@@ -7,7 +7,10 @@
 #include <string>
 #include <set>
 #include "include/lengthconverter.hpp"
+
 LengthConverter::LengthConverter() {}
+LengthConverter::~LengthConverter() {}
+
 double LengthConverter::checkLength(double length) {
 if (length < 0.0000001) {
         length = 0.0;

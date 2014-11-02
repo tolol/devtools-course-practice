@@ -5,6 +5,7 @@
 class LengthConverter {
  public:
     LengthConverter();
+    ~LengthConverter();
     double convertInchesToMeters(double length);
     double convertFootsToMeters(double length);
     double convertYardsToMeters(double length);
