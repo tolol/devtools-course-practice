@@ -53,3 +53,17 @@ TEST(LeftistHeapTest, Heap_Is_Empty_After_Inserting_And_Deleting_Min) {
 
     EXPECT_TRUE(lHeap.isEmpty());
 }
+
+TEST(StressTest, A_Lot_Of_Insertions_And_Deletions_Dont_Change_Heap_Size) {
+    LeftistHeap lHeap;
+
+    for (int i = 0; i < 1024; ++i) {
+        for (int j = 0; j < 1024; ++j) {
+            lHeap.insert(j);
+        }
+        for (int j = 0; j < 1024; ++j) {
+            lHeap.deleteMin();
+        }
+    }
+    EXPECT_TRUE(lHeap.isEmpty());
+}
