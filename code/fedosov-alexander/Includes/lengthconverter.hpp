@@ -4,8 +4,8 @@
 #define CODE_FEDOSOV_ALEXANDER_INCLUDES_LENGTHCONVERTER_HPP_
 class Length {
  public:
-enum class Type : int64_t {TYPE_WRONG = -1, TYPE_METER = 1,
-    TYPE_INCH = 2, TYPE_FOOT = 3, TYPE_YARD = 4, TYPE_MILE = 5};
+enum class Type {TYPE_WRONG, TYPE_METER,
+    TYPE_INCH, TYPE_FOOT, TYPE_YARD, TYPE_MILE};
 Length();
 Length(Type type, double length);
 Length* convert(Type type);
