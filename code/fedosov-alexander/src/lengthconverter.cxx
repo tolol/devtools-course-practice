@@ -6,132 +6,76 @@
 #include <cstdlib>
 #include <string>
 #include <set>
-#include "Includes/lengthconverter.hpp"
-Length::Length():type_(Length::TYPE_METER), length_(0.0) {}
-Length::Length(int64_t type, double length):type_(type), length_(length) {
-    length_ = checkLength(length);
-    if (checkType(type) == Length::TYPE_WRONG) {
-        throw std::string("Unknown type");} else {
-    type_ = type;
-}
-}
-int64_t Length::getType() {return type_;}
-double Length::getLength() {return length_;}
-void Length::setLength(double length) {
-    length_ = Length::checkLength(length);
-}
-void Length::setType(int64_t type) {
-    Length* tmp;
-    type = checkType(type);
-    tmp = this->convert(type);
-    if (tmp != NULL) {
-        type_ = type;
-        this->setLength(tmp->getLength());
-    } else { return;}
-}
-double Length::checkLength(double length) {
+#include "include/lengthconverter.hpp"
+LengthConverter::LengthConverter() {}
+LengthConverter::~LengthConverter() {}
+double LengthConverter::checkLength(double length) {
 if (length < 0.0000001) {
         length = 0.0;
     }
 return length;
 }
-Length* Length::convert(int64_t type) {
-    double length;
-    length = this->getLength();
-    double *lngth = &length;
-    Length* converted;
-    type = checkType(type);
-    switch (type) {
-        case Length::TYPE_METER: {this->convertToMeters(lngth); length = *lngth;
-            converted = new Length(type, length); return converted;}
-        case Length::TYPE_MILE: {this->convertToMiles(lngth); length = *lngth;
-            converted = new Length(type, length); return converted;}
-        case Length::TYPE_YARD: {this->convertToYards(lngth); length = *lngth;
-            converted = new Length(type, length); return converted;}
-        case Length::TYPE_FOOT: {this->convertToFoots(lngth); length = *lngth;
-            converted = new Length(type, length); return converted;}
-        case Length::TYPE_INCH: {this->convertToInches(lngth); length = *lngth;
-            converted = new Length(type, length); return converted;}
-        default: {return NULL;}
-    }
+
+double LengthConverter::convertInchesToMeters(double length) {
+    length*=0.0254; return(checkLength(length));
 }
-void Length::convertToMeters(double* length) {
-int64_t myType;
-double lngth = *length;
-myType = this->getType();
-    if (myType == Length::TYPE_METER) {lngth = checkLength(lngth);
-            *length = lngth; return;}
-    if (myType == Length::TYPE_MILE) {lngth*=1609.344;
-            lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Length::TYPE_YARD) {lngth*=0.9144;
-            lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Length::TYPE_FOOT) {lngth*=0.3048;
-            lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Length::Length::TYPE_INCH) {lngth*=0.0254;
-            lngth = checkLength(lngth); *length = lngth; return;}
+double LengthConverter::convertFootsToMeters(double length) {
+    length*=0.3048; return(checkLength(length));
 }
-void Length::convertToInches(double* length) {
-int64_t myType;
-double lngth = *length;
-myType = this->getType();
-if (myType == Length::TYPE_METER) {lngth*=39.3701;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_MILE) {lngth*=63360.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_YARD) {lngth*=36.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_FOOT) {lngth*=12.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_INCH) {lngth = checkLength(lngth);
-            *length = lngth; return;}
+double LengthConverter::convertYardsToMeters(double length) {
+    length*=0.9144; return(checkLength(length));
 }
-void Length::convertToFoots(double* length) {
-int64_t myType;
-double lngth = *length;
-myType = this->getType();
-if (myType == Length::TYPE_METER) {lngth*=3.2808;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_MILE) {lngth*=5280.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_YARD) {lngth*=3.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_FOOT) {lngth = checkLength(lngth);
-            *length = lngth; return;}
-if (myType == Length::TYPE_INCH) {lngth*=0.0833;
-            lngth = checkLength(lngth); *length = lngth; return;}
+double LengthConverter::convertMilesToMeters(double length) {
+    length*=1609.344; return(checkLength(length));
 }
-void Length::convertToYards(double* length) {
-int64_t myType;
-double lngth = *length;
-myType = this->getType();
-if (myType == Length::TYPE_METER) {lngth*=1.0936;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_MILE) {lngth*=1760.0;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_YARD) {lngth = checkLength(lngth);
-            *length = lngth; return;}
-if (myType == Length::TYPE_FOOT) {lngth*=0.3333333;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_INCH) {lngth*=0.0278;
-            lngth = checkLength(lngth); *length = lngth; return;}
+
+double LengthConverter::convertMetersToInches(double length) {
+    length*=39.3701; return(checkLength(length));
 }
-void Length::convertToMiles(double* length) {
-int64_t myType;
-double lngth = *length;
-myType = this->getType();
-if (myType == Length::TYPE_METER) {lngth*=0.0006214;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_MILE) {lngth = checkLength(lngth);
-            *length = lngth; return;}
-if (myType == Length::TYPE_YARD) {lngth*=0.0005682;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_FOOT) {lngth*=0.0001894;
-            lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Length::TYPE_INCH) {lngth*=0.000016;
-            lngth = checkLength(lngth); *length = lngth; return;}
+double LengthConverter::convertFootsToInches(double length) {
+    length*=12.0; return(checkLength(length));
 }
-int64_t Length::checkType(int64_t type) {
-    if ((type <= Length::TYPE_MILE)&&(type > Length::TYPE_WRONG)) {
-        return type;
-    } else {return Length::TYPE_WRONG;}
+double LengthConverter::convertYardsToInches(double length) {
+    length*=36.0; return(checkLength(length));
+}
+double LengthConverter::convertMilesToInches(double length) {
+    length*=63360.0; return(checkLength(length));
+}
+double LengthConverter::convertMetersToFoots(double length) {
+    length*=3.2808; return(checkLength(length));
+}
+double LengthConverter::convertInchesToFoots(double length) {
+    length*=0.0833; return(checkLength(length));
+}
+double LengthConverter::convertYardsToFoots(double length) {
+    length*=3.0; return(checkLength(length));
+}
+double LengthConverter::convertMilesToFoots(double length) {
+    length*=5280.0; return(checkLength(length));
+}
+
+double LengthConverter::convertMetersToYards(double length) {
+    length*=1.0936; return(checkLength(length));
+}
+double LengthConverter::convertInchesToYards(double length) {
+    length*=0.0278; return(checkLength(length));
+}
+double LengthConverter::convertFootsToYards(double length) {
+    length*=0.3333333; return(checkLength(length));
+}
+double LengthConverter::convertMilesToYards(double length) {
+    length*=1760.0; return(checkLength(length));
+}
+
+double LengthConverter::convertMetersToMiles(double length) {
+    length*=0.0006214; return(checkLength(length));
+}
+double LengthConverter::convertInchesToMiles(double length) {
+    length*=0.000016; return(checkLength(length));
+}
+double LengthConverter::convertFootsToMiles(double length) {
+    length*=0.0001894; return(checkLength(length));
+}
+double LengthConverter::convertYardsToMiles(double length) {
+    length*=0.0005682; return(checkLength(length));
 }
