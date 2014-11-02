@@ -7,15 +7,15 @@
 LHeapNode::LHeapNode(const int key)
     : _key(key),
       _dist(0),
-      _leftChild(nullptr),
-      _rightChild(nullptr) {
+      _leftChild(NULL),
+      _rightChild(NULL) {
 }
 
 LHeapNode* LHeapNode::merge(LHeapNode *x, LHeapNode *y) {
-    if (x == nullptr) {
+    if (x == NULL) {
         return y;
     }
-    if (y == nullptr) {
+    if (y == NULL) {
         return x;
     }
 
@@ -30,9 +30,9 @@ LHeapNode* LHeapNode::merge(LHeapNode *x, LHeapNode *y) {
 
     // We always try to move the node to the left side
     // to retain the leftist property
-    if (x->_leftChild == nullptr) {
+    if (x->_leftChild == NULL) {
         x->_leftChild = x->_rightChild;
-        x->_rightChild = nullptr;
+        x->_rightChild = NULL;
     } else {
         if (x->_leftChild->_dist < x->_rightChild->_dist) {
             LHeapNode *temp = x->_leftChild;
@@ -46,7 +46,7 @@ LHeapNode* LHeapNode::merge(LHeapNode *x, LHeapNode *y) {
 }
 
 LeftistHeap::LeftistHeap()
-    : _root(nullptr) {
+    : _root(NULL) {
 }
 
 LeftistHeap::~LeftistHeap() {
@@ -93,7 +93,7 @@ int LeftistHeap::deleteMin() {
 }
 
 bool LeftistHeap::isEmpty() {
-    return (_root == nullptr);
+    return (_root == NULL);
 }
 
 void LeftistHeap::freeNode(LHeapNode *node) {
