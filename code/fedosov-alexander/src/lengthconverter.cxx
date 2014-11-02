@@ -7,20 +7,20 @@
 #include <string>
 #include <set>
 #include "Includes/lengthconverter.hpp"
-Length::Length():type_(Type::TYPE_METER), length_(0.0) {}
-Length::Length(Type type, double length):type_(type), length_(length) {
+Length::Length():type_(Length::TYPE_METER), length_(0.0) {}
+Length::Length(int64_t type, double length):type_(type), length_(length) {
     length_ = checkLength(length);
-    if (checkType(type) == Type::TYPE_WRONG) {
+    if (checkType(type) == Length::TYPE_WRONG) {
         throw std::string("Unknown type");} else {
     type_ = type;
 }
 }
-Length::Type Length::getType() {return type_;}
+int64_t Length::getType() {return type_;}
 double Length::getLength() {return length_;}
 void Length::setLength(double length) {
     length_ = Length::checkLength(length);
 }
-void Length::setType(Type type) {
+void Length::setType(int64_t type) {
     Length* tmp;
     type = checkType(type);
     tmp = this->convert(type);
@@ -35,103 +35,103 @@ if (length < 0.0000001) {
     }
 return length;
 }
-Length* Length::convert(Type type) {
+Length* Length::convert(int64_t type) {
     double length;
     length = this->getLength();
     double *lngth = &length;
     Length* converted;
     type = checkType(type);
     switch (type) {
-        case Type::TYPE_METER: {this->convertToMeters(lngth); length = *lngth;
+        case Length::TYPE_METER: {this->convertToMeters(lngth); length = *lngth;
             converted = new Length(type, length); return converted;}
-        case Type::TYPE_MILE: {this->convertToMiles(lngth); length = *lngth;
+        case Length::TYPE_MILE: {this->convertToMiles(lngth); length = *lngth;
             converted = new Length(type, length); return converted;}
-        case Type::TYPE_YARD: {this->convertToYards(lngth); length = *lngth;
+        case Length::TYPE_YARD: {this->convertToYards(lngth); length = *lngth;
             converted = new Length(type, length); return converted;}
-        case Type::TYPE_FOOT: {this->convertToFoots(lngth); length = *lngth;
+        case Length::TYPE_FOOT: {this->convertToFoots(lngth); length = *lngth;
             converted = new Length(type, length); return converted;}
-        case Type::TYPE_INCH: {this->convertToInches(lngth); length = *lngth;
+        case Length::TYPE_INCH: {this->convertToInches(lngth); length = *lngth;
             converted = new Length(type, length); return converted;}
         default: {return NULL;}
     }
 }
 void Length::convertToMeters(double* length) {
-Type myType;
+int64_t myType;
 double lngth = *length;
 myType = this->getType();
-    if (myType == Type::TYPE_METER) {lngth = checkLength(lngth);
+    if (myType == Length::TYPE_METER) {lngth = checkLength(lngth);
             *length = lngth; return;}
-    if (myType == Type::TYPE_MILE) {lngth*=1609.344;
+    if (myType == Length::TYPE_MILE) {lngth*=1609.344;
             lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Type::TYPE_YARD) {lngth*=0.9144;
+    if (myType == Length::TYPE_YARD) {lngth*=0.9144;
             lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Type::TYPE_FOOT) {lngth*=0.3048;
+    if (myType == Length::TYPE_FOOT) {lngth*=0.3048;
             lngth = checkLength(lngth); *length = lngth; return;}
-    if (myType == Length::Type::TYPE_INCH) {lngth*=0.0254;
+    if (myType == Length::Length::TYPE_INCH) {lngth*=0.0254;
             lngth = checkLength(lngth); *length = lngth; return;}
 }
 void Length::convertToInches(double* length) {
-Type myType;
+int64_t myType;
 double lngth = *length;
 myType = this->getType();
-if (myType == Type::TYPE_METER) {lngth*=39.3701;
+if (myType == Length::TYPE_METER) {lngth*=39.3701;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_MILE) {lngth*=63360.0;
+if (myType == Length::TYPE_MILE) {lngth*=63360.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_YARD) {lngth*=36.0;
+if (myType == Length::TYPE_YARD) {lngth*=36.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_FOOT) {lngth*=12.0;
+if (myType == Length::TYPE_FOOT) {lngth*=12.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_INCH) {lngth = checkLength(lngth);
+if (myType == Length::TYPE_INCH) {lngth = checkLength(lngth);
             *length = lngth; return;}
 }
 void Length::convertToFoots(double* length) {
-Type myType;
+int64_t myType;
 double lngth = *length;
 myType = this->getType();
-if (myType == Type::TYPE_METER) {lngth*=3.2808;
+if (myType == Length::TYPE_METER) {lngth*=3.2808;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_MILE) {lngth*=5280.0;
+if (myType == Length::TYPE_MILE) {lngth*=5280.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_YARD) {lngth*=3.0;
+if (myType == Length::TYPE_YARD) {lngth*=3.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_FOOT) {lngth = checkLength(lngth);
+if (myType == Length::TYPE_FOOT) {lngth = checkLength(lngth);
             *length = lngth; return;}
-if (myType == Type::TYPE_INCH) {lngth*=0.0833;
+if (myType == Length::TYPE_INCH) {lngth*=0.0833;
             lngth = checkLength(lngth); *length = lngth; return;}
 }
 void Length::convertToYards(double* length) {
-Type myType;
+int64_t myType;
 double lngth = *length;
 myType = this->getType();
-if (myType == Type::TYPE_METER) {lngth*=1.0936;
+if (myType == Length::TYPE_METER) {lngth*=1.0936;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_MILE) {lngth*=1760.0;
+if (myType == Length::TYPE_MILE) {lngth*=1760.0;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_YARD) {lngth = checkLength(lngth);
+if (myType == Length::TYPE_YARD) {lngth = checkLength(lngth);
             *length = lngth; return;}
-if (myType == Type::TYPE_FOOT) {lngth*=0.3333333;
+if (myType == Length::TYPE_FOOT) {lngth*=0.3333333;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_INCH) {lngth*=0.0278;
+if (myType == Length::TYPE_INCH) {lngth*=0.0278;
             lngth = checkLength(lngth); *length = lngth; return;}
 }
 void Length::convertToMiles(double* length) {
-Type myType;
+int64_t myType;
 double lngth = *length;
 myType = this->getType();
-if (myType == Type::TYPE_METER) {lngth*=0.0006214;
+if (myType == Length::TYPE_METER) {lngth*=0.0006214;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_MILE) {lngth = checkLength(lngth);
+if (myType == Length::TYPE_MILE) {lngth = checkLength(lngth);
             *length = lngth; return;}
-if (myType == Type::TYPE_YARD) {lngth*=0.0005682;
+if (myType == Length::TYPE_YARD) {lngth*=0.0005682;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_FOOT) {lngth*=0.0001894;
+if (myType == Length::TYPE_FOOT) {lngth*=0.0001894;
             lngth = checkLength(lngth); *length = lngth; return;}
-if (myType == Type::TYPE_INCH) {lngth*=0.000016;
+if (myType == Length::TYPE_INCH) {lngth*=0.000016;
             lngth = checkLength(lngth); *length = lngth; return;}
 }
-Length::Type Length::checkType(Type type) {
-    if ((type <= Type::TYPE_MILE)&&(type > Type::TYPE_WRONG)) {
+int64_t Length::checkType(int64_t type) {
+    if ((type <= Length::TYPE_MILE)&&(type > Length::TYPE_WRONG)) {
         return type;
-    } else {return Type::TYPE_WRONG;}
+    } else {return Length::TYPE_WRONG;}
 }
