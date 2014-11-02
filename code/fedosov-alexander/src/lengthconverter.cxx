@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <cstdlib>
+#include <string>
 #include <set>
 #include "Includes/lengthconverter.hpp"
 const int64_t TYPE_METER = 1;
@@ -13,18 +14,14 @@ const int64_t TYPE_YARD = 20;
 const int64_t TYPE_MILE = 2;
 Length::Length():type_(TYPE_METER), length_(0.0) {}
 Length::Length(int64_t type, double length):type_(type), length_(length) {
-    type_ = type;
     length_ = checkLength(length);
-}
-Length* Length::create(int64_t type, double length) {
-    length = checkLength(length);
-switch (type) {
-        case TYPE_METER: {return new Length(type, length);}
-        case TYPE_MILE: {return new Length(type, length);}
-        case TYPE_YARD: {return new Length(type, length);}
-        case TYPE_FOOT: {return new Length(type, length);}
-        case TYPE_INCH: {return new Length(type, length);}
-        default: return NULL;
+    switch (type) {
+        case TYPE_METER: {type_ = type; break;}
+        case TYPE_MILE: {type_ = type; break;}
+        case TYPE_YARD: {type_ = type; break;}
+        case TYPE_FOOT: {type_ = type; break;}
+        case TYPE_INCH: {type_ = type; break;}
+        default: throw std::string("Unknown measure");
     }
 }
 int64_t Length::getType() {return type_;}
@@ -53,10 +50,6 @@ switch(type) {
 double Length::checkLength(double length) {
 if (length < 0.0000001) {
         length = 0.0;
-    } else {
-        if (DBL_MAX - length < 0.0000001) {
-        length = DBL_MAX;
-        } else {return length;}
     }
 return length;
 }
