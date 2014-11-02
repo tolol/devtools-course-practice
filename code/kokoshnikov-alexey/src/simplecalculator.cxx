@@ -82,73 +82,13 @@ int SimpleCalculator::HexToDec(std::string hex) {
     int tmp = 0;
     int i = 0;
     for (int j = (static_cast<int>(hex.size()) - 1); j >= 0; j--) {
-        switch (hex.c_str()[j]) {
-        case '0': {
-            tmp = 0;
-            break;
-        }
-        case '1': {
-            tmp = 1;
-            break;
-        }
-        case '2': {
-            tmp = 2;
-            break;
-        }
-        case '3': {
-            tmp = 3;
-            break;
-        }
-        case '4': {
-            tmp = 4;
-            break;
-        }
-        case '5': {
-            tmp = 5;
-            break;
-        }
-        case '6': {
-            tmp = 6;
-            break;
-        }
-        case '7': {
-            tmp = 7;
-            break;
-        }
-        case '8': {
-            tmp = 8;
-            break;
-        }
-        case '9': {
-            tmp = 9;
-            break;
-        }
-        case 'a': {
-            tmp = 10;
-            break;
-        }
-        case 'b': {
-            tmp = 11;
-            break;
-        }
-        case 'c': {
-            tmp = 12;
-            break;
-        }
-        case 'd': {
-            tmp = 13;
-            break;
-        }
-        case 'e': {
-            tmp = 14;
-            break;
-        }
-        case 'f': {
-            tmp = 15;
-            break;
-        }
-        default: throw std::string("Invalid parameters");
-        }
+        if ((hex.c_str()[j] >= 48) && (hex.c_str()[j] <=  57)) {
+               tmp = hex.c_str()[j] - 48;
+        } else if ((hex.c_str()[j] >= 97) && (hex.c_str()[j] <=  102)) {
+                      tmp = hex.c_str()[j] - 87;
+               } else {
+                       throw std::string("Invalid parameters");
+               }
         dec = dec + tmp*static_cast<int>(pow(16, i));
         i++;
     }
@@ -213,94 +153,14 @@ std::string SimpleCalculator::DecToHex(int dec) {
         tmp_dec = dec%16;
         tmp = std::to_string(tmp_dec);
         dec = dec/16;
-        switch (tmp_dec) {
-        case 0: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 1: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 2: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 3: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 4: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 5: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 6: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 7: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 8: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 9: {
-            hex_tmp = hex;
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 10: {
-            hex_tmp = hex;
-            tmp = "a";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 11: {
-            hex_tmp = hex;
-            tmp = "b";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 12: {
-            hex_tmp = hex;
-            tmp = "c";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 13: {
-            hex_tmp = hex;
-            tmp = "d";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 14: {
-            hex_tmp = hex;
-            tmp = "e";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        case 15: {
-            hex_tmp = hex;
-            tmp = "f";
-            hex = tmp + hex_tmp;
-            break;
-        }
-        }
+        if ((tmp_dec >= 0) && (tmp_dec <=  9)) {
+               hex_tmp = hex;
+               hex = tmp + hex_tmp;
+        } else if ((tmp_dec >= 10) && (tmp_dec <=  15)) {
+               tmp = static_cast<char>(tmp_dec + 87);
+               hex_tmp = hex;
+               hex = tmp + hex_tmp;
+               }
     }
     if (k == '-') {
         hex_tmp = hex;

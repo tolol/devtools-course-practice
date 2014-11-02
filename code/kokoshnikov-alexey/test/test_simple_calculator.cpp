@@ -109,8 +109,16 @@ TEST_F(CalculatorTest, Do_Throw_Exception_When_Bin_Is_Invalid) {
     EXPECT_THROW(calc.BinToHex(223), std::string);
 }
 
+TEST_F(CalculatorTest, Do_Throw_Exception_When_Bin_Is_Invalid_2) {
+    EXPECT_THROW(calc.BinToHex(3), std::string);
+}
+
 TEST_F(CalculatorTest, Do_Throw_Exception_When_Oct_Is_Invalid) {
     EXPECT_THROW(calc.OctToBin(908), std::string);
+}
+
+TEST_F(CalculatorTest, Do_Throw_Exception_When_Oct_Is_Invalid_2) {
+    EXPECT_THROW(calc.OctToBin(9), std::string);
 }
 
 TEST_F(CalculatorTest, Do_Throw_Exception_When_Hex_Is_Invalid) {
