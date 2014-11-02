@@ -21,11 +21,6 @@ TEST_F(lengthconverterTest, creatinon_test2) {
     EXPECT_EQ(TYPE_METER, len.getType());
     EXPECT_NEAR(100000.0, len.getLength(), 0.000001);
 }
-TEST_F(lengthconverterTest, creatinon_test3) {
-    Length len = Length(TYPE_MILE, DBL_MAX+100);
-    EXPECT_EQ(TYPE_MILE, len.getType());
-    EXPECT_NEAR(DBL_MAX, len.getLength(), 0.000001);
-}
 
 TEST_F(lengthconverterTest, creatinon_test4) {
     Length len = Length(TYPE_INCH, -DBL_MAX+100);
