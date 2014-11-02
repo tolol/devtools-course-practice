@@ -7,6 +7,7 @@ struct LHeapNode {
  public:
     explicit LHeapNode(const int key);
     static LHeapNode* merge(LHeapNode *x, LHeapNode *y);
+
     int _key, _dist;
     LHeapNode *_leftChild, *_rightChild;
 };
@@ -18,7 +19,7 @@ class LeftistHeap {
     ~LeftistHeap();
     LeftistHeap(const LeftistHeap& copy);
     LeftistHeap& operator= (const LeftistHeap& copy);
-    void merge(const LeftistHeap *otherLHeap);
+    void merge(LeftistHeap *otherLHeap);
     void insert(const int key);
     int findMin();
     int deleteMin();
@@ -27,6 +28,8 @@ class LeftistHeap {
     LHeapNode *_root;
 
     void freeNode(LHeapNode *node);
+    LHeapNode* copyFunction(LHeapNode *copyNode);
+    LHeapNode* copyRecursivly(LHeapNode *other);
 };
 
 #endif  // CODE_VINOGRADOV_VLAD_INCLUDE_LEFTISTHEAP_H_

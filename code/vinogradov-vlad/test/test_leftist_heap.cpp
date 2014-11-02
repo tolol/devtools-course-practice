@@ -19,6 +19,21 @@ TEST(LeftistHeapTest, Can_Say_Is_Empty) {
     EXPECT_TRUE(lHeap.isEmpty());
 }
 
+TEST(LeftistHeapTest, Can_Merge) {
+    LeftistHeap xHeap, yHeap;
+
+    xHeap.insert(11);
+    yHeap.insert(22);
+    xHeap.merge(&yHeap);
+
+    for (int i = 1; i <= 2; ++i) {
+        int key = xHeap.deleteMin();
+        EXPECT_EQ(11*i, key);
+    }
+
+    EXPECT_TRUE(xHeap.isEmpty());
+}
+
 TEST(LeftistHeapTest, Can_Insert_And_Find_Min_And_Delete_Min) {
     LeftistHeap lHeap;
 
@@ -54,9 +69,26 @@ TEST(LeftistHeapTest, Heap_Is_Empty_After_Inserting_And_Deleting_Min) {
     EXPECT_TRUE(lHeap.isEmpty());
 }
 
+TEST(LeftistHeapTest, Can_Copy_And_Assign) {
+    LeftistHeap xHeap;
+    for (int i = 0; i < 1024; ++i) {
+        xHeap.insert(i);
+    }
+
+    LeftistHeap yHeap = xHeap;
+    LeftistHeap zHeap;
+    zHeap = yHeap;
+
+    for (int i = 0; i < 1024; ++i) {
+        EXPECT_EQ(i, yHeap.deleteMin());
+        EXPECT_EQ(i, zHeap.deleteMin());
+    }
+    EXPECT_TRUE(yHeap.isEmpty());
+    EXPECT_TRUE(zHeap.isEmpty());
+}
+
 TEST(StressTest, A_Lot_Of_Insertions_And_Deletions_Dont_Change_Heap_Size) {
     LeftistHeap lHeap;
-
     for (int i = 0; i < 1024; ++i) {
         for (int j = 0; j < 1024; ++j) {
             lHeap.insert(j);

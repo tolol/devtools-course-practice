@@ -1,4 +1,4 @@
-// Copyright 2014 Vlad Vinogradov
+﻿  // Copyright 2014 Vlad Vinogradov
 
 #include "include/leftistheap.h"
 
@@ -54,16 +54,19 @@ LeftistHeap::~LeftistHeap() {
 }
 
 LeftistHeap::LeftistHeap(const LeftistHeap& copy)
-    : _root(copy._root) {
+    : _root(copyFunction(copy._root)) {
 }
 
 LeftistHeap& LeftistHeap::operator= (const LeftistHeap& copy) {
-    _root = copy._root;
+    _root = copyFunction(copy._root);
     return *this;
 }
 
-void LeftistHeap::merge(const LeftistHeap *otherLHeap) {
+void LeftistHeap::merge(LeftistHeap *otherLHeap) {
     _root = LHeapNode::merge(_root, otherLHeap->_root);
+
+    // Forget the second heap
+    otherLHeap->_root = NULL;
 }
 
 void LeftistHeap::insert(const int key) {
@@ -80,6 +83,8 @@ int LeftistHeap::findMin() {
 }
 
 int LeftistHeap::deleteMin() {
+    // Take the key, delete the root
+    // and merge left and right subtrees
     if (_root) {
         LHeapNode *leftChild = _root->_leftChild;
         LHeapNode *rightChild = _root->_rightChild;
@@ -97,6 +102,7 @@ bool LeftistHeap::isEmpty() {
 }
 
 void LeftistHeap::freeNode(LHeapNode *node) {
+    // Walk along the whole tree and delete all nodes
     if (node) {
         if (node->_leftChild) {
             freeNode(node->_leftChild);
@@ -105,5 +111,24 @@ void LeftistHeap::freeNode(LHeapNode *node) {
             freeNode(node->_rightChild);
         }
         delete node;
+        node = NULL;
     }
+}
+
+LHeapNode* LeftistHeap::copyFunction(LHeapNode *copyNode) {
+    return copyRecursivly(copyNode);
+}
+
+LHeapNode* LeftistHeap::copyRecursivly(LHeapNode *other) {
+    if (other == NULL) {
+        return NULL;
+    }
+
+    LHeapNode *newNode = new LHeapNode(other->_key);
+    newNode->_dist = other->_dist;
+
+    newNode->_leftChild = copyRecursivly(other->_leftChild);
+    newNode->_rightChild = copyRecursivly(other->_rightChild);
+
+    return newNode;
 }
