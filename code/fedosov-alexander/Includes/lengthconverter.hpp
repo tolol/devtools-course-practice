@@ -2,24 +2,26 @@
 
 #ifndef CODE_FEDOSOV_ALEXANDER_INCLUDES_LENGTHCONVERTER_HPP_
 #define CODE_FEDOSOV_ALEXANDER_INCLUDES_LENGTHCONVERTER_HPP_
-extern const int64_t TYPE_METER;
-extern const int64_t TYPE_MILE;
-extern const int64_t TYPE_YARD;
-extern const int64_t TYPE_FOOT;
-extern const int64_t TYPE_INCH;
 class Length {
  public:
+enum class Type : int64_t {TYPE_WRONG = -1, TYPE_METER = 1,
+    TYPE_INCH = 2, TYPE_FOOT = 3, TYPE_YARD = 4, TYPE_MILE = 5};
 Length();
-Length(int64_t type, double length);
-Length* convert(int64_t type);
-void setType(int64_t type);
-int64_t getType();
+Length(Type type, double length);
+Length* convert(Type type);
+void setType(Type type);
+Type getType();
 double getLength();
 void setLength(double length);
  private:
-int64_t type_;
+Type type_;
 double length_;
-void convert(int64_t type, double* length);
+void convertToMeters(double* length);
+void convertToInches(double* length);
+void convertToFoots(double* length);
+void convertToYards(double* length);
+void convertToMiles(double* length);
+static Type checkType(Type type);
 static double checkLength(double length);
 };
 #endif
