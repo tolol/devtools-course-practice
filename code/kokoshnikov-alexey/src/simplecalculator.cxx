@@ -23,7 +23,7 @@ int SimpleCalculator::BinToDec(int bin) {
     while ((bin/10) > 0) {
         tmp = bin%10;
         if (tmp > 1) {
-            return 0;
+            throw std::string("Invalid parameters");
         }
         tmp = tmp*static_cast<int>(pow(2, i));
         dec = dec + tmp;
@@ -32,7 +32,7 @@ int SimpleCalculator::BinToDec(int bin) {
     }
     tmp = bin;
     if (tmp > 1) {
-        return 0;
+        throw std::string("Invalid parameters");
     }
     tmp = tmp*static_cast<int>(pow(2, i));
     dec = dec + tmp;
@@ -54,7 +54,7 @@ int SimpleCalculator::OctToDec(int oct) {
     while ((oct/10) > 0) {
         tmp = oct%10;
         if (tmp > 7) {
-            return 0;
+            throw std::string("Invalid parameters");
         }
         tmp = tmp*static_cast<int>(pow(8, i));
         dec = dec + tmp;
@@ -63,7 +63,7 @@ int SimpleCalculator::OctToDec(int oct) {
     }
     tmp = oct;
     if (tmp > 7) {
-        return 0;
+        throw std::string("Invalid parameters");
     }
     tmp = tmp*static_cast<int>(pow(8, i));
     dec = dec + tmp;
@@ -147,7 +147,7 @@ int SimpleCalculator::HexToDec(std::string hex) {
             tmp = 15;
             break;
         }
-        default: return 0;
+        default: throw std::string("Invalid parameters");
         }
         dec = dec + tmp*static_cast<int>(pow(16, i));
         i++;

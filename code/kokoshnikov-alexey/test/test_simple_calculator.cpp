@@ -16,13 +16,6 @@ class CalculatorTest : public ::testing::Test {
     SimpleCalculator calc;
 };
 
-TEST_F(CalculatorTest, HexToBin_negativ) {
-    EXPECT_EQ(0, calc.HexToBin("g"));
-}
-
-TEST_F(CalculatorTest, BinToHex_negativ) {
-    EXPECT_EQ("", calc.BinToHex(12000));
-}
 
 TEST_F(CalculatorTest, BinToHex_0) {
     EXPECT_EQ("10", calc.BinToHex(10000));
@@ -112,7 +105,7 @@ TEST_F(CalculatorTest, OctToBin_Sign) {
     EXPECT_EQ(-1010, calc.OctToBin(-12));
 }
 
-TEST_F(CalculatorTest, OctToDec_Stress_1) {
+/*TEST_F(CalculatorTest, OctToDec_Stress_1) {
     EXPECT_EQ(0, calc.OctToBin(79));
 }
 
@@ -126,8 +119,17 @@ TEST_F(CalculatorTest, BinToDec_Stress_1) {
 
 TEST_F(CalculatorTest, BinToDec_Stress_2) {
     EXPECT_EQ(0, calc.OctToBin(9));
+}*/
+
+TEST_F(CalculatorTest, Do_Throw_Exception_When_Bin_Is_Invalid) {
+    EXPECT_THROW(calc.BinToHex(123), std::string);
 }
-/*TEST_F(CalculatorTest, Do_Throw_Exception_When_Sum_Is_Larger_Than_INT_MAX) {
-    EXPECT_THROW(calc.Add(INT_MAX, INT_MAX), std::string);
+
+TEST_F(CalculatorTest, Do_Throw_Exception_When_Oct_Is_Invalid) {
+    EXPECT_THROW(calc.OctToBin(1989), std::string);
 }
-*/
+
+TEST_F(CalculatorTest, Do_Throw_Exception_When_Hex_Is_Invalid) {
+    EXPECT_THROW(calc.HexToBin("gjk"), std::string);
+}
+
