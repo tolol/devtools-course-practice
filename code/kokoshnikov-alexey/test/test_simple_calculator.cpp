@@ -105,22 +105,6 @@ TEST_F(CalculatorTest, OctToBin_Sign) {
     EXPECT_EQ(-1010, calc.OctToBin(-12));
 }
 
-/*TEST_F(CalculatorTest, OctToDec_Stress_1) {
-    EXPECT_EQ(0, calc.OctToBin(79));
-}
-
-TEST_F(CalculatorTest, OctToDec_Stress_2) {
-    EXPECT_EQ(0, calc.OctToBin(9));
-}
-
-TEST_F(CalculatorTest, BinToDec_Stress_1) {
-    EXPECT_EQ(0, calc.BinToOct(33));
-}
-
-TEST_F(CalculatorTest, BinToDec_Stress_2) {
-    EXPECT_EQ(0, calc.OctToBin(9));
-}*/
-
 TEST_F(CalculatorTest, Do_Throw_Exception_When_Bin_Is_Invalid) {
     EXPECT_THROW(calc.BinToHex(123), std::string);
 }
