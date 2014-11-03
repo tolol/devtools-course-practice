@@ -23,7 +23,7 @@ template <typename _type> class _tree_node {
     _tree_node* _parrent;
  public:
     _tree_node(_type value, _tree_node<_type>* parrent, unsigned int key);
-    _tree_node(const _tree_node<_type> &src, _tree_node<_type> *p);
+    _tree_node(const _tree_node<_type> &src, _tree_node<_type> *p = NULL);
     ~_tree_node();
     _type get_value();
     unsigned int get_key();
@@ -45,7 +45,7 @@ template <typename _type> _tree_node<_type>::_tree_node
 
 template <typename _type>
 _tree_node<_type>::_tree_node
-(const _tree_node<_type> &src, _tree_node<_type> *p = NULL) {
+(const _tree_node<_type> &src, _tree_node<_type> *p) {
     _key = src._key;
     _value = src._value;
     _parrent = p;
