@@ -1,6 +1,7 @@
 // Copyright 2014 Anton Rybakov
 
 #include <cstdlib>
+#include <string>
 
 #ifndef CODE_RYBAKOV_ANTON_INCLUDE_TREE_H_
 #define CODE_RYBAKOV_ANTON_INCLUDE_TREE_H_
@@ -22,6 +23,7 @@ template <typename _type> class _tree_node {
     _tree_node* _parrent;
  public:
     _tree_node(_type value, _tree_node<_type>* parrent, unsigned int key);
+    _tree_node(const _tree_node<_type> &src, _tree_node<_type> *p);
     ~_tree_node();
     _type get_value();
     unsigned int get_key();
@@ -41,11 +43,33 @@ template <typename _type> _tree_node<_type>::_tree_node
       _key = key;
 }
 
+template <typename _type>
+_tree_node<_type>::_tree_node
+(const _tree_node<_type> &src, _tree_node<_type> *p = NULL) {
+    _key = src._key;
+    _value = src._value;
+    _parrent = p;
+    if (src._first_child != NULL) {
+        _first_child = new _tree_node<_type>(*src._first_child, this);
+    } else {
+        _first_child = NULL;
+    }
+    if (src._next_brother != NULL) {
+        _next_brother = new _tree_node<_type>(*src._next_brother, p);
+    } else {
+        _next_brother = NULL;
+    }
+}
+
 template <typename _type> _tree_node<_type>::~_tree_node() {
-    if (_next_brother != NULL)
+    if (_next_brother != NULL) {
         delete _next_brother;
-    if (_first_child != NULL)
+        _next_brother = NULL;
+    }
+    if (_first_child != NULL) {
         delete _first_child;
+        _first_child = NULL;
+    }
 }
 
 template <typename _type> _type _tree_node<_type>::get_value() {
@@ -87,14 +111,17 @@ template <typename _type> class _tree {
  public:
     _tree();
     ~_tree();
+    _tree(const _tree<_type>& src);
+    _tree<_type>& operator=(const _tree<_type>& src);
     void add(_type value);
-    bool destruct();
+    void destruct();
     _type get_value();
     unsigned int get_key();
     void down();
     void up();
     void along();
     void reset();
+    bool is_empty();
     _tree_search<_type> search(unsigned int key);
 };
 
@@ -107,6 +134,22 @@ template <typename _type> _tree<_type>::_tree() {
 template <typename _type> _tree<_type>::~_tree() {
     if (_root != NULL)
         delete _root;
+}
+
+template <typename _type> _tree<_type>::_tree(const _tree<_type> & src) {
+    _key_counter = src._key_counter;
+    _root = new _tree_node<_type>(*src._root);
+    _current = _root;
+}
+
+template <typename _type>
+_tree<_type>& _tree<_type>::operator=(const _tree<_type>& src) {
+    if (_root != NULL)
+        delete _root;
+    _key_counter = src._key_counter;
+    _root = new _tree_node<_type>(*src._root);
+    _current = _root;
+    return *this;
 }
 
 template <typename _type> void _tree<_type>::add(_type value) {
@@ -128,35 +171,59 @@ template <typename _type> void _tree<_type>::add(_type value) {
     _key_counter++;
 }
 
-template <typename _type> bool _tree<_type>::destruct() {
-    if (_current->get_child() != NULL)
-        delete _current->get_child();
-    _tree_node<_type>* temp = _current->get_parrent();
-    temp = temp->get_child();
-    if (temp == _current) {
-        _current = temp->get_brother();
-        temp->get_parrent()->set_child(_current);
-        temp->set_brother(NULL);
-        temp->set_child(NULL);
-        delete temp;
+template <typename _type> void _tree<_type>::destruct() {
+    if (_root == NULL) {
+        throw std::string("Tree is empty");
     } else {
-        while (temp->get_brother()->get_key() != _current->get_key())
-            temp = temp->get_brother();
-        temp->set_brother(_current->get_brother());
-        _current->set_brother(NULL);
-        _current->set_child(NULL);
-        delete _current;
-        _current = temp;
+        if (_current->get_child() != NULL) {
+            delete _current->get_child();
+            _current->set_child(NULL);
+        }
+        if (_current == _root) {
+            delete _root;
+            _root = NULL;
+            _current = NULL;
+        } else {
+            _tree_node<_type>* temp = _current->get_parrent();
+            temp = temp->get_child();
+            if (temp == _current) {
+                _current = temp->get_parrent();
+                temp->get_parrent()->set_child(temp->get_brother());
+                temp->set_brother(NULL);
+                temp->set_child(NULL);
+                delete temp;
+            } else {
+                while (temp->get_brother()->get_key() != _current->get_key())
+                    temp = temp->get_brother();
+                temp->set_brother(_current->get_brother());
+                _current->set_brother(NULL);
+                _current->set_child(NULL);
+                delete _current;
+                _current = temp->get_parrent();
+            }
+        }
     }
-    return true;
 }
 
 template <typename _type> _type _tree<_type>::get_value() {
-    return _current->get_value();
+    if (_current != NULL)
+        return _current->get_value();
+    else
+        throw std::string("Tree is empty");
 }
 
 template <typename _type> unsigned int _tree<_type>::get_key() {
-    return _current->get_key();
+    if (_current != NULL)
+        return _current->get_key();
+    else
+        throw std::string("Tree is empty");
+}
+
+template <typename _type> bool _tree<_type>::is_empty() {
+    if (_current == NULL && _root == NULL)
+        return true;
+    else
+        return false;
 }
 
 template <typename _type> void _tree<_type>::up() {
