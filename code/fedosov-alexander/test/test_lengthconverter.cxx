@@ -110,3 +110,7 @@ TEST_F(lengthconverterTest, conversion_test23) {
     EXPECT_NEAR(converter.convert(100, 100.0, LengthConverter::TYPE_METER),
         0.0, 0.001);
 }
+TEST_F(lengthconverterTest, conversion_test24) {
+    EXPECT_NEAR(converter.convertMetersTo(100, 100),
+        0.0, 0.001);
+}
