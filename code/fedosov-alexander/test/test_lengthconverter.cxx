@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include <float.h>
 #include <cstdlib>
+#include <string>
 #include "include/lengthconverter.hpp"
 
 class lengthconverterTest : public ::testing::Test {
@@ -98,8 +99,8 @@ TEST_F(lengthconverterTest, conversion_test20) {
 }
 
 TEST_F(lengthconverterTest, conversion_test21) {
-    EXPECT_NEAR(converter.convert(LengthConverter::TYPE_MILE,
-        -100.0, LengthConverter::TYPE_METER), 0.0, 0.001);
+    EXPECT_THROW(converter.convert(LengthConverter::TYPE_MILE,
+        -100.0, LengthConverter::TYPE_METER), std::string);
 }
 
 TEST_F(lengthconverterTest, conversion_test22) {
@@ -107,10 +108,11 @@ TEST_F(lengthconverterTest, conversion_test22) {
         100.0, LengthConverter::TYPE_METER), 100.0, 0.001);
 }
 TEST_F(lengthconverterTest, conversion_test23) {
-    EXPECT_NEAR(converter.convert(100, 100.0, LengthConverter::TYPE_METER),
-        0.0, 0.001);
+    LengthConverter::Type wrong = static_cast<LengthConverter::Type>(5);
+    EXPECT_THROW(converter.convert(wrong, 100.0, LengthConverter::TYPE_METER),
+        std::string);
 }
 TEST_F(lengthconverterTest, conversion_test24) {
-    EXPECT_NEAR(converter.convertMetersTo(100, 100),
-        0.0, 0.001);
+    LengthConverter::Type wrong = static_cast<LengthConverter::Type>(5);
+    EXPECT_THROW(converter.convertMetersTo(wrong, 100), std::string);
 }
