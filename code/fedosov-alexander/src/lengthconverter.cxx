@@ -13,12 +13,12 @@ LengthConverter::~LengthConverter() {}
 
 double LengthConverter::checkLength(double length) {
 if (length < 0.0000001) {
-        throw std::string("Length can't be below zero!");
+        throw std::string("Length can't be below zero");
     }
 return length;
 }
 
-double LengthConverter::convertToMeters(Type type, double length) {
+double LengthConverter::convertToMeters(int64_t type, double length) {
      switch (type) {
         case LengthConverter::TYPE_METER: {return checkLength(length);}
         case LengthConverter::TYPE_INCH: {
@@ -32,7 +32,7 @@ double LengthConverter::convertToMeters(Type type, double length) {
         default: {throw std::string("Wrong type");}
     }
 }
-double LengthConverter::convertMetersTo(Type type, double length) {
+double LengthConverter::convertMetersTo(int64_t type, double length) {
      switch (type) {
         case LengthConverter::TYPE_METER: {return checkLength(length);}
         case LengthConverter::TYPE_INCH: {
@@ -46,6 +46,6 @@ double LengthConverter::convertMetersTo(Type type, double length) {
         default: {throw std::string("Wrong type");}
     }
 }
-double LengthConverter::convert(Type from, double length, Type to) {
+double LengthConverter::convert(int64_t from, double length, int64_t to) {
     return (convertMetersTo(to, (convertToMeters(from, length))));
 }

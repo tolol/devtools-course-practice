@@ -108,11 +108,9 @@ TEST_F(lengthconverterTest, conversion_test22) {
         100.0, LengthConverter::TYPE_METER), 100.0, 0.001);
 }
 TEST_F(lengthconverterTest, conversion_test23) {
-    LengthConverter::Type wrong = static_cast<LengthConverter::Type>(5);
-    EXPECT_THROW(converter.convert(wrong, 100.0, LengthConverter::TYPE_METER),
+    EXPECT_THROW(converter.convert(6, 100.0, LengthConverter::TYPE_METER),
         std::string);
 }
 TEST_F(lengthconverterTest, conversion_test24) {
-    LengthConverter::Type wrong = static_cast<LengthConverter::Type>(5);
-    EXPECT_THROW(converter.convertMetersTo(wrong, 100), std::string);
+    EXPECT_THROW(converter.convertMetersTo(6, 100), std::string);
 }
