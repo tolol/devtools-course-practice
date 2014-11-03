@@ -13,8 +13,8 @@ class CurrencyConverter {
     double eurToRub(double eur);
     double usdToRub(double usd);
     double usdToEur(double usd);
-    double mainConverter(double value, int mode);
  private:
     void checkRange(double value);
+    double mainConverter(double value, int mode);
 };
 #endif  // CODE_BYKADOROV_ROMAN_INCLUDE_CURRENCYCONVERTER_H_
