@@ -70,7 +70,8 @@ TEST_F(TreeTest, Destruct) {
     test.add(4); test.add(5);
     test.along(); test.along();
     test.add(6);
-    test.reset();
+    test.destruct();
+    EXPECT_EQ(0, test.get_key());
     test.down();
     test.destruct();
     EXPECT_EQ(0, test.get_key());
@@ -101,6 +102,11 @@ TEST_F(TreeTest, Copying) {
     EXPECT_EQ(test1.get_value(), test2.get_value());
     test1.down(), test2.down();
     EXPECT_EQ(test1.get_value(), test2.get_value());
+    test1.reset();
+    test1.destruct();
+    EXPECT_EQ(false, test2.is_empty());
+    test2 = test1;
+    EXPECT_EQ(true, test2.is_empty());
 }
 
 TEST_F(TreeTest, StressTest) {

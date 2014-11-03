@@ -146,9 +146,15 @@ template <typename _type>
 _tree<_type>& _tree<_type>::operator=(const _tree<_type>& src) {
     if (_root != NULL)
         delete _root;
-    _key_counter = src._key_counter;
-    _root = new _tree_node<_type>(*src._root);
-    _current = _root;
+    if (src._root != NULL) {
+        _key_counter = src._key_counter;
+        _root = new _tree_node<_type>(*src._root);
+        _current = _root;
+    } else {
+        _key_counter = 0;
+        _root = NULL;
+        _current = NULL;
+    }
     return *this;
 }
 
