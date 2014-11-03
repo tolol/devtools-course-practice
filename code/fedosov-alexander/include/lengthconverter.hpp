@@ -4,32 +4,18 @@
 #define CODE_FEDOSOV_ALEXANDER_INCLUDE_LENGTHCONVERTER_HPP_
 class LengthConverter {
  public:
+    enum {
+        TYPE_METER = 1,
+        TYPE_INCH = 2,
+        TYPE_FOOT = 3,
+        TYPE_YARD = 4,
+        TYPE_MILE = 5
+    };
     LengthConverter();
     ~LengthConverter();
-    double convertInchesToMeters(double length);
-    double convertFootsToMeters(double length);
-    double convertYardsToMeters(double length);
-    double convertMilesToMeters(double length);
-
-    double convertMetersToInches(double length);
-    double convertFootsToInches(double length);
-    double convertYardsToInches(double length);
-    double convertMilesToInches(double length);
-
-    double convertMetersToFoots(double length);
-    double convertInchesToFoots(double length);
-    double convertYardsToFoots(double length);
-    double convertMilesToFoots(double length);
-
-    double convertMetersToYards(double length);
-    double convertInchesToYards(double length);
-    double convertFootsToYards(double length);
-    double convertMilesToYards(double length);
-
-    double convertMetersToMiles(double length);
-    double convertInchesToMiles(double length);
-    double convertFootsToMiles(double length);
-    double convertYardsToMiles(double length);
+    double convertToMeters(int64_t type, double length);
+    double convertMetersTo(int64_t type, double length);
+    double convert(int64_t from, double length, int64_t to);
 
  private:
     static double checkLength(double length);
