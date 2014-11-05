@@ -32,9 +32,6 @@ int64_t GCD(int64_t a, int64_t b) {
 
 Fraction::Fraction(int _numerator, int _denominator): numerator(0),
                                                     denominator(1) {
-    CheckValue(_numerator);
-    CheckValue(_denominator);
-
     if (_denominator != 0) {
         numerator = _numerator;
         denominator = _denominator;
