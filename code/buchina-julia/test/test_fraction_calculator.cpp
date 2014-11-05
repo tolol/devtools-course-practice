@@ -86,7 +86,7 @@ TEST_F(CalculatorTest, Cannot_Add_Fraction_Numerator_Over_MaxInt) {
 }
 
 TEST_F(CalculatorTest, Cannot_Add_Fraction_Numerator_Under_MinInt) {
-    Fraction tmp1(-2147483646, 1);
+    Fraction tmp1(-2147483647, 1);
     Fraction tmp2(-2, 1);
     EXPECT_THROW(tmp1 + tmp2, std::string);
 }
