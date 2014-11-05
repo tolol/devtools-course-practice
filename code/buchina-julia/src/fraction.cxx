@@ -22,6 +22,9 @@ void CheckValue(int64_t a) {
 }
 
 int64_t GCD(int64_t a, int64_t b) {
+    if (a == 0 || b == 0) {
+        return 1;
+    }
     while (a != b) {
         if (a > b) {
             a -= b;
