@@ -72,7 +72,7 @@ Fraction& Fraction::operator=(const Fraction& a) {
     return *this;
 }
 
-Fraction Fraction::operator+(const Fraction& a, const Fraction& b) {
+Fraction operator+(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
                            static_cast<int64_t>(b.getDenominator()) +
@@ -93,7 +93,7 @@ Fraction Fraction::operator+(const Fraction& a, const Fraction& b) {
     return tmp;
 }
 
-Fraction Fraction::operator-(const Fraction& a, const Fraction& b) {
+Fraction operator-(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
                            static_cast<int64_t>(b.getDenominator()) -
@@ -114,7 +114,7 @@ Fraction Fraction::operator-(const Fraction& a, const Fraction& b) {
     return tmp;
 }
 
-Fraction Fraction::operator*(const Fraction& a, const Fraction& b) {
+Fraction operator*(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
                            static_cast<int64_t>(b.getNumerator());
@@ -133,7 +133,7 @@ Fraction Fraction::operator*(const Fraction& a, const Fraction& b) {
     return tmp;
 }
 
-Fraction Fraction::operator/(const Fraction& a, const Fraction& b) {
+Fraction operator/(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
                            static_cast<int64_t>(b.getDenominator());
