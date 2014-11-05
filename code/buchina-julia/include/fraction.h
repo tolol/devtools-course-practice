@@ -16,10 +16,10 @@ class Fraction {
     Fraction(const Fraction& a);
     ~Fraction();
 
-    int getNumerator();
-    int getDenominator();
+    int getNumerator() const;
+    int getDenominator() const;
 
-    const Fraction& operator=(const Fraction& a);
+    Fraction& operator=(const Fraction& a);
     Fraction& operator+(const Fraction& a);
     Fraction& operator-(const Fraction& a);
     Fraction& operator*(const Fraction& a);

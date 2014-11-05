@@ -30,7 +30,8 @@ int64_t GCD(int64_t a, int64_t b) {
     return a;
 }
 
-Fraction::Fraction(int _numerator, int _denominator) {
+Fraction::Fraction(int _numerator, int _denominator): numerator(0),
+                                                    denominator(1) {
     CheckValue(_numerator);
     CheckValue(_denominator);
 
@@ -45,11 +46,11 @@ Fraction::Fraction(int _numerator, int _denominator) {
 Fraction::Fraction(const Fraction& a): numerator(a.getNumerator()),
     denominator(a.getDenominator()) {}
 
-int Fraction::getNumerator() {
+int Fraction::getNumerator() const {
     return numerator;
 }
 
-int Fraction::getDenominator() {
+int Fraction::getDenominator() const {
     return denominator;
 }
 
@@ -65,7 +66,7 @@ void Fraction::setDenominator(int _denominator) {
     }
 }
 
-const Fraction& Fraction::operator=(const Fraction& a) {
+Fraction& Fraction::operator=(const Fraction& a) {
     numerator = a.getNumerator();
     denominator = a.getDenominator();
     return *this;
@@ -87,9 +88,10 @@ Fraction& Fraction::operator+(const Fraction& a) {
     CheckValue(tmpNumerator);
     CheckValue(tmpDenominator);
 
-    tmp.setNumerator(static_cast<int>tmpNumerator);
-    tmp.setDenominator(static_cast<int>tmpDenominator);
-    return tmp;
+    tmp.setNumerator(static_cast<int>(tmpNumerator));
+    tmp.setDenominator(static_cast<int>(tmpDenominator));
+    *this = tmp;
+    return *this;
 }
 
 Fraction& Fraction::operator-(const Fraction& a) {
@@ -108,9 +110,10 @@ Fraction& Fraction::operator-(const Fraction& a) {
     CheckValue(tmpNumerator);
     CheckValue(tmpDenominator);
 
-    tmp.setNumerator(static_cast<int>tmpNumerator);
-    tmp.setDenominator(static_cast<int>tmpDenominator);
-    return tmp;
+    tmp.setNumerator(static_cast<int>(tmpNumerator));
+    tmp.setDenominator(static_cast<int>(tmpDenominator));
+    *this = tmp;
+    return *this;
 }
 
 Fraction& Fraction::operator*(const Fraction& a) {
@@ -127,9 +130,10 @@ Fraction& Fraction::operator*(const Fraction& a) {
     CheckValue(tmpNumerator);
     CheckValue(tmpDenominator);
 
-    tmp.setNumerator(static_cast<int>tmpNumerator);
-    tmp.setDenominator(static_cast<int>tmpDenominator);
-    return tmp;
+    tmp.setNumerator(static_cast<int>(tmpNumerator));
+    tmp.setDenominator(static_cast<int>(tmpDenominator));
+    *this = tmp;
+    return *this;
 }
 
 Fraction& Fraction::operator/(const Fraction& a) {
@@ -146,7 +150,8 @@ Fraction& Fraction::operator/(const Fraction& a) {
     CheckValue(tmpNumerator);
     CheckValue(tmpDenominator);
 
-    tmp.setNumerator(static_cast<int>tmpNumerator);
-    tmp.setDenominator(static_cast<int>tmpDenominator);
-    return tmp;
+    tmp.setNumerator(static_cast<int>(tmpNumerator));
+    tmp.setDenominator(static_cast<int>(tmpDenominator));
+    *this = tmp;
+    return *this;
 }
