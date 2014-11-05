@@ -6,6 +6,8 @@
 #include <limits.h>
 #include <string>
 
+#define ABS(x) (((x) > 0) ? (x) : -(x))
+
 Fraction::Fraction(): numerator(0), denominator(1) {}
 Fraction::~Fraction() {}
 
@@ -15,8 +17,8 @@ int64_t GCD(int64_t a, int64_t b);
 void CheckValue(int64_t a) {
     if (a > INT_MAX)
         throw std::string("Value is larger than INT_MAX");
-    else if (a < -INT_MAX)
-        throw std::string("Value is less than -INT_MAX");
+    else if (a < INT_MIN)
+        throw std::string("Value is less than INT_MIN");
 }
 
 int64_t GCD(int64_t a, int64_t b) {
@@ -78,7 +80,7 @@ Fraction operator+(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
+    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -99,7 +101,7 @@ Fraction operator-(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
+    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -118,7 +120,7 @@ Fraction operator*(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
+    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -137,7 +139,7 @@ Fraction operator/(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getNumerator());
 
-    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
+    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
