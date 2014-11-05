@@ -2,11 +2,13 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "include/fraction.h"
 
 class CalculatorTest : public ::testing::Test {
  protected:
-    //Fraction testFraction;
+    // Fraction testFraction;
 };
 
 TEST_F(CalculatorTest, Can_Create_Default_Fraction) {
@@ -24,31 +26,31 @@ TEST_F(CalculatorTest, Can_Create_Fraction) {
 TEST_F(CalculatorTest, Cannot_Create_Fraction_Divided_By_Zero) {
     Fraction *tmp;
     EXPECT_THROW(tmp = new Fraction(2, 0), std::string);
-    //EXPECT_THROW(Fraction(2, 0), std::string);
+    // EXPECT_THROW(Fraction(2, 0), std::string);
 }
 
 TEST_F(CalculatorTest, Cannot_Create_Fraction_With_Numerator_Over_MaxInt) {
     Fraction *tmp;
     EXPECT_THROW(tmp = new Fraction(2147483648, 1), std::string);
-    //EXPECT_THROW(Fraction(2147483648, 1), std::string)
+    // EXPECT_THROW(Fraction(2147483648, 1), std::string)
 }
 
 TEST_F(CalculatorTest, Cannot_Create_Fraction_With_Numerator_Under_MinInt) {
     Fraction *tmp;
     EXPECT_THROW(tmp = new Fraction(-2147483648, 1), std::string);
-    //EXPECT_THROW(Fraction(-2147483648, 1), std::string)
+    // EXPECT_THROW(Fraction(-2147483648, 1), std::string)
 }
 
 TEST_F(CalculatorTest, Cannot_Create_Fraction_With_Denominator_Over_MaxInt) {
     Fraction *tmp;
     EXPECT_THROW(tmp = new Fraction(1, 2147483648), std::string);
-    //EXPECT_THROW(Fraction(1, 2147483648), std::string)
+    // EXPECT_THROW(Fraction(1, 2147483648), std::string)
 }
 
 TEST_F(CalculatorTest, Cannot_Create_Fraction_With_Denominator_Under_MinInt) {
     Fraction *tmp;
     EXPECT_THROW(tmp = new Fraction(1, -2147483648), std::string);
-    //EXPECT_THROW(Fraction(1, -2147483648), std::string)
+    // EXPECT_THROW(Fraction(1, -2147483648), std::string)
 }
 
 TEST_F(CalculatorTest, Can_Create_Fraction_By_Copying) {
