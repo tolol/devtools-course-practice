@@ -13,13 +13,13 @@ class Fraction {
  public:
     Fraction();
     Fraction(int _numerator, int _denominator);
-    Fraction(const Fraction& fraction);
+    Fraction(const Fraction& a);
     ~Fraction();
 
     int getNumerator();
     int getDenominator();
 
-    const Fraction& operator=(const Fraction& fraction);
+    const Fraction& operator=(const Fraction& a);
     Fraction& operator+(const Fraction& a);
     Fraction& operator-(const Fraction& a);
     Fraction& operator*(const Fraction& a);

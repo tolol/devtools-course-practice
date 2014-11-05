@@ -42,9 +42,8 @@ Fraction::Fraction(int _numerator, int _denominator) {
     }
 }
 
-Fraction::Fraction(const Fraction& fraction):
-    numerator(fraction.getNumerator()), denominator(fraction.getDenominator()) {
-}
+Fraction::Fraction(const Fraction& a): numerator(a.getNumerator()),
+    denominator(a.getDenominator()) {}
 
 int Fraction::getNumerator() {
     return numerator;
@@ -66,9 +65,9 @@ void Fraction::setDenominator(int _denominator) {
     }
 }
 
-const Fraction& Fraction::operator=(const Fraction& fraction) {
-    numerator = fraction.getNumerator();
-    denominator = fraction.getDenominator();
+const Fraction& Fraction::operator=(const Fraction& a) {
+    numerator = a.getNumerator();
+    denominator = a.getDenominator();
     return *this;
 }
 
