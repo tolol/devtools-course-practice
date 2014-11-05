@@ -107,8 +107,8 @@ TEST_F(CalculatorTest, Can_Sutract_Fraction) {
     Fraction tmp1(2, 3);
     Fraction tmp2(1, 3);
     tmp1 = tmp1 - tmp2;
-    EXPECT_EQ(1, tmp1.getNumerator);
-    EXPECT_EQ(3, tmp1.getDenominator);
+    EXPECT_EQ(1, tmp1.getNumerator());
+    EXPECT_EQ(3, tmp1.getDenominator());
 }
 
 TEST_F(CalculatorTest, Cannot_Subtract_Fraction_Numerator_Over_MaxInt) {
