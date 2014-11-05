@@ -72,14 +72,14 @@ Fraction& Fraction::operator=(const Fraction& a) {
     return *this;
 }
 
-Fraction& Fraction::operator+(const Fraction& a) {
+Fraction Fraction::operator+(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
-                           static_cast<int64_t>(this->getDenominator()) +
-                           static_cast<int64_t>(this->getNumerator()) *
+                           static_cast<int64_t>(b.getDenominator()) +
+                           static_cast<int64_t>(b.getNumerator()) *
                            static_cast<int64_t>(a.getDenominator());
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
-                             static_cast<int64_t>(this->getDenominator());
+                             static_cast<int64_t>(b.getDenominator());
 
     int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
@@ -90,18 +90,17 @@ Fraction& Fraction::operator+(const Fraction& a) {
 
     tmp.setNumerator(static_cast<int>(tmpNumerator));
     tmp.setDenominator(static_cast<int>(tmpDenominator));
-    *this = tmp;
-    return *this;
+    return tmp;
 }
 
-Fraction& Fraction::operator-(const Fraction& a) {
+Fraction Fraction::operator-(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
-                           static_cast<int64_t>(this->getDenominator()) -
-                           static_cast<int64_t>(this->getNumerator()) *
+                           static_cast<int64_t>(b.getDenominator()) -
+                           static_cast<int64_t>(b.getNumerator()) *
                            static_cast<int64_t>(a.getDenominator());
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
-                             static_cast<int64_t>(this->getDenominator());
+                             static_cast<int64_t>(b.getDenominator());
 
     int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
@@ -112,16 +111,15 @@ Fraction& Fraction::operator-(const Fraction& a) {
 
     tmp.setNumerator(static_cast<int>(tmpNumerator));
     tmp.setDenominator(static_cast<int>(tmpDenominator));
-    *this = tmp;
-    return *this;
+    return tmp;
 }
 
-Fraction& Fraction::operator*(const Fraction& a) {
+Fraction Fraction::operator*(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
-                           static_cast<int64_t>(this->getNumerator());
+                           static_cast<int64_t>(b.getNumerator());
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
-                             static_cast<int64_t>(this->getDenominator());
+                             static_cast<int64_t>(b.getDenominator());
 
     int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
@@ -132,16 +130,15 @@ Fraction& Fraction::operator*(const Fraction& a) {
 
     tmp.setNumerator(static_cast<int>(tmpNumerator));
     tmp.setDenominator(static_cast<int>(tmpDenominator));
-    *this = tmp;
-    return *this;
+    return tmp;
 }
 
-Fraction& Fraction::operator/(const Fraction& a) {
+Fraction Fraction::operator/(const Fraction& a, const Fraction& b) {
     Fraction tmp;
     int64_t tmpNumerator = static_cast<int64_t>(a.getNumerator()) *
-                           static_cast<int64_t>(this->getDenominator());
+                           static_cast<int64_t>(b.getDenominator());
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
-                             static_cast<int64_t>(this->getNumerator());
+                             static_cast<int64_t>(b.getNumerator());
 
     int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
@@ -152,6 +149,5 @@ Fraction& Fraction::operator/(const Fraction& a) {
 
     tmp.setNumerator(static_cast<int>(tmpNumerator));
     tmp.setDenominator(static_cast<int>(tmpDenominator));
-    *this = tmp;
-    return *this;
+    return tmp;
 }
