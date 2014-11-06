@@ -5,16 +5,16 @@
 
 class SimpleCalculator {
  public:
-    std::string BinToHex(int bin);
-    int BinToOct(int bin);
-    int HexToBin(std::string hex);
-    int OctToBin(int Oct);
+    std::string BinToHex(std::string bin);
+    std::string BinToOct(std::string bin);
+    std::string HexToBin(std::string hex);
+    std::string OctToBin(std::string Oct);
  private:
-    int BinToDec(int bin);
-    int OctToDec(int oct);
+    int BinToDec(std::string bin);
+    int OctToDec(std::string oct);
     int HexToDec(std::string hex);
-    int DecToBin(int dec);
-    int DecToOct(int dec);
+    std::string DecToBin(int dec);
+    std::string DecToOct(int dec);
     std::string DecToHex(int dec);
 };
 
