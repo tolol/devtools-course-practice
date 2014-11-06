@@ -13,30 +13,28 @@ class ConverterTest : public ::testing::Test {
 };
 
 TEST_F(ConverterTest, can_Rub_To_Eur) {
-    EXPECT_NEAR(conv.rubToEur(53.5948527), 1.0, 1e-5);
-}
-
-TEST_F(ConverterTest, can_Rub_To_Usd) {
-    EXPECT_NEAR(conv.rubToUsd(42.2600685), 1.0, 1e-5);
-}
-
-TEST_F(ConverterTest, can_Usd_To_Eur) {
-    EXPECT_NEAR(conv.usdToEur(1.0), 42.2600685/53.5948527, 1e-5);
-}
-
-TEST_F(ConverterTest, can_Usd_To_Rub) {
-    EXPECT_NEAR(conv.usdToRub(1.0), 42.2600685, 1e-5);
-}
-
-TEST_F(ConverterTest, can_Eur_To_Rub) {
-    EXPECT_NEAR(conv.eurToRub(1.0), 53.5948527, 1e-5);
+    EXPECT_NEAR(conv.convert(conv.RUB, conv.EUR, 53.5948527), 1.0, 1e-5);
 }
 
 TEST_F(ConverterTest, can_Eur_To_Usd) {
-    EXPECT_NEAR(conv.eurToUsd(1.0), 53.5948527/42.2600685, 1e-5);
+    EXPECT_NEAR(conv.convert(conv.EUR, conv.USD, 1.0),
+        53.5948527/42.2600685, 1e-5);
 }
 
-TEST_F(ConverterTest, Do_Throw_Exception_When_Value_Is_Negative) {
-    EXPECT_THROW(conv.rubToEur(-100), std::string);
+TEST_F(ConverterTest, can_Usd_To_Rub) {
+    EXPECT_NEAR(conv.convert(conv.USD, conv.RUB, 1.0), 42.2600685, 1e-5);
 }
+
+TEST_F(ConverterTest, can_Gbp_To_Nok) {
+    EXPECT_NEAR(conv.convert(conv.GBP, conv.NOK, 1.0), 70.8657/6.42, 1e-5);
+}
+
+TEST_F(ConverterTest, can_Nok_To_Jpy) {
+    EXPECT_NEAR(conv.convert(conv.NOK, conv.JPY, 1.0), 6.42/0.38, 1e-5);
+}
+
+TEST_F(ConverterTest, can_Jpy_To_Rub) {
+    EXPECT_NEAR(conv.convert(conv.JPY, conv.RUB, 1.0), 0.38, 1e-5);
+}
+
 

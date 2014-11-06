@@ -7,14 +7,17 @@ class CurrencyConverter {
  public:
     CurrencyConverter();
     ~CurrencyConverter();
-    double rubToEur(double rub);
-    double rubToUsd(double rub);
-    double eurToUsd(double eur);
-    double eurToRub(double eur);
-    double usdToRub(double usd);
-    double usdToEur(double usd);
- private:
-    void checkRange(double value);
-    double mainConverter(double value, int mode);
+    enum Currency {
+        USD = 1,
+        EUR = 2,
+        RUB = 3,
+        // Фунты-стерлингов
+        GBP = 4,
+        // Японская иена
+        JPY = 5,
+        // Норвежская крона
+        NOK = 6
+    };
+    double convert(Currency from, Currency to, double value);
 };
 #endif  // CODE_BYKADOROV_ROMAN_INCLUDE_CURRENCYCONVERTER_H_

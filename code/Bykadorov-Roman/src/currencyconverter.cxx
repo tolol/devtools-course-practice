@@ -8,62 +8,55 @@
 CurrencyConverter::CurrencyConverter() {}
 CurrencyConverter::~CurrencyConverter() {}
 
-const double euroForRub = 53.5948527;
+const double eurForRub = 53.5948527;
 const double usdForRub = 42.2600685;
-const double euroForUsd = euroForRub/usdForRub;
-const double usdForEuro = usdForRub/euroForRub;
+const double gbpForRub = 70.8657;
+const double jpyForRub = 0.38;
+const double nokForRub = 6.42;
 
-void CurrencyConverter::checkRange(double value) {
-    if (value < 0)
-        throw std::string("The value is negative");
-}
-double CurrencyConverter::rubToEur(double rub) {
-    return mainConverter(rub, 0);
-}
-double CurrencyConverter::rubToUsd(double rub) {
-    return mainConverter(rub, 1);
-}
-double CurrencyConverter::usdToEur(double usd) {
-    return mainConverter(usd, 2);
-}
-double CurrencyConverter::usdToRub(double usd) {
-    return mainConverter(usd, 3);
-}
-double CurrencyConverter::eurToRub(double eur) {
-    return mainConverter(eur, 4);
-}
-double CurrencyConverter::eurToUsd(double eur) {
-    return mainConverter(eur, 5);
-}
-double CurrencyConverter::mainConverter(double value, int mode) {
-    double _value = 0;
-    switch (mode) {
-        // rubToEur(double)
-        case 0:
-            _value = value/euroForRub;
+double CurrencyConverter::convert(Currency from, Currency to, double value) {
+double fromToRub = 0;
+double rubTo = 0;
+    switch (from) {
+        case USD:
+            fromToRub = value * usdForRub;
         break;
-        // rubToUsd(double)
-        case 1:
-            _value = value/usdForRub;
+        case EUR:
+            fromToRub = value * eurForRub;
         break;
-        // usdToEur(double)
-        case 2:
-            _value = value*(usdForEuro);
+        case RUB:
+            fromToRub = value;
         break;
-        // usdToRub(double)
-        case 3:
-            _value = value*usdForRub;
+        case GBP:
+            fromToRub = value * gbpForRub;
         break;
-        // eurToRub(double)
-        case 4:
-            _value = value*euroForRub;
+        case JPY:
+            fromToRub = value * jpyForRub;
         break;
-        // eurToUsd(double)
-        case 5:
-            _value = value*(euroForUsd);
+        case NOK:
+            fromToRub = value * nokForRub;
         break;
-    }
-    checkRange(_value);
-    return _value;
+    };
+    switch (to) {
+        case USD:
+            rubTo = fromToRub / usdForRub;
+        break;
+        case EUR:
+            rubTo = fromToRub / eurForRub;
+        break;
+        case RUB:
+            rubTo = fromToRub;
+        break;
+        case GBP:
+            rubTo = fromToRub / gbpForRub;
+        break;
+        case JPY:
+            rubTo = fromToRub / jpyForRub;
+        break;
+        case NOK:
+            rubTo = fromToRub / nokForRub;
+        break;
+    };
+return rubTo;
 }
 
