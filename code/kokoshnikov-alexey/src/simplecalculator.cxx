@@ -9,34 +9,6 @@
 #include <string>
 #include <cstdlib>
 int SimpleCalculator::BinToDec(std::string bin) {
-    /*int k = 0;
-    if (bin == abs(bin)) {
-        bin = abs(bin);
-        k = 1;
-    } else {
-        bin = abs(bin);
-        k = -1;
-    }
-    int dec = 0;
-    int tmp = 0;
-    int i = 0;
-    while ((bin/10) > 0) {
-        tmp = bin%10;
-        if (tmp > 1) {
-            throw std::string("Invalid parameters");
-        }
-        tmp = tmp*static_cast<int>(pow(2, i));
-        dec = dec + tmp;
-        bin = bin/10;
-        i++;
-    }
-    tmp = bin;
-    if (tmp > 1) {
-        throw std::string("Invalid parameters");
-    }
-    tmp = tmp*static_cast<int>(pow(2, i));
-    dec = dec + tmp;
-    return dec*k;*/
     int k = 0;
     if (bin[0] == '-') {
         bin.erase(0, 1);
@@ -63,34 +35,6 @@ int SimpleCalculator::BinToDec(std::string bin) {
 }
 
 int SimpleCalculator::OctToDec(std::string oct) {
-    /*int k = 0;
-    if (oct == abs(oct)) {
-        oct = abs(oct);
-        k = 1;
-    } else {
-        oct = abs(oct);
-        k = -1;
-    }
-    int dec = 0;
-    int tmp = 0;
-    int i = 0;
-    while ((oct/10) > 0) {
-        tmp = oct%10;
-        if (tmp > 7) {
-            throw std::string("Invalid parameters");
-        }
-        tmp = tmp*static_cast<int>(pow(8, i));
-        dec = dec + tmp;
-        oct = oct/10;
-        i++;
-    }
-    tmp = oct;
-    if (tmp > 7) {
-        throw std::string("Invalid parameters");
-    }
-    tmp = tmp*static_cast<int>(pow(8, i));
-    dec = dec + tmp;
-    return dec*k;*/
     int k = 0;
     if (oct[0] == '-') {
         oct.erase(0, 1);
@@ -145,24 +89,6 @@ int SimpleCalculator::HexToDec(std::string hex) {
 }
 
 std::string SimpleCalculator::DecToBin(int dec) {
-    /*int k = 0;
-    if (dec == abs(dec)) {
-        dec = abs(dec);
-        k = 1;
-    } else {
-        dec = abs(dec);
-        k = -1;
-    }
-    int bin = 0;
-    int tmp = 0;
-    int i = 0;
-    while (dec > 0) {
-        tmp = dec%2;
-        dec = dec/2;
-        bin = bin + tmp*static_cast<int>(pow(10, i));
-        i++;
-    }
-    return bin*k;*/
     char k = '0';
     if (dec == abs(dec)) {
         dec = abs(dec);
@@ -190,24 +116,6 @@ std::string SimpleCalculator::DecToBin(int dec) {
 }
 
 std::string SimpleCalculator::DecToOct(int dec) {
-    /*int k = 0;
-    if (dec == abs(dec)) {
-        dec = abs(dec);
-        k = 1;
-    } else {
-        dec = abs(dec);
-        k = -1;
-    }
-    int oct = 0;
-    int tmp = 0;
-    int i = 0;
-    while (dec > 0) {
-        tmp = dec%8;
-        dec = dec/8;
-        oct = oct + tmp*static_cast<int>(pow(10, i));
-        i++;
-    }
-    return oct*k;*/
     char k = '0';
     if (dec == abs(dec)) {
         dec = abs(dec);
