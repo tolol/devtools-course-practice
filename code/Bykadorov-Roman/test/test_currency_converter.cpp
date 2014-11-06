@@ -33,8 +33,8 @@ TEST_F(ConverterTest, can_Nok_To_Jpy) {
     EXPECT_NEAR(conv.convert(conv.NOK, conv.JPY, 1.0), 6.42/0.38, 1e-5);
 }
 
-TEST_F(ConverterTest, can_Jpy_To_Rub) {
-    EXPECT_NEAR(conv.convert(conv.JPY, conv.RUB, 1.0), 0.38, 1e-5);
+TEST_F(ConverterTest, can_Jpy_To_Gbp) {
+    EXPECT_NEAR(conv.convert(conv.JPY, conv.GBP, 1.0), 0.38/70.8657, 1e-5);
 }
 
 
