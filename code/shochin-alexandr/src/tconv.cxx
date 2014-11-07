@@ -22,7 +22,7 @@ double TemperatureConvertor::Convert(Temperature temp, Unit unit) {
 }
 
 double TemperatureConvertor::auxiliaryArrayOne[4] = {0, -273.15, -32, 0};
-double TemperatureConvertor::auxiliaryArrayTwo[4] = {1, 1, 5 / 9, 100 / 33};
+double TemperatureConvertor::auxiliaryArrayTwo[4] = {1, 1, 5.0/9.0, 100.0/33};
 
 int TemperatureConvertor::Check(Temperature temp) {
     if ((temp.unit == Celsius) && (temp.value < -273.15)) {
