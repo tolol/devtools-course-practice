@@ -1,6 +1,6 @@
 // Copyright 2014 Tolstolutskaya Olga
-#ifndef CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
-#define CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
+#ifndef CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR_H_
+#define CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR_H_
 #include <stdio.h>
 #include <math.h>
 
@@ -21,7 +21,7 @@ class Vector3d {
 
     double GetA();
 
-    double Norma();
+    double Norm();
 
     void Normalize();
 
@@ -31,4 +31,4 @@ class Vector3d {
 
     void Print();
 };
-#endif  // CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVEKTOR_H_
+#endif  // CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR_H_
