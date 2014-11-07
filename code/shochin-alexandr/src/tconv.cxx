@@ -1,41 +1,58 @@
-﻿  // Copyright 2014 Alexandr Shochin
+// Copyright 2014 Shochin Alexandr
 
-#include "include/tconv.h"
+#include "tconv.h"
 
-#include <limits>
+#include <limits.h>
 #include <string>
 
-TemperatureConverter::TemperatureConverter(double celsius) : celsius_(celsius) {
-}
+TemperatureConvertor::TemperatureConvertor() {}
 
-TemperatureConverter::~TemperatureConverter() {
-}
+TemperatureConvertor::~TemperatureConvertor() {}
 
-double TemperatureConverter::GetKelvin() {
-    return this->celsius_ + 273.15;
-}
-
-double TemperatureConverter::GetFahrenheit() {
-    return (9.0 / 5.0) * this->celsius_ + 32.0;
-}
-
-double TemperatureConverter::GetNewton() {
-    return (33.0 / 100.0) * this->celsius_;
-}
-
-void TemperatureConverter::Check() {
-    if (celsius_ < -273.15) {
-        throw std::string(" can not be below -273.15");
+double TemperatureConvertor::Convert(Temperature temp, Unit unit) {
+    if (Check(temp, unit) == -1) {
+            throw std::string("Error!");
+    } else {
+        if (temp.unit == Celsius) {
+            return ConvertFromCelsius(temp, unit);
+        }
+        else {
+            return ConvertToCelsius(temp, unit);
+        }
     }
 }
 
-double TemperatureConverter::Convert(int unit) {
-    Check();
-    switch (unit) {
-    case 1: return GetKelvin();
-    case 2: return GetFahrenheit();
-    case 3: return GetNewton();
-    default: throw std::string("unit should be in the range from 1 to 3");
+double TemperatureConvertor::auxiliaryArrayOne[4] = {0.0, -273.15, -32.0, 0.0};
+double TemperatureConvertor::auxiliaryArrayTwo[4] = {1.0, 1.0, 5.0 / 9.0, 
+                                                                 100.0 / 33.0};
+
+int TemperatureConvertor::Check(Temperature temp, Unit unit) {
+
+    if ((temp.unit == Celsius) && (temp.value < -273.15)) {
+        return -1;
+    } else if ((temp.unit == Kelvin) && (temp.value < 0)) {
+        return -1;
+    } else if ((temp.unit == Fahrenheit) && (temp.value < -459.67)) {
+        return -1;
+    } else if ((temp.unit == Newton) && (temp.value < -90.14)) {
+        return -1;
+    }
+    else {
+        return 0;
     }
 }
 
+double TemperatureConvertor::ConvertFromCelsius(Temperature temp, Unit unit) {
+    if (temp.unit == Celsius && unit == Kelvin) {
+        return temp.value - auxiliaryArrayOne[unit];
+    }
+    else {
+        return 1 / auxiliaryArrayTwo[unit] * temp.value - 
+                                    auxiliaryArrayOne[unit];
+    }
+}
+
+double TemperatureConvertor::ConvertToCelsius(Temperature temp, Unit unit) {
+    return (auxiliaryArrayOne[temp.unit] + temp.value) * 
+                                auxiliaryArrayTwo[temp.unit];
+}

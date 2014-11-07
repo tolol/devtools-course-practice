@@ -3,18 +3,27 @@
 #ifndef CODE_SHOCHIN_ALEXANDR_INCLUDE_TCONV_H_
 #define CODE_SHOCHIN_ALEXANDR_INCLUDE_TCONV_H_
 
-class TemperatureConverter {
- private:
-     double celsius_;
+enum Unit {Celsius, Kelvin, Fahrenheit, Newton};
+
+#pragma pack(push, 1)
+struct Temperature {
+    double value;
+    Unit unit;
+};
+#pragma pack(pop)
+
+class TemperatureConvertor {
  public:
-     explicit TemperatureConverter(double celsius);
-     ~TemperatureConverter();
-     double Convert(int unit);
- protected:
-     void Check();
-     double GetKelvin();
-     double GetFahrenheit();
-     double GetNewton();
+    TemperatureConvertor();
+    ~TemperatureConvertor();
+    double Convert(Temperature temp, Unit unit);
+
+ private:
+    static double auxiliaryArrayOne[4];
+    static double auxiliaryArrayTwo[4];
+    int Check(Temperature temp, Unit unit);
+    double ConvertFromCelsius(Temperature temp, Unit unit);
+    double ConvertToCelsius(Temperature temp, Unit unit);
 };
 
 #endif  // CODE_SHOCHIN_ALEXANDR_INCLUDE_TCONV_H_

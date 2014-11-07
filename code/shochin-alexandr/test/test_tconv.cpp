@@ -7,31 +7,80 @@
 
 #include "include/tconv.h"
 
-class TConvTest : public ::testing::Test {
+class TempConvTest : public ::testing::Test {
  protected:
+    TemperatureConvertor tempconv;
 };
 
-TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_Celsius_Is_Wrong_1) {
-    TemperatureConverter tc(-300.0);
-    EXPECT_THROW(tc.Convert(1) , std::string);
+TEST_F(TempConvTest, Throw_Exception_When_Value_For_Celsius_Is_Wrong) {
+    Temperature temp;
+    temp.value = -300;
+    temp.unit = Celsius;
+    EXPECT_THROW(tempconv.Convert(temp, Newton), std::string);
+}
+TEST_F(TempConvTest, Throw_Exception_When_Value_For_Kelvin_Is_Wrong) {
+    Temperature temp;
+    temp.value = -3;
+    temp.unit = Kelvin;
+    EXPECT_THROW(tempconv.Convert(temp, Newton), std::string);
+}
+TEST_F(TempConvTest, Throw_Exception_When_Value_For_Newton_Is_Wrong) {
+    Temperature temp;
+    temp.value = -100;
+    temp.unit = Newton;
+    EXPECT_THROW(tempconv.Convert(temp, Kelvin), std::string);
+}
+TEST_F(TempConvTest, Throw_Exception_When_Value_For_Fahrenheit_Is_Wrong) {
+    Temperature temp;
+    temp.value = -500;
+    temp.unit = Fahrenheit;
+    EXPECT_THROW(tempconv.Convert(temp, Newton), std::string);
 }
 
-TEST_F(TConvTest, Do_Throw_Exception_When_Value_For_unit_Is_Wrong_1) {
-    TemperatureConverter tc2(100.0);
-    EXPECT_THROW(tc2.Convert(0) , std::string);
+TEST_F(TempConvTest, Convert_Celsius_To_Kelvin) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Celsius;
+    double var = 323.14999999999998;
+    EXPECT_EQ(var, tempconv.Convert(temp, Kelvin));
 }
 
-TEST_F(TConvTest, Check_the_value_of_Kelvin) {
-    TemperatureConverter tc3(200.0);
-    EXPECT_NEAR(tc3.Convert(1) , 473.14999999999998 , 1e-5);
+TEST_F(TempConvTest, Convert_Celsius_To_Fahrenheit) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Celsius;
+    double var = 121.99999999999999;
+    EXPECT_EQ(var, tempconv.Convert(temp, Fahrenheit));
 }
 
-TEST_F(TConvTest, Check_the_value_of_Fahrenheit) {
-    TemperatureConverter tc3(200.0);
-    EXPECT_NEAR(tc3.Convert(2) , 392.00000000000000 , 1e-5);
+TEST_F(TempConvTest, Convert_Celsius_To_Newton) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Celsius;
+    double var = 16.500000000000000;
+    EXPECT_EQ(var, tempconv.Convert(temp, Newton));
 }
 
-TEST_F(TConvTest, Check_the_value_of_Newton) {
-    TemperatureConverter tc3(200.0);
-    EXPECT_NEAR(tc3.Convert(3) , 66.000000000000000 , 1e-5);
+TEST_F(TempConvTest, Convert_Kelvin_To_Celsius) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Kelvin;
+    double var = -223.14999999999998;
+    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
+}
+
+TEST_F(TempConvTest, Convert_Fahrenheit_To_Celsius) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Fahrenheit;
+    double var = 10.000000000000000;
+    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
+}
+
+TEST_F(TempConvTest, Convert_Newton_To_Celsius) {
+    Temperature temp;
+    temp.value = 50;
+    temp.unit = Newton;
+    double var = 151.51515151515150;
+    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
 }
