@@ -41,8 +41,7 @@ int TemperatureConvertor::Check(Temperature temp, Unit unit) {
 double TemperatureConvertor::ConvertFromCelsius(Temperature temp, Unit unit) {
     if (temp.unit == Celsius && unit == Kelvin) {
         return temp.value - auxiliaryArrayOne[unit];
-    }
-    else {
+    } else {
         return (1 / auxiliaryArrayTwo[unit] *
         temp.value - auxiliaryArrayOne[unit]);
     }
