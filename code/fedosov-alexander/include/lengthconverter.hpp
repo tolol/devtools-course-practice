@@ -5,6 +5,7 @@
 class LengthConverter {
  public:
     enum Type {
+        TYPE_WRONG = -1,
         TYPE_METER = 1,
         TYPE_INCH = 2,
         TYPE_FOOT = 3,

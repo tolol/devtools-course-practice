@@ -20,32 +20,28 @@ return length;
 }
 
 double LengthConverter::convertToMeters(Type type, double length) {
-     switch (type) {
-        case LengthConverter::TYPE_METER: {return checkLength(length);}
-        case LengthConverter::TYPE_INCH: {
+        if (type == LengthConverter::TYPE_METER) {return checkLength(length);}
+        else if (type == LengthConverter::TYPE_INCH) {
             length*=0.0254; return(checkLength(length));}
-        case LengthConverter::TYPE_FOOT: {
+        else if (type == LengthConverter::TYPE_FOOT) {
             length*=0.3048; return(checkLength(length));}
-        case LengthConverter::TYPE_YARD: {
+        else if (type ==  LengthConverter::TYPE_YARD) {
             length*=0.9144; return(checkLength(length));}
-        case LengthConverter::TYPE_MILE: {
-            length*=1609.344; return(checkLength(length));}
-    }
-    throw std::string("Unknown type");
+        else if (type ==  LengthConverter::TYPE_MILE) {
+            length*=1609.344; return(checkLength(length));} else {
+    throw std::string("Unknown type");}
 }
 double LengthConverter::convertMetersTo(Type type, double length) {
-     switch (type) {
-        case LengthConverter::TYPE_METER: {return checkLength(length);}
-        case LengthConverter::TYPE_INCH: {
+        if (type == LengthConverter::TYPE_METER) {return checkLength(length);}
+        else if (type == LengthConverter::TYPE_INCH) {
             length*=39.37007874; return(checkLength(length));}
-        case LengthConverter::TYPE_FOOT: {
+        else if (type == LengthConverter::TYPE_FOOT) {
             length*=3.28083989; return(checkLength(length));}
-        case LengthConverter::TYPE_YARD: {
+        else if (type ==  LengthConverter::TYPE_YARD) {
             length*=1.09361329; return(checkLength(length));}
-        case LengthConverter::TYPE_MILE: {
-            length*=0.00062137; return(checkLength(length));}
-    }
-    throw std::string("Unknown type");
+        else if (type ==  LengthConverter::TYPE_MILE) {
+            length*=0.00062137; return(checkLength(length));} else {
+    throw std::string("Unknown type");}
 }
 double LengthConverter::convert(Type from, double length, Type to) {
     return (convertMetersTo(to, (convertToMeters(from, length))));
