@@ -19,7 +19,7 @@ double Vector3d::GetC() {
     return(c);
 }
 
-double Vector3d::Norma() {
+double Vector3d::Norm() {
     double LocalNorm;
     double ForSqrt = a*a+b*b+c*c;
     LocalNorm = sqrt(fabs(ForSqrt));
@@ -28,7 +28,7 @@ double Vector3d::Norma() {
 
 void Vector3d::Normalize() {
     if ((fabs(a) > 0.00001)||(fabs(b) > 0.00001)||(fabs(c) > 0.00001)) {
-        double LocalNorm = Norma();
+        double LocalNorm = Norm();
         double inversion = 1/LocalNorm;
         a = a*inversion;
         b = b*inversion;
