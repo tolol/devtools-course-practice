@@ -10,7 +10,7 @@ TemperatureConvertor::TemperatureConvertor() {}
 TemperatureConvertor::~TemperatureConvertor() {}
 
 double TemperatureConvertor::Convert(Temperature temp, Unit unit) {
-    if (Check(temp, unit) == -1) {
+    if (Check(temp) == -1) {
             throw std::string("Error!");
     } else {
         if (temp.unit == Celsius) {
