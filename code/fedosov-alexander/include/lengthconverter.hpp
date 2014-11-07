@@ -4,7 +4,7 @@
 #define CODE_FEDOSOV_ALEXANDER_INCLUDE_LENGTHCONVERTER_HPP_
 class LengthConverter {
  public:
-    enum {
+    enum Type {
         TYPE_METER = 1,
         TYPE_INCH = 2,
         TYPE_FOOT = 3,
@@ -13,9 +13,9 @@ class LengthConverter {
     };
     LengthConverter();
     ~LengthConverter();
-    double convertToMeters(int64_t type, double length);
-    double convertMetersTo(int64_t type, double length);
-    double convert(int64_t from, double length, int64_t to);
+    double convertToMeters(Type type, double length);
+    double convertMetersTo(Type type, double length);
+    double convert(Type from, double length, Type to);
 
  private:
     static double checkLength(double length);
