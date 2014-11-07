@@ -1,31 +1,8 @@
 // Copyright 2014 Roy Viktor
 #include <../include/mat_stat.hpp>
-mat_stat::mat_stat() : statisticValues_(), probabilityValues_(),
-                                           countStatisticValues_(0) {
-    statisticValues_ = new double[countStatisticValues_];
-    probabilityValues_ = new double[countStatisticValues_];
+#include <vector>
+mat_stat::mat_stat() {
 }
-void mat_stat::setValues(const double *statisticValues,
-                         const double *probabilityValues,
-                         const int countValues) {
-  countStatisticValues_ = countValues;
-  statisticValues_ = new double[countStatisticValues_];
-  probabilityValues_ = new double[countStatisticValues_];
-  for ( int valueNumber = 0; valueNumber < countValues; valueNumber++ ) {
-      statisticValues_[valueNumber] = statisticValues[valueNumber];
-      probabilityValues_[valueNumber] = probabilityValues[valueNumber];
-  }
-}
-void mat_stat::getValues(double *statisticValues,
-                         double *probabilityValues,
-                         int &countValues) {
-  countValues = countStatisticValues_;
-  for ( int valueNumber = 0; valueNumber < countValues; valueNumber++ ) {
-      statisticValues[valueNumber] = statisticValues_[valueNumber];
-      probabilityValues[valueNumber] = probabilityValues_[valueNumber];
-  }
-}
-// подсчет мат ожидания
 double mat_stat::expectedValue(const double *statisticValues,
                                const double *probabilityValues,
                                const int countValues) {
@@ -36,7 +13,6 @@ double mat_stat::expectedValue(const double *statisticValues,
     }
     return localExpectedValue;
 }
-// подсчет дисперсии
 double mat_stat::variance(const double *statisticValues,
                           const double *probabilityValues,
                           const int countValues) {
@@ -53,7 +29,7 @@ double mat_stat::variance(const double *statisticValues,
   localVariance = expectedSqrValue - sqrtOfExpectedValue * sqrtOfExpectedValue;
   return localVariance;
 }
+
+
 mat_stat::~mat_stat() {
-    delete [] statisticValues_;
-    delete [] probabilityValues_;
 }

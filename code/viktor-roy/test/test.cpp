@@ -43,23 +43,9 @@ TEST(ExpextedValueTest, Can_Calculate_Another_Variance_Value) {
     // assert
     EXPECT_EQ(value, 1);
 }
-TEST(SetGetValueTest, Can_Set_Get_Values) {
-    // arrange
-    mat_stat mat;
-    int n = 6;
-    int getN;
-    double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
-    double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    double getProbability[6];
-    double getStatisticValues[6];
-    // act
-    mat.setValues(statisticValues, probability, n);
-    mat.getValues(getStatisticValues, getProbability, getN);
-    // assert
-    for (int i = 0; i < n; i++) {
-        EXPECT_EQ(statisticValues[i], getStatisticValues[i]);
-        EXPECT_EQ(probability[i], getProbability[i]);
-    }
+
+TEST(ExpextedValueTest, EmptyTest) {
+  mat_stat mat;
 }
 
 int main(int argc, char **argv) {
