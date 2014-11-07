@@ -1,7 +1,7 @@
 // Copyright 2014 Tolstolutskaya Olga
 #include <stdio.h>
 #include <math.h>
-#include "include/3DVektor.h"
+#include "include/3DVector.h"
 
 Vector3d::Vector3d(): a(0), b(0), c(0) {}
 
