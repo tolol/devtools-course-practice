@@ -16,7 +16,7 @@ double TemperatureConvertor::Convert(Temperature temp, Unit unit) {
         if (temp.unit == Celsius) {
             return ConvertFromCelsius(temp, unit);
         } else {
-            return ConvertToCelsius(temp, unit);
+            return ConvertToCelsius(temp);
         }
     }
 }
@@ -24,7 +24,7 @@ double TemperatureConvertor::Convert(Temperature temp, Unit unit) {
 double TemperatureConvertor::auxiliaryArrayOne[4] = {0, -273.15, -32, 0};
 double TemperatureConvertor::auxiliaryArrayTwo[4] = {1, 1, 5 / 9, 100 / 33};
 
-int TemperatureConvertor::Check(Temperature temp, Unit unit) {
+int TemperatureConvertor::Check(Temperature temp) {
     if ((temp.unit == Celsius) && (temp.value < -273.15)) {
         return -1;
     } else if ((temp.unit == Kelvin) && (temp.value < 0)) {
@@ -47,7 +47,7 @@ double TemperatureConvertor::ConvertFromCelsius(Temperature temp, Unit unit) {
     }
 }
 
-double TemperatureConvertor::ConvertToCelsius(Temperature temp, Unit unit) {
+double TemperatureConvertor::ConvertToCelsius(Temperature temp) {
     return ((auxiliaryArrayOne[temp.unit] +
     temp.value) * auxiliaryArrayTwo[temp.unit]);
 }

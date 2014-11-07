@@ -21,9 +21,9 @@ class TemperatureConvertor {
  private:
     static double auxiliaryArrayOne[4];
     static double auxiliaryArrayTwo[4];
-    int Check(Temperature temp, Unit unit);
+    int Check(Temperature temp);
     double ConvertFromCelsius(Temperature temp, Unit unit);
-    double ConvertToCelsius(Temperature temp, Unit unit);
+    double ConvertToCelsius(Temperature temp);
 };
 
 #endif  // CODE_SHOCHIN_ALEXANDR_INCLUDE_TCONV_H_
