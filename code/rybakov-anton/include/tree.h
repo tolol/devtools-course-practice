@@ -1,10 +1,10 @@
 // Copyright 2014 Anton Rybakov
 
-#include <cstdlib>
-#include <string>
-
 #ifndef CODE_RYBAKOV_ANTON_INCLUDE_TREE_H_
 #define CODE_RYBAKOV_ANTON_INCLUDE_TREE_H_
+
+#include <cstdlib>
+#include <string>
 
 // Tree node template implementation
 
@@ -20,7 +20,7 @@ template <typename _type> class _tree_node {
     _type _value;
     _tree_node* _first_child;
     _tree_node* _next_brother;
-    _tree_node* _parrent;
+    _tree_node* _parent;
  public:
     _tree_node(_type value, _tree_node<_type>* parrent, unsigned int key);
     _tree_node(const _tree_node<_type> &src, _tree_node<_type> *p = NULL);
@@ -31,13 +31,13 @@ template <typename _type> class _tree_node {
     void set_child(_tree_node* node);
     _tree_node* get_brother();
     void set_brother(_tree_node* node);
-    _tree_node* get_parrent();
+    _tree_node* get_parent();
 };
 
 template <typename _type> _tree_node<_type>::_tree_node
 (_type value, _tree_node<_type>* parrent, unsigned int key) {
       _value = value;
-      _parrent = parrent;
+      _parent = parrent;
       _first_child = NULL;
       _next_brother = NULL;
       _key = key;
@@ -48,7 +48,7 @@ _tree_node<_type>::_tree_node
 (const _tree_node<_type> &src, _tree_node<_type> *p) {
     _key = src._key;
     _value = src._value;
-    _parrent = p;
+    _parent = p;
     if (src._first_child != NULL) {
         _first_child = new _tree_node<_type>(*src._first_child, this);
     } else {
@@ -97,8 +97,8 @@ void _tree_node<_type>::set_brother(_tree_node* node) {
     _next_brother = node;
 }
 
-template <typename _type> _tree_node<_type>* _tree_node<_type>::get_parrent() {
-    return _parrent;
+template <typename _type> _tree_node<_type>* _tree_node<_type>::get_parent() {
+    return _parent;
 }
 
 // Tree template implementation
@@ -190,11 +190,11 @@ template <typename _type> void _tree<_type>::destruct() {
             _root = NULL;
             _current = NULL;
         } else {
-            _tree_node<_type>* temp = _current->get_parrent();
+            _tree_node<_type>* temp = _current->get_parent();
             temp = temp->get_child();
             if (temp == _current) {
-                _current = temp->get_parrent();
-                temp->get_parrent()->set_child(temp->get_brother());
+                _current = temp->get_parent();
+                temp->get_parent()->set_child(temp->get_brother());
                 temp->set_brother(NULL);
                 temp->set_child(NULL);
                 delete temp;
@@ -205,7 +205,7 @@ template <typename _type> void _tree<_type>::destruct() {
                 _current->set_brother(NULL);
                 _current->set_child(NULL);
                 delete _current;
-                _current = temp->get_parrent();
+                _current = temp->get_parent();
             }
         }
     }
@@ -234,7 +234,7 @@ template <typename _type> bool _tree<_type>::is_empty() {
 
 template <typename _type> void _tree<_type>::up() {
     if (_current != _root)
-        _current = _current->get_parrent();
+        _current = _current->get_parent();
 }
 
 template <typename _type> void _tree<_type>::down() {
@@ -276,7 +276,7 @@ _tree_search<_type> _tree<_type>::search(unsigned int key) {
         }
         while (temp != NULL) {
             if (temp->get_brother() == NULL) {
-                temp = temp->get_parrent();
+                temp = temp->get_parent();
             } else {
                 temp = temp->get_brother();
                 break;
