@@ -42,7 +42,7 @@ TEST_F(TempConvTest, Convert_Celsius_To_Kelvin) {
     temp.value = 50;
     temp.unit = Celsius;
     double var = 323.14999999999998;
-    EXPECT_EQ(var, tempconv.Convert(temp, Kelvin));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Kelvin), 1e-5);
 }
 
 TEST_F(TempConvTest, Convert_Celsius_To_Fahrenheit) {
@@ -50,7 +50,7 @@ TEST_F(TempConvTest, Convert_Celsius_To_Fahrenheit) {
     temp.value = 50;
     temp.unit = Celsius;
     double var = 121.99999999999999;
-    EXPECT_EQ(var, tempconv.Convert(temp, Fahrenheit));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Fahrenheit), 1e-5);
 }
 
 TEST_F(TempConvTest, Convert_Celsius_To_Newton) {
@@ -58,7 +58,7 @@ TEST_F(TempConvTest, Convert_Celsius_To_Newton) {
     temp.value = 50;
     temp.unit = Celsius;
     double var = 16.500000000000000;
-    EXPECT_EQ(var, tempconv.Convert(temp, Newton));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Newton), 1e-5);
 }
 
 TEST_F(TempConvTest, Convert_Kelvin_To_Celsius) {
@@ -66,7 +66,7 @@ TEST_F(TempConvTest, Convert_Kelvin_To_Celsius) {
     temp.value = 50;
     temp.unit = Kelvin;
     double var = -223.14999999999998;
-    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Celsius), 1e-5);
 }
 
 TEST_F(TempConvTest, Convert_Fahrenheit_To_Celsius) {
@@ -74,7 +74,7 @@ TEST_F(TempConvTest, Convert_Fahrenheit_To_Celsius) {
     temp.value = 50;
     temp.unit = Fahrenheit;
     double var = 10.000000000000000;
-    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Celsius), 1e-5);
 }
 
 TEST_F(TempConvTest, Convert_Newton_To_Celsius) {
@@ -82,5 +82,5 @@ TEST_F(TempConvTest, Convert_Newton_To_Celsius) {
     temp.value = 50;
     temp.unit = Newton;
     double var = 151.51515151515150;
-    EXPECT_EQ(var, tempconv.Convert(temp, Celsius));
+    EXPECT_NEAR(var, tempconv.Convert(temp, Celsius), 1e-5);
 }
