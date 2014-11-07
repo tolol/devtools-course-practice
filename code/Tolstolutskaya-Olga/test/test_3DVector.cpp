@@ -62,7 +62,7 @@ TEST(Vector3dTest, Correct_Computation_VectorProduct) {
     EXPECT_EQ(-3, c.GetC());
 }
 
-TEST(Vector3dTest, Correct_Computation_Normalize2) {
+TEST(Vector3dTest, Correct_Computation_Normalize3) {
     Vector3d a(1, 1, 0);
     a.Normalize();
     EXPECT_NEAR(0.707107, a.GetA(), EPSILON);
