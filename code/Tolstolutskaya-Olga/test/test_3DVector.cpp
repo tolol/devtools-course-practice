@@ -21,15 +21,15 @@ TEST(Vector3dTest, Can_Create_Default) {
 
 TEST(Vector3dTest, Correct_Computation_Norm) {
     Vector3d *a = new Vector3d(1, 2, 3);
-    EXPECT_LT(3.741657 - a->Norm(), 0.00001);
+    EXPECT_NEAR(3.741657, a->Norm(), 1e-5);
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize) {
     Vector3d *a = new Vector3d(1, 2, 3);
     a->Normalize();
-    EXPECT_LT(fabs(0.267261 - a->GetA()), 0.00001);
-    EXPECT_LT(fabs(0.534522 - a->GetB()), 0.00001);
-    EXPECT_LT(fabs(0.801784 - a->GetC()), 0.00001);
+    EXPECT_NEAR(0.267261, a->GetA(), 1e-5);
+    EXPECT_NEAR(0.534522, a->GetB(), 1e-5);
+    EXPECT_NEAR(0.801784, a->GetC(), 1e-5);
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize2) {
