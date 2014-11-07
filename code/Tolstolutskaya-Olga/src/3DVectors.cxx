@@ -38,15 +38,15 @@ void Vector3d::Normalize() {
     }
 }
 
-double Vector3d::ScalarProduct(Vector3d *Vector) {
-    double SProduct = Vector->a*a+Vector->b*b+Vector->c*c;
+double Vector3d::ScalarProduct(const Vector3d &Vector) {
+    double SProduct = Vector.a*a+Vector.b*b+Vector.c*c;
     return (SProduct);
 }
 
-Vector3d* Vector3d::VectorProduct(Vector3d *Vector) {
-    Vector3d *VProduct = new Vector3d();
-    VProduct->a = b*Vector->c-c*Vector->b;
-    VProduct->b = -(a*Vector->c-c*Vector->a);
-    VProduct->c = a*Vector->b-b*Vector->a;
+Vector3d Vector3d::VectorProduct(const Vector3d &Vector) {
+    Vector3d VProduct;
+    VProduct.a = b*Vector.c-c*Vector.b;
+    VProduct.b = -(a*Vector.c-c*Vector.a);
+    VProduct.c = a*Vector.b-b*Vector.a;
     return(VProduct);
 }
