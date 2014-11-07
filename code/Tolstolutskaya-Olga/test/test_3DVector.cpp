@@ -4,7 +4,7 @@
 
 #include "include/3DVector.h"
 
-#define EPSILON EPSILON
+#define EPSILON 1e-5
 
 TEST(Vector3dTest, Can_Create) {
     Vector3d a(1, 2, 3);
@@ -14,7 +14,7 @@ TEST(Vector3dTest, Can_Create) {
 }
 
 TEST(Vector3dTest, Can_Create_Default) {
-    Vector3d a();
+    Vector3d a;
     EXPECT_EQ(0, a.GetA());
     EXPECT_EQ(0, a.GetB());
     EXPECT_EQ(0, a.GetC());
@@ -42,7 +42,7 @@ TEST(Vector3dTest, Correct_Computation_Normalize2) {
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize_Null) {
-    Vector3d a();
+    Vector3d a;
     a.Normalize();
 }
 
@@ -55,7 +55,7 @@ TEST(Vector3dTest, Correct_Computation_ScalarProduct) {
 TEST(Vector3dTest, Correct_Computation_VectorProduct) {
     Vector3d a(1, 2, 3);
     Vector3d b(2, 1, -2);
-    Vector3d c();
+    Vector3d c;
     c = a.VectorProduct(b);
     EXPECT_EQ(-7, c.GetA());
     EXPECT_EQ(8, c.GetB());
