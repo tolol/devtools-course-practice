@@ -4,7 +4,7 @@
 
 #include "include/3DVector.h"
 
-#define EPSILON 1e-5
+#define EPSILON EPSILON
 
 TEST(Vector3dTest, Can_Create) {
     Vector3d a(1, 2, 3);
@@ -22,23 +22,23 @@ TEST(Vector3dTest, Can_Create_Default) {
 
 TEST(Vector3dTest, Correct_Computation_Norm) {
     Vector3d a(1, 2, 3);
-    EXPECT_NEAR(3.741657, a.Norm(), 1e-5);
+    EXPECT_NEAR(3.741657, a.Norm(), EPSILON);
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize) {
     Vector3d a(1, 2, 3);
     a.Normalize();
-    EXPECT_NEAR(0.267261, a.GetA(), 1e-5);
-    EXPECT_NEAR(0.534522, a.GetB(), 1e-5);
-    EXPECT_NEAR(0.801784, a.GetC(), 1e-5);
+    EXPECT_NEAR(0.267261, a.GetA(), EPSILON);
+    EXPECT_NEAR(0.534522, a.GetB(), EPSILON);
+    EXPECT_NEAR(0.801784, a.GetC(), EPSILON);
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize2) {
     Vector3d a(-1, -2, -3);
     a.Normalize();
-    EXPECT_NEAR(-0.267261, a.GetA(), 1e-5);
-    EXPECT_NEAR(-0.534522, a.GetB(), 1e-5);
-    EXPECT_NEAR(-0.801784, a.GetC(), 1e-5);
+    EXPECT_NEAR(-0.267261, a.GetA(), EPSILON);
+    EXPECT_NEAR(-0.534522, a.GetB(), EPSILON);
+    EXPECT_NEAR(-0.801784, a.GetC(), EPSILON);
 }
 
 TEST(Vector3dTest, Correct_Computation_Normalize_Null) {
@@ -65,7 +65,7 @@ TEST(Vector3dTest, Correct_Computation_VectorProduct) {
 TEST(Vector3dTest, Correct_Computation_Normalize2) {
     Vector3d a(1, 1, 0);
     a.Normalize();
-    EXPECT_NEAR(0.707107, a.GetA(), 1e-5);
-    EXPECT_NEAR(0.707107, a.GetB(), 1e-5);
-    EXPECT_NEAR(0.0, a.GetC(), 1e-5);
+    EXPECT_NEAR(0.707107, a.GetA(), EPSILON);
+    EXPECT_NEAR(0.707107, a.GetB(), EPSILON);
+    EXPECT_NEAR(0.0, a.GetC(), EPSILON);
 }
