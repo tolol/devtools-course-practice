@@ -25,9 +25,9 @@ class Vector3d {
 
     void Normalize();
 
-    double ScalarProduct(Vector3d *Vector);
+    double ScalarProduct(const Vector3d &Vector);
 
-    Vector3d* VectorProduct(Vector3d *Vector);
+    Vector3d* VectorProduct(const Vector3d &Vector);
 
     void Print();
 };
