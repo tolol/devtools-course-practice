@@ -27,7 +27,7 @@ class Vector3d {
 
     double ScalarProduct(const Vector3d &Vector);
 
-    Vector3d* VectorProduct(const Vector3d &Vector);
+    Vector3d VectorProduct(const Vector3d &Vector);
 
     void Print();
 };
