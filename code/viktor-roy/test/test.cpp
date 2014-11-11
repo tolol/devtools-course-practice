@@ -23,7 +23,7 @@ TEST(ExpextedValueTest, Can_Calculate_Another_Expected_Value) {
     // assert
     EXPECT_EQ(value, 3);
 }
-TEST(ExpextedValueTest, Can_Calculate_Variance_Value) {
+TEST(VarianceValueTest, Can_Calculate_Variance_Value) {
     // arrange
     mat_stat mat;
     double probability[4] = {0.4, 0.1, 0.2, 0.3};
@@ -33,7 +33,7 @@ TEST(ExpextedValueTest, Can_Calculate_Variance_Value) {
     // assert
     EXPECT_EQ(value, 1.64);
 }
-TEST(ExpextedValueTest, Can_Calculate_Another_Variance_Value) {
+TEST(VarianceValueTest, Can_Calculate_Another_Variance_Value) {
     // arrange
     mat_stat mat;
     double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
@@ -44,10 +44,42 @@ TEST(ExpextedValueTest, Can_Calculate_Another_Variance_Value) {
     EXPECT_EQ(value, 1);
 }
 
-TEST(ExpextedValueTest, EmptyTest) {
+TEST(CreationTest, EmptyTest) {
   mat_stat mat;
 }
-
+TEST(GarbageTest, CanDropExceptionStatisticValue) {
+    // arrange
+    mat_stat mat;
+    double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
+    double * statisticValues = 0;
+    int count = 6;
+    // act
+    double value = mat.expectedValue(statisticValues, probability, count);
+    // assert
+    EXPECT_EQ(value, 0);
+}
+TEST(GarbageTest, CanDropExceptionProbability) {
+    // arrange
+    mat_stat mat;
+    double * probability = 0;
+    double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+    int count = 6;
+    // act
+    double value = mat.expectedValue(statisticValues, probability, count);
+    // assert
+    EXPECT_EQ(value, 0);
+}
+TEST(GarbageTest, CanDropExceptionCount) {
+    // arrange
+    mat_stat mat;
+    double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
+    double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+    int count = 0;
+    // act
+    double value = mat.expectedValue(statisticValues, probability, count);
+    // assert
+    EXPECT_EQ(value, 0);
+}
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
