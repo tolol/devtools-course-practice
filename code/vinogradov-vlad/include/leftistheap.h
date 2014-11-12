@@ -29,7 +29,7 @@ class LeftistHeap {
 
     void freeNode(LHeapNode *node);
     LHeapNode* copyFunction(LHeapNode *copyNode);
-    LHeapNode* copyRecursivly(LHeapNode *other);
+    LHeapNode* copyRecursively(LHeapNode *other);
 };
 
 #endif  // CODE_VINOGRADOV_VLAD_INCLUDE_LEFTISTHEAP_H_
