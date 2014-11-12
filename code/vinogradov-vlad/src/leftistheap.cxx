@@ -116,10 +116,10 @@ void LeftistHeap::freeNode(LHeapNode *node) {
 }
 
 LHeapNode* LeftistHeap::copyFunction(LHeapNode *copyNode) {
-    return copyRecursivly(copyNode);
+    return copyRecursively(copyNode);
 }
 
-LHeapNode* LeftistHeap::copyRecursivly(LHeapNode *other) {
+LHeapNode* LeftistHeap::copyRecursively(LHeapNode *other) {
     if (other == NULL) {
         return NULL;
     }
@@ -127,8 +127,8 @@ LHeapNode* LeftistHeap::copyRecursivly(LHeapNode *other) {
     LHeapNode *newNode = new LHeapNode(other->_key);
     newNode->_dist = other->_dist;
 
-    newNode->_leftChild = copyRecursivly(other->_leftChild);
-    newNode->_rightChild = copyRecursivly(other->_rightChild);
+    newNode->_leftChild = copyRecursively(other->_leftChild);
+    newNode->_rightChild = copyRecursively(other->_rightChild);
 
     return newNode;
 }
