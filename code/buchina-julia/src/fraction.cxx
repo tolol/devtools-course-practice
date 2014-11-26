@@ -22,17 +22,32 @@ void CheckValue(int64_t a) {
 }
 
 int64_t GCD(int64_t a, int64_t b) {
+    if (a < 0) a = ABS(a);
+    if (b < 0) b = ABS(b);
+
     if (a == 0 || b == 0) {
         return 1;
     }
-    while (a != b) {
-        if (a > b) {
-            a -= b;
-        } else {
-            b -= a;
-        }
+    // while (a != b) {
+    //     if (a > b) {
+    //         a -= b;
+    //     } else {
+    //         b -= a;
+    //     }
+    // }
+    // return a;
+    int64_t c;
+    if (b > a) {
+        c = a;
+        a = b;
+        b = c;
     }
-    return a;
+    while (b) {
+        c = a % b;
+        a = b;
+        b = c;
+    }
+    return ABS(a);
 }
 
 Fraction::Fraction(int _numerator, int _denominator): numerator(0),
@@ -83,7 +98,7 @@ Fraction operator+(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
+    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -104,7 +119,7 @@ Fraction operator-(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
+    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -123,7 +138,7 @@ Fraction operator*(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getDenominator());
 
-    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
+    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
@@ -142,7 +157,7 @@ Fraction operator/(const Fraction& a, const Fraction& b) {
     int64_t tmpDenominator = static_cast<int64_t>(a.getDenominator()) *
                              static_cast<int64_t>(b.getNumerator());
 
-    int64_t tmpGCD = GCD(ABS(tmpNumerator), ABS(tmpDenominator));
+    int64_t tmpGCD = GCD(tmpNumerator, tmpDenominator);
     tmpNumerator = tmpNumerator / tmpGCD;
     tmpDenominator = tmpDenominator / tmpGCD;
 
