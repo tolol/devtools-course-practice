@@ -11,45 +11,46 @@
 #include "include/simplecalculator_application.h"
 
 using ::testing::internal::RE;
+using std::vector;
+using std::string;
 
 class AppTest : public ::testing::Test {
  protected:
-    // NOTE: here you can put your init/deinit code
-    // virtual void SetUp() {}
+    virtual void SetUp() {
+        args.clear();
+    }
     // virtual void TearDown() {}
 
-    void Act(std::vector<std::string> args) {
-        std::vector<const char*> starts;
+    void Act(vector<string> args_) {
+        vector<const char*> starts;
         starts.push_back("appname");
 
-        for (size_t i = 0; i < args.size(); ++i) {
-            starts.push_back(args[i].c_str());
+        for (size_t i = 0; i < args_.size(); ++i) {
+            starts.push_back(args_[i].c_str());
         }
         const char** argv = &starts.front();
-        int argc = static_cast<int>(args.size()) + 1;
+        int argc = static_cast<int>(args_.size()) + 1;
 
         output_ = app_(argc, argv);
     }
 
     void Assert(std::string expected) {
-        std::cout << output_;
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
     CalculatorApplication app_;
-    std::string output_;
+    string output_;
+    vector<string> args;
 };
 
 TEST_F(AppTest, Do_Print_Help_Without_Arguments) {
-    std::vector<std::string> args;
-
     Act(args);
 
     Assert("This is a simple calculator application\\..*");
 }
 
 TEST_F(AppTest, Is_Checking_Number_Of_Arguments) {
-    std::vector<std::string> args = {"1", "2"};
+    args = {"1", "2"};
 
     Act(args);
 
@@ -57,7 +58,7 @@ TEST_F(AppTest, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(AppTest, Can_Detect_Wrong_Number_Format) {
-    std::vector<std::string> args = {"1", "pi", "+"};
+    args = {"1", "pi", "+"};
 
     Act(args);
 
@@ -65,7 +66,7 @@ TEST_F(AppTest, Can_Detect_Wrong_Number_Format) {
 }
 
 TEST_F(AppTest, Can_Detect_Wrong_Operation_Format) {
-    std::vector<std::string> args = {"1", "1", "garbage"};
+    args = {"1", "1", "garbage"};
 
     Act(args);
 
@@ -73,7 +74,7 @@ TEST_F(AppTest, Can_Detect_Wrong_Operation_Format) {
 }
 
 TEST_F(AppTest, Can_Add_Positive_Numbers) {
-    std::vector<std::string> args = {"2", "3", "+"};
+    args = {"2", "3", "+"};
 
     Act(args);
 
@@ -81,7 +82,7 @@ TEST_F(AppTest, Can_Add_Positive_Numbers) {
 }
 
 TEST_F(AppTest, Can_Sub_Large_Negative_Numbers) {
-    std::vector<std::string> args = {"-200000", "-3000000", "-"};
+    args = {"-200000", "-3000000", "-"};
 
     Act(args);
 
