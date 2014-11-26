@@ -2,8 +2,8 @@
 ##### Declaring
 #############################################
 
-set(libname  "kornyakov-kirill-scalc-library")
-set(testname "kornyakov-kirill-scalc-test")
+set(libname  "kornyakov-kirill-scalc3-library")
+set(testname "kornyakov-kirill-scalc3-test")
 
 message("")
 message("############################################")
