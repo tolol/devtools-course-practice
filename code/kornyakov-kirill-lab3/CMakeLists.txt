@@ -30,3 +30,9 @@ target_link_libraries(${testname})
 # Declare application
 add_local_dependency(${libname})
 add_app(${appname} "application")
+
+#############################################
+##### Testing
+#############################################
+
+include("CTestTests.txt")

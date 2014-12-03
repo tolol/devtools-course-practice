@@ -116,7 +116,7 @@ function Main {
     CheckGoogleStyle
     # MakeTest
     BuildCMakeProject
-    # CTest
+    CTest
     GoogleTest
 }
 
