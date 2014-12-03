@@ -252,7 +252,7 @@ TEST(TreeTest, StressTest) {
     test_tree_struct element;
     _tree<test_tree_struct> test_tree;
     // Act
-    for (int i = 0; i < 10000; i++)  {
+    for (int i = 0; i < 1000; i++)  {
         test_tree.add(element);
         test_tree.destruct();
     }

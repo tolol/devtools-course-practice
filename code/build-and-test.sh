@@ -112,11 +112,11 @@ function Clean {
 }
 
 function Main {
-    Clean
+    # Clean
     CheckGoogleStyle
     # MakeTest
     BuildCMakeProject
-    # CTest
+    CTest
     GoogleTest
 }
 

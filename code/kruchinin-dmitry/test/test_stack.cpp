@@ -111,7 +111,7 @@ struct qq_t {
 TEST(StressTest, PushAndPop) {
     qq_t hello;
     Stack<qq_t> stack;
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         stack.push(hello);
         stack.pop();
     }
