@@ -47,7 +47,8 @@ int64_t GCD(int64_t a, int64_t b) {
         a = b;
         b = c;
     }
-    return ABS(a);
+
+    return a;
 }
 
 Fraction::Fraction(int _numerator, int _denominator): numerator(0),
