@@ -9,7 +9,8 @@ TEST(ExpextedValueTest, Can_Calculate_Expected_Value) {
     double probability[4] = {0.4, 0.1, 0.2, 0.3};
     double statisticValues[4] = {0.0, 1.0, 2.0, 3.0};
     // act
-    double value = mat.expectedValue(statisticValues, probability, 4);
+    double value;
+    mat.expectedValue(statisticValues, probability, 4, value);
     // assert
     EXPECT_EQ(value, 1.4);
 }
@@ -19,7 +20,8 @@ TEST(ExpextedValueTest, Can_Calculate_Another_Expected_Value) {
     double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
     double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
     // act
-    double value = mat.expectedValue(statisticValues, probability, 6);
+    double value;
+    mat.expectedValue(statisticValues, probability, 6, value);
     // assert
     EXPECT_EQ(value, 3);
 }
@@ -29,7 +31,8 @@ TEST(VarianceValueTest, Can_Calculate_Variance_Value) {
     double probability[4] = {0.4, 0.1, 0.2, 0.3};
     double statisticValues[4] = {0.0, 1.0, 2.0, 3.0};
     // act
-    double value = mat.variance(statisticValues, probability, 4);
+    double value;
+    mat.variance(statisticValues, probability, 4, value);
     // assert
     EXPECT_EQ(value, 1.64);
 }
@@ -39,7 +42,8 @@ TEST(VarianceValueTest, Can_Calculate_Another_Variance_Value) {
     double probability[6] = {0.0, 0.1, 0.2, 0.3, 0.4, 0.0};
     double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
     // act
-    double value = mat.variance(statisticValues, probability, 6);
+    double value;
+    mat.variance(statisticValues, probability, 6, value);
     // assert
     EXPECT_EQ(value, 1);
 }
@@ -54,9 +58,10 @@ TEST(GarbageTest, CanDropExceptionStatisticValue) {
     double * statisticValues = 0;
     int count = 6;
     // act
-    double value = mat.expectedValue(statisticValues, probability, count);
+    double value;
+    int result = mat.expectedValue(statisticValues, probability, count, value);
     // assert
-    EXPECT_EQ(value, 0);
+    EXPECT_EQ(result, 1);
 }
 TEST(GarbageTest, CanDropExceptionProbability) {
     // arrange
@@ -65,9 +70,10 @@ TEST(GarbageTest, CanDropExceptionProbability) {
     double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
     int count = 6;
     // act
-    double value = mat.expectedValue(statisticValues, probability, count);
+    double value;
+    int result = mat.expectedValue(statisticValues, probability, count, value);
     // assert
-    EXPECT_EQ(value, 0);
+    EXPECT_EQ(result, 1);
 }
 TEST(GarbageTest, CanDropExceptionCount) {
     // arrange
@@ -76,9 +82,10 @@ TEST(GarbageTest, CanDropExceptionCount) {
     double statisticValues[6] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
     int count = 0;
     // act
-    double value = mat.expectedValue(statisticValues, probability, count);
+    double value;
+    int result = mat.expectedValue(statisticValues, probability, count, value);
     // assert
-    EXPECT_EQ(value, 0);
+    EXPECT_EQ(result, 1);
 }
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

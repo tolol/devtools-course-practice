@@ -6,12 +6,14 @@ class mat_stat {
     mat_stat();
     mat_stat(const mat_stat &l);
     mat_stat & operator=(const mat_stat &l);
-    double expectedValue(const double *statisticValues,
-                         const double *probabilityValues,
-                         const int countStatisticValues);
-    double variance(const double *statisticValues,
-                     const double *probabilityValues,
-                     const int countStatisticValues);
+    int expectedValue(const double *statisticValues,
+                      const double *probabilityValues,
+                      const int countValues,
+                      double &expectedValue);
+    int variance(const double *statisticValues,
+                 const double *probabilityValues,
+                 const int countValues,
+                 double &variance);
     ~mat_stat();
 };
 #pragma pack(pop)
