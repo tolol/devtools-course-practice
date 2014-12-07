@@ -6,19 +6,6 @@
 
 #include "include/leftistheap.h"
 
-TEST(LHeapNodeTest, Can_Merge) {
-    // Arrange
-    LHeapNode xHeap(11);
-    LHeapNode yHeap(22);
-
-    // Act
-    LHeapNode* zHeap = LHeapNode::merge(&xHeap, &yHeap);
-
-    // Assert
-    EXPECT_EQ(11, zHeap->_key);
-    EXPECT_EQ(22, zHeap->_leftChild->_key);
-}
-
 TEST(LeftistHeapTest, Can_Say_Is_Empty) {
     // Arrange & Act
     LeftistHeap lHeap;
