@@ -65,6 +65,14 @@ TEST_F(AppTest, Can_Detect_Wrong_Number_Format) {
     Assert("Wrong number format!.*");
 }
 
+TEST_F(AppTest, Can_Detect_Wrong_Number_Format2) {
+    args = {"Normalize", "pi", "2", "3", "4", "5", "6"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
 TEST_F(AppTest, Can_Detect_Wrong_Operation_Format) {
     args = {"Sum", "1", "2", "3"};
 
