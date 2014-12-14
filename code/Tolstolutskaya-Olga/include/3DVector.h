@@ -15,6 +15,8 @@ class Vector3d {
 
     Vector3d(double _a, double _b, double _c);
 
+    Vector3d(Vector3d& v);
+
     void operator()(double _a, double _b, double _c);
 
     Vector3d & operator=(Vector3d v);
