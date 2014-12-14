@@ -8,7 +8,7 @@ Vector3d::Vector3d(): a(0), b(0), c(0) {}
 Vector3d::Vector3d(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {}
 
 void Vector3d::operator()(double _a, double _b, double _c) {
-    a = _a; b = _b; c = _c; 
+    a = _a; b = _b; c = _c;
 }
 
 Vector3d& Vector3d::operator=(Vector3d v) {
@@ -58,5 +58,5 @@ Vector3d Vector3d::VectorProduct(const Vector3d &Vector) {
     double _a = b*Vector.c-c*Vector.b;
     double _b = -(a*Vector.c-c*Vector.a);
     double _c = a*Vector.b-b*Vector.a;
-    return Vector3d(_a,_b,_c);
+    return Vector3d(_a, _b, _c);
 }
