@@ -5,7 +5,18 @@
 
 Vector3d::Vector3d(): a(0), b(0), c(0) {}
 
-Vector3d::Vector3d(double _a, double _b, double _c): a(_a), b(_b), c(_c) {}
+Vector3d::Vector3d(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {}
+
+void Vector3d::operator()(double _a, double _b, double _c) {
+    a = _a; b = _b; c = _c; 
+}
+
+Vector3d& Vector3d::operator=(Vector3d v) {
+    a = v.a;
+    b = v.b;
+    c = v.c;
+    return *this;
+}
 
 double Vector3d::GetA() {
     return(a);
@@ -44,9 +55,8 @@ double Vector3d::ScalarProduct(const Vector3d &Vector) {
 }
 
 Vector3d Vector3d::VectorProduct(const Vector3d &Vector) {
-    Vector3d VProduct;
-    VProduct.a = b*Vector.c-c*Vector.b;
-    VProduct.b = -(a*Vector.c-c*Vector.a);
-    VProduct.c = a*Vector.b-b*Vector.a;
-    return(VProduct);
+    double _a = b*Vector.c-c*Vector.b;
+    double _b = -(a*Vector.c-c*Vector.a);
+    double _c = a*Vector.b-b*Vector.a;
+    return Vector3d(_a,_b,_c);
 }

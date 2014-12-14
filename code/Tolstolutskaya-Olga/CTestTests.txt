@@ -1,0 +1,73 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+add_test(
+    NAME can_Run
+    COMMAND ${appname}
+)
+
+add_test(
+    NAME can_Print_Help_Without_Arguments
+    COMMAND ${appname}
+)
+set_tests_properties (can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a simple calculator.")
+
+add_test(
+    NAME can_Check_Number_Of_Arguments
+    COMMAND ${appname} 1 2
+)
+set_tests_properties (can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 5 or 8 arguments.")
+
+add_test(
+    NAME can_Detect_Wrong_Number_Format
+    COMMAND ${appname} Normalize pi 2 3
+)
+set_tests_properties (can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME can_Detect_Wrong_Operation_Format
+    COMMAND ${appname} Sum 1 2 3
+)
+set_tests_properties (can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation!")
+
+add_test(
+    NAME Correct_Computation_Norm
+    COMMAND ${appname} Norm 1 2 3
+)
+set_tests_properties (Correct_Computation_Norm
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result = 3.741657")
+
+add_test(
+    NAME Correct_Computation_Normalize
+    COMMAND ${appname} Normalize 1 2 3
+)
+set_tests_properties (Correct_Computation_Norm
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result = 0.267261 0.534522 0.801784")
+
+add_test(
+    Correct_Computation_Normalize2
+    COMMAND ${appname} Normalize -1 -2 -3
+)
+set_tests_properties (Correct_Computation_Norm
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result = -0.267261 -0.534522 -0.801784")
+
+add_test(
+    Correct_Computation_ScalarProduct
+    COMMAND ${appname} ScalarProduct 1 2 3 2 1 -2
+)
+set_tests_properties (Correct_Computation_Norm
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result = -2")
+
+add_test(
+    Correct_Computation_VectorProduct
+    COMMAND ${appname} VectorProduct 1 2 3 2 1 -2
+)
+set_tests_properties (Correct_Computation_Norm
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result = -7 8 -3")
