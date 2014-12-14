@@ -13,6 +13,15 @@ TEST(Vector3dTest, Can_Create) {
     EXPECT_EQ(3, a.GetC());
 }
 
+TEST(Vector3dTest, Can_Create2) {
+    Vector3d b(1, 2, 3);
+    Vector3d a(b);
+    EXPECT_EQ(1, a.GetA());
+    EXPECT_EQ(2, a.GetB());
+    EXPECT_EQ(3, a.GetC());
+}
+
+
 TEST(Vector3dTest, Can_Create_Default) {
     Vector3d a;
     EXPECT_EQ(0, a.GetA());
