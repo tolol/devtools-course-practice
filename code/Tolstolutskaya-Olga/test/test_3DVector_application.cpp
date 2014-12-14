@@ -63,7 +63,7 @@ TEST_F(AppTest, Can_Detect_Wrong_Number_Format) {
     args = {"Normalize", "pi", "2", "3"};
 
     Act(args);
-    
+
     Assert("Wrong number format!.*");
 }
 
@@ -71,7 +71,7 @@ TEST_F(AppTest, Can_Detect_Wrong_Operation_Format) {
     args = {"Sum", "1", "2", "3"};
 
     Act(args);
-    
+
     Assert("Wrong operation!");
 }
 
@@ -79,7 +79,7 @@ TEST_F(AppTest, Correct_Computation_Norm) {
     args = {"Norm", "1", "2", "3"};
 
     Act(args);
-    
+
     Assert("Result = 3.741657");
 }
 
@@ -88,7 +88,7 @@ TEST_F(AppTest, Correct_Computation_Normalize) {
     args = {"Normalize", "1", "2", "3"};
 
     Act(args);
-    
+
     Assert("Result = 0.267261 0.534522 0.801784");
 }
 
@@ -96,7 +96,7 @@ TEST_F(AppTest, Correct_Computation_Normalize2) {
     args = {"Normalize", "-1", "-2", "-3"};
 
     Act(args);
-    
+
     Assert("Result = -0.267261 -0.534522 -0.801784");
 }
 
@@ -104,7 +104,7 @@ TEST_F(AppTest, Correct_Computation_ScalarProduct) {
     args = {"ScalarProduct", "1", "2", "3", "2", "1", "-2"};
 
     Act(args);
-    
+
     Assert("Result = -2");
 }
 
@@ -112,6 +112,6 @@ TEST_F(AppTest, Correct_Computation_VectorProduct) {
     args = {"VectorProduct", "1", "2", "3", "2", "1", "-2"};
 
     Act(args);
-    
+
     Assert("Result = -7 8 -3");
 }
