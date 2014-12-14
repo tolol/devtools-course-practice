@@ -6,7 +6,7 @@
 Vector3d::Vector3d(): a(0), b(0), c(0) {}
 
 Vector3d::Vector3d(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {}
-Vector3d::Vector3d(const Vector3d& v) : a(v.a), b(v.b), c(v.c);
+Vector3d::Vector3d(const Vector3d& v) : a(v.a), b(v.b), c(v.c) {}
 void Vector3d::operator()(double _a, double _b, double _c) {
     a = _a; b = _b; c = _c;
 }
