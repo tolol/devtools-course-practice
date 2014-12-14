@@ -14,8 +14,6 @@ using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
-#define EPSILON 1e-5
-
 class AppTest : public ::testing::Test {
  protected:
     virtual void SetUp() {
