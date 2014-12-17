@@ -8,27 +8,19 @@ class Vector3d {
 
  public:
     Vector3d();
-
     Vector3d(double _a, double _b, double _c);
-
     Vector3d(const Vector3d& v);
 
     void operator()(double _a, double _b, double _c);
-
     Vector3d & operator=(Vector3d v);
 
     double GetC();
-
     double GetB();
-
     double GetA();
 
     double Norm();
-
     void Normalize();
-
     double ScalarProduct(const Vector3d &Vector);
-
     Vector3d VectorProduct(const Vector3d &Vector);
 
     void Print();
