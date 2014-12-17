@@ -14,8 +14,9 @@
 Expression::Expression() : arg1(Vector3d()), arg2(Vector3d()), operation("") {}
 VectorApplication::VectorApplication() : message_("") {}
 
-void VectorApplication::help(const char* appname) {
-    message_ += std::string("This is a Vector application.\n\n")
+void VectorApplication::help(const char* appname, const char* message = "")) {
+    message_ = std::string(message)
+             + std::string("This is a Vector application.\n\n")
              + "Please provide arguments in the following format:\n\n"
              + "  $ " + appname + " <operation> <argument1> <argument2>"
              + " <argument3>\n\nWhere arguments are integer numbers, "
@@ -43,8 +44,7 @@ bool VectorApplication::parseArguments(int argc, const char** argv,
         help(argv[0]);
         return false;
     } else if (argc != 5 && argc != 8) {
-        message_ = "ERROR: Should be 5 or 8 arguments.\n\n";
-        help(argv[0]);
+        help(argv[0], "ERROR: Should be 5 or 8 arguments.\n\n");
         return false;
     }
 
