@@ -14,7 +14,7 @@
 Expression::Expression() : arg1(Vector3d()), arg2(Vector3d()), operation("") {}
 VectorApplication::VectorApplication() : message_("") {}
 
-void VectorApplication::help(const char* appname, const char* message = "")) {
+void VectorApplication::help(const char* appname, const char* message = "") {
     message_ = std::string(message)
              + std::string("This is a Vector application.\n\n")
              + "Please provide arguments in the following format:\n\n"
