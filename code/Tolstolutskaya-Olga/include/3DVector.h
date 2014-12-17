@@ -5,10 +5,6 @@
 #include <math.h>
 
 class Vector3d {
- private:
-    double a;
-    double b;
-    double c;
 
  public:
     Vector3d();
@@ -36,5 +32,10 @@ class Vector3d {
     Vector3d VectorProduct(const Vector3d &Vector);
 
     void Print();
+
+ private:
+    double a;
+    double b;
+    double c;
 };
 #endif  // CODE_TOLSTOLUTSKAYA_OLGA_INCLUDE_3DVECTOR_H_
