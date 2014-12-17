@@ -4,7 +4,7 @@
 
 #include "include/3DVector.h"
 
-#define EPSILON 1e-5
+const float EPSILON = 1e-5;
 
 TEST(Vector3dTest, Can_Create) {
     Vector3d a(1, 2, 3);
