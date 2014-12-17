@@ -25,7 +25,7 @@ class VectorApplication {
  private:
     std::string message_;
 
-    void help(const char* appname);
+    void help(const char* appname, const char* message);
     bool parseArguments(int argc, const char** argv, Expression* expr);
 };
 
