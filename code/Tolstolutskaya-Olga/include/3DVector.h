@@ -5,7 +5,6 @@
 #include <math.h>
 
 class Vector3d {
-
  public:
     Vector3d();
     Vector3d(double _a, double _b, double _c);
