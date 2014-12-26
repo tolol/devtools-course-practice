@@ -7,10 +7,10 @@
 class Vector3d {
  public:
     Vector3d();
-    Vector3d(double _a, double _b, double _c);
+    Vector3d(double a, double b, double c);
     Vector3d(const Vector3d& v);
 
-    void operator()(double _a, double _b, double _c);
+    void operator()(double a, double b, double c);
     Vector3d & operator=(Vector3d v);
 
     double GetC();
