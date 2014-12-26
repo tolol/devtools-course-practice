@@ -13,7 +13,7 @@ class Vector3d {
  public:
     Vector3d();
 
-    Vector3d(double _a, double _b, double _c);
+    Vector3d(double a, double b, double c);
 
     double GetC();
 
