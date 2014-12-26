@@ -85,9 +85,6 @@ bool VectorApplication::parseArguments(int argc, const char** argv,
         message_ = std::string(op) + " - Wrong operation!\n";
         return false;
     } else {
-        // strcpy(expression->operation, op);
-        // snprintf(expression->operation,
-        // sizeof(expression->operation), "%s", op);
         expression->operation = op;
     }
 
